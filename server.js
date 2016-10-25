@@ -1,6 +1,6 @@
 // basic server
 var express = require('express');
-// Middleware
+// Middleware 
 var parser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
