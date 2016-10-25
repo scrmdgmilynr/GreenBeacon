@@ -1,7 +1,15 @@
 var pg = require('pg')
 var Sequelize = require('sequelize');
-var db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/beacon', {
-  dialect: 'postgres'
+
+if(process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
+var db = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: true
+  }
 });
 
 //Establishes the connection to the database
