@@ -6,6 +6,7 @@ var session = require('express-session');
 var passport = require('passport');
 var GitHubStrategy = require('passport-github2').Strategy;
 var routes = require('./routes');
+require('./socketLogic');
 
 if(process.env.NODE_ENV !== 'production') {
   var config = require('./config');
@@ -51,8 +52,20 @@ routes.router(app);
 
 app.set('port', process.env.PORT || 3000);
 
-app.listen(app.get('port'), function() {
+const server = app.listen(app.get('port'), function() {
   console.log('listening on port: ', app.get('port'))
 });
 
-module.exports.app = app;
+
+var io = require('socket.io').listen(server);
+
+io.on('connection', (socket) => {
+  console.log('connection made!!');
+
+  socket.on('addTicket', () =>{
+    console.log('new tickets added');
+    io.emit('ticketAdded');
+  });
+});
+
+module.exports = server;

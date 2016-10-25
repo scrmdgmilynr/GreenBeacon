@@ -8,6 +8,9 @@ angular.module('app.queue', [])
   var SVGpulse;
   var SVGdot;
 
+  server.on('ticketAdded', () =>{
+    initializeQueue();
+  });
 
 
   var initializeQueue = function() {
@@ -172,14 +175,14 @@ angular.module('app.queue', [])
   initializeQueue();
 
   //place initialize queue in an interval so new tickets can be loaded continuously every 3 seconds
-  var interval = $interval(initializeQueue, 3000);
-  var isRunning = true;
+  // var interval = $interval(initializeQueue, 3000);
+  // var isRunning = true;
 
 
   //functionality: on hover of ticket, hide all dots that do not match ticket's x and y coordinates
   $scope.showDot = function (ticketX, ticketY) {
-    $interval.cancel(interval);
-    isRunning = false;
+    // $interval.cancel(interval);
+    // isRunning = false;
 
     //iterate through all dots
     for (var i = 0; i < SVGdot.length; i++) {
@@ -196,11 +199,11 @@ angular.module('app.queue', [])
   }
 
   //renews interval if it has not been running already when hover event is over 
-  $scope.renew = function () {
-    if (!isRunning) {
-      initializeQueue();
-      interval = $interval(initializeQueue, 3000);
-      isRunning = true;
-    }
-  };
+  // $scope.renew = function () {
+  //   if (!isRunning) {
+  //     initializeQueue();
+  //     interval = $interval(initializeQueue, 3000);
+  //     isRunning = true;
+  //   }
+  // };
 }])
