@@ -36,6 +36,9 @@ angular.module('app.services', [])
       method: 'PUT',
       url: '/claimed',
       data: ticket
+    })
+    .then(() =>{
+      socket.emit('claimTicket');
     });
   };
 
@@ -45,6 +48,9 @@ angular.module('app.services', [])
       method: 'POST',
       url: '/eraseClaim',
       data: data
+    })
+    .then(() =>{
+      socket.emit('eraseTicket');
     });
   };
 
@@ -54,7 +60,10 @@ angular.module('app.services', [])
       method: 'PUT',
       url: '/solved',
       data: ticket
-    });
+    })
+    .then(() =>{
+      socket.emit('solveTicket');
+    });;
   };
 
   //Sends PUT request to the server in order to mark the ticket as NOT solved
@@ -63,7 +72,10 @@ angular.module('app.services', [])
       method: 'PUT',
       url: '/unsolved',
       data: ticket
-    });
+    })
+    .then(() =>{
+      socket.emit('unsolveTicket');
+    });;
   };
 
   return {
