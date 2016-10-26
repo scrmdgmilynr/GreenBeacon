@@ -15,7 +15,9 @@ angular.module('app.student', [])
     //grab the cookie data from the session on passport
     const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
 
-    //getUserTickets is what is should be next
+    console.log(cookie)
+
+    //getUserTickets is what is should be
     Tickets.getTickets()
       .then(function(results){
 
