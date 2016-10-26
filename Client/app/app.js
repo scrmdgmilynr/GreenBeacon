@@ -1,6 +1,6 @@
 //initialize app module, include services and auth dependencies
 
-angular.module('app', ['app.auth', 'app.queue', 'app.services', 'app.student', 'ngRoute', 'ngSanitize'])
+angular.module('app', ['app.auth', 'app.queue', 'app.services', 'app.student', 'app.chatroom', 'ngRoute', 'ngSanitize'])
 
 .config(function($routeProvider){
 
@@ -22,7 +22,7 @@ angular.module('app', ['app.auth', 'app.queue', 'app.services', 'app.student', '
 			controller: 'ChatroomController'
 		})
 		.otherwise({
-			redirectTo: '/tickets'
+			redirectTo: '/signin'
 		});
 
 });

@@ -30,7 +30,6 @@ body {
 
 .list-group {
 	height: 575px;
-	overflow: auto;
 }
 
 .list-group, .input-group {

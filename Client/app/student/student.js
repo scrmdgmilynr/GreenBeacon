@@ -1,8 +1,10 @@
 //Queue controller
 
 angular.module('app.student', [])
-
-.controller('StudentController', ['$scope', 'Tickets', 'Auth', function($scope, Tickets, Auth){
+.factory('params', () =>{
+  return {};
+})
+.controller('StudentController', ['$scope', '$location', 'params', 'Tickets', 'Auth', function($scope, $location, params, Tickets, Auth){
 
   $scope.data = {};
 
@@ -15,7 +17,7 @@ angular.module('app.student', [])
     //grab the cookie data from the session on passport
     const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
 
-    Tickets.getUserTickets(cookie.user)
+    Tickets.getTickets(cookie.user)
       .then(function(results){
 
         //add tickets to the scope
@@ -122,13 +124,7 @@ angular.module('app.student', [])
   }
 
   $scope.getTicket = function(ticket) {
-
-    Tickets.getTicket(ticket)
-      .then(function () {
-          initializeQueue();
-        })
-      .catch(function (err) {
-        console.log(err);
-      });
-  }
-}])
+    params.ticket = ticket;
+    $location.path('chatroom');
+  };
+}]);

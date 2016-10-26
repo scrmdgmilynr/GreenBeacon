@@ -20,9 +20,10 @@ angular.module('app.services', [])
   };
 
   var getUserTickets = function (user) {
+    console.log(user)
     return $http({
       method: 'GET',
-      url: `/ticket/${user.username}`
+      url: `/tickets/${user.username}`
     })
     .then(function (resp) {
       return resp;
@@ -30,7 +31,15 @@ angular.module('app.services', [])
   };
 
   //Get one ticket from the database
-  var getTicket = function (user) {
+  var getTicket = function (ticketId) {
+    console.log(ticketId)
+    return $http({
+      method: 'POST',
+      url: `/ticket/${ticketId}`,
+    })
+    .then((resp) =>{
+      return resp;
+    });
   };
 
   //Sends POST request to the server in order to post a new ticket
