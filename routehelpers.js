@@ -72,8 +72,10 @@ module.exports = {
 
   redirectStudentorFellow: function(req, res, next) {
     if (req.session.cookie.passport.user.fellow === true) {
+      console.log('fellow');
       res.redirect('/#/fellow');
     } else {
+      console.log('student')
       res.redirect('/#/student');
     }
   },

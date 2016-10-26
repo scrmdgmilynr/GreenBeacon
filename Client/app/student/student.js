@@ -1,8 +1,10 @@
 //Queue controller
 
 angular.module('app.student', [])
-
-.controller('StudentController', ['$scope', 'Tickets', 'Auth', function($scope, Tickets, Auth){
+.factory('params', () =>{
+  return {};
+})
+.controller('StudentController', ['$scope', 'params', 'Tickets', 'Auth', function($scope, params, Tickets, Auth){
 
   $scope.data = {};
 
@@ -122,13 +124,6 @@ angular.module('app.student', [])
   }
 
   $scope.getTicket = function(ticket) {
-
-    Tickets.getTicket(ticket)
-      .then(function () {
-          initializeQueue();
-        })
-      .catch(function (err) {
-        console.log(err);
-      });
-  }
-}])
+    params.ticket = ticket;
+  };
+}]);

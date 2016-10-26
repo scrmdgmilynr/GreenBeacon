@@ -22,7 +22,7 @@ angular.module('app', ['app.auth', 'app.queue', 'app.services', 'app.student', '
 			controller: 'ChatroomController'
 		})
 		.otherwise({
-			redirectTo: '/tickets'
+			redirectTo: '/signin'
 		});
 
 });
