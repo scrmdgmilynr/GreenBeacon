@@ -27,7 +27,6 @@ db
    console.log('Unable to connect: ', err);
  });
 
-
 module.exports = {
 
   // if the current user does not exist in the users table, create a new record,
@@ -126,6 +125,8 @@ module.exports = {
             res.end();
           });
       });
-  }
+  },
+
+  db: db
 
 };
