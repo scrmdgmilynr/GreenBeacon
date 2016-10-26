@@ -66,6 +66,7 @@ module.exports = {
 
   setHeader: function(req, res, next) {
     res.setHeader('Set-Cookie', JSON.stringify(req.session.cookie.passport));
+    next();
   },
 
   redirectStudentorFellow: function(req, res, next) {
