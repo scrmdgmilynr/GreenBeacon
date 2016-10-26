@@ -2,7 +2,7 @@
 
 angular.module('app.student', [])
 
-.controller('StudentController', ['$scope', 'Tickets', 'Auth', function($scope, Tickets, Auth){
+.controller('StudentController', ['$scope', '$cookies', 'Tickets', 'Auth', function($scope, $cookies, Tickets, Auth){
 
   $scope.data = {};
 
@@ -12,6 +12,9 @@ angular.module('app.student', [])
 
   var initializeQueue = function() {
     //retrieve tickets from database
+
+    console.log($cookies.get());
+
     Tickets.getTickets()
       .then(function(results){
 

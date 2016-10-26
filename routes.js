@@ -12,6 +12,9 @@ module.exports.router = function(app) {
     // upon Github authentication, add the passport object to the current cookie
     // and redirect to tickets page
     req.session.cookie.passport = req.session.passport;
+    
+    //if statement to check fellow or student
+    //redirect appropriately
     res.redirect('/#/student');
   });
 
