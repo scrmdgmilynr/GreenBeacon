@@ -6,12 +6,15 @@ var session = require('express-session');
 var passport = require('passport');
 var GitHubStrategy = require('passport-github2').Strategy;
 var routes = require('./routes');
+var cookieParser = require('cookie-parser');
 
 if(process.env.NODE_ENV !== 'production') {
   var config = require('./config');
 }
 
 var app = express();
+
+app.use(cookieParser());
 
 passport.serializeUser(function(id, done) {
   done(null, id);

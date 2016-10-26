@@ -2,7 +2,7 @@
 
 angular.module('app.student', [])
 
-.controller('StudentController', ['$scope', 'Tickets', 'Auth', function($scope, Tickets, Auth){
+.controller('StudentController', ['$scope', '$cookies', 'Tickets', 'Auth', function($scope, $cookies, Tickets, Auth){
 
   $scope.data = {};
 
@@ -12,7 +12,10 @@ angular.module('app.student', [])
 
   var initializeQueue = function() {
     //retrieve tickets from database
-    Tickets.getTickets()
+    //grab the cookie data from the session on passport
+    const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+
+    Tickets.getTicket(cookie.user)
       .then(function(results){
 
         //add tickets to the scope

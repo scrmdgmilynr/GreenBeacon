@@ -21,8 +21,8 @@ angular.module('app.services', [])
   };
 
   //Get one ticket from the database
-  var getTicket = function (ticketId) {
-    console.log(ticketId, ' ticket ticket ticket');
+  var getTicket = function (user) {
+    console.log(user.username, ' ticket ticket ticket');
     // return $http({
     //   method: 'GET',
     //   url: '/ticket/' + ticketId
