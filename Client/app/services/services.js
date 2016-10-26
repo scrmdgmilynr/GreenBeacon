@@ -24,6 +24,9 @@ angular.module('app.services', [])
       method: 'POST',
       url: '/tickets',
       data: ticket
+    })
+    .then(() =>{
+      server.emit('addTicket');
     });
   };
 
