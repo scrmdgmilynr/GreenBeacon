@@ -26,7 +26,7 @@ angular.module('app.services', [])
       data: ticket
     })
     .then(() =>{
-      server.emit('addTicket');
+      socket.emit('addTicket');
     });
   };
 
