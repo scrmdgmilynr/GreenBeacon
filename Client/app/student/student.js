@@ -15,10 +15,7 @@ angular.module('app.student', [])
     //grab the cookie data from the session on passport
     const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
 
-    console.log(cookie)
-
-    //getUserTickets is what is should be
-    Tickets.getTickets()
+    Tickets.getUserTickets(cookie.user)
       .then(function(results){
 
         //add tickets to the scope
