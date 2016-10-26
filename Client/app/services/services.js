@@ -21,23 +21,18 @@ angular.module('app.services', [])
 
   //Get one ticket from the database
   var getTicket = function (user) {
-    console.log(user.username, ' ticket ticket ticket');
-    // return $http({
-    //   method: 'GET',
-    //   url: '/ticket/' + ticketId
-    // })
-    // .then(function (resp) {
-    //   if (resp.data === 'failed') {
-    //     //Redirects to signing if authentication fails
-    //     $window.location = '/#/signin';
-    //   }
-    //   console.log('response ', resp);
-    //   return resp;
-    // });
+    return $http({
+      method: 'GET',
+      url: `/ticket/${user.username}`
+    })
+    .then(function (resp) {
+      return resp;
+    });
   };
 
   //Sends POST request to the server in order to post a new ticket
   var addTicket = function (ticket) {
+    console.log(ticket)
     return $http({
       method: 'POST',
       url: '/tickets',

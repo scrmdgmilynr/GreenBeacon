@@ -31,11 +31,11 @@
 			</form>
 			<br />
 			<br />
-		  <div class="ticket" ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id' " ng-click='getTicket(ticket)'>
+		  <div class="ticket " ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id' " ng-click='getTicket(ticket)'>
 		    <!-- Renders each ticket to the queue -->
 		    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}">
 
-        	<h5 class="list-group-item-heading" ng-bind="ticket.user.displayname"></h5>
+        	<h5 class="list-group-item-heading" ng-bind="ticket.user.displayname || ticket.user.username"></h5>
         	<button class="claimb btn btn-1" type="button" ng-show="!ticket.ismine" ng-disabled="ticket.claimed" ng-click="claimTicket(ticket)">Claim</button>
         	<button class="deleteb btn btn-1" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
         	<button class="solv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
