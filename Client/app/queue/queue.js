@@ -8,7 +8,7 @@ angular.module('app.queue', [])
   var SVGpulse;
   var SVGdot;
 
-  server.on('ticketAdded', () =>{
+  socket.on('ticketAdded', () =>{
     initializeQueue();
   });
 
