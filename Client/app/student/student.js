@@ -13,9 +13,9 @@ angular.module('app.student', [])
   var initializeQueue = function() {
     //retrieve tickets from database
 
-    console.log($cookies.get());
+    console.dir(document);
 
-    Tickets.getTickets()
+    Tickets.getTicket()
       .then(function(results){
 
         //add tickets to the scope
