@@ -80,7 +80,8 @@ var Fellers = db.define('fellers', {
     primaryKey: true,
     autoIncrement: true
   },
-  fellerName: Sequelize.STRING
+  fellerName: Sequelize.STRING,
+  githubHandle: Sequelize.STRING
 });
 
 //Defines relationships between tables
@@ -96,7 +97,7 @@ Claim.belongsTo(Ticket);
 //Create Tables
 db
   .sync({
-    force: false
+    force: false,
   })
   .then(function() {
     console.log('Tables created');
