@@ -12,8 +12,9 @@ angular.module('app.services', [])
     .then(function (resp) {
       if (resp.data === 'failed') {
         //Redirects to signing if authentication fails
-        $window.location = '/#/signin';
+        $window.location = '/#/signin'; 
       }
+      console.log("response", resp);
       return resp;
     });
   };
