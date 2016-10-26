@@ -27,6 +27,8 @@ module.exports.router = function(app) {
 
   app.put('/unsolved', helpers.isLoggedIn, helpers.tagUnSolved);
 
-  app.get('/signout', helpers.isLoggedIn, helpers.terminateSession)
+  app.get('/signout', helpers.isLoggedIn, helpers.terminateSession);
+
+  app.post('/ticket/:ticketid')
 
 };
