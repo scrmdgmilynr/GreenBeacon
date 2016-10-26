@@ -17,6 +17,11 @@ module.exports.router = function(app) {
 
   app.get('/tickets', helpers.isLoggedIn, helpers.getTickets);
 
+  // add route for specific tickets
+  app.get('/tickets/:username', (req, res, next) => {
+    console.log('Username: ', req.params.username);
+  });
+
   app.post('/tickets', helpers.isLoggedIn, helpers.addToQueue);
 
   app.put('/claimed', helpers.isLoggedIn, helpers.tagClaimed);
