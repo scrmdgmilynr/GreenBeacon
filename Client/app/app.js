@@ -1,6 +1,6 @@
 //initialize app module, include services and auth dependencies
 
-angular.module('app', ['app.auth', 'app.queue', 'app.services', 'app.student', 'ngRoute', 'ngSanitize'])
+angular.module('app', ['app.auth', 'app.queue', 'app.services', 'app.student', 'ngRoute', 'ngSanitize', 'ngCookies'])
 
 .config(function($routeProvider){
 
