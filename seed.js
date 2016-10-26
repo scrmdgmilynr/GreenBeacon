@@ -15,12 +15,18 @@ var fellers = [
   {
     fellerName: 'Melba Madrigal',
     githubHandle: 'melbee'
+  },
+  {
+    fellerName: 'Alex Ting',
+    githubHandle: 'acting326'
   }
 ];
 
-fellers.forEach((feller) => {
-  Fellers.create({
-    fellerName: feller.fellerName,
-    githubHandle: feller.githubHandle
+Fellers.destroy({ where: {} }).then(() => {
+  fellers.forEach((feller) => {
+    Fellers.create({
+      fellerName: feller.fellerName,
+      githubHandle: feller.githubHandle
+    });
   });
 });
