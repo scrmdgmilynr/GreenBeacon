@@ -98,7 +98,7 @@ db
   .sync()
   .then(function() {
     console.log('Tables created');
- });
+});
 
 module.exports = {
   User: User,
