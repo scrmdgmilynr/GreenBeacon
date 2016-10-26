@@ -47,7 +47,6 @@ var Ticket = db.define('ticket', {
   y: Sequelize.INTEGER,
   //dot color
   color: Sequelize.STRING,
-
   claimed: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
@@ -84,6 +83,15 @@ var Fellers = db.define('fellers', {
   githubHandle: Sequelize.STRING
 });
 
+var Chat = db.define('chat', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  message: Sequelize.STRING
+});
+
 //Defines relationships between tables
 User.hasMany(Ticket);
 Ticket.belongsTo(User);
@@ -93,6 +101,9 @@ Claim.belongsTo(User);
 
 Ticket.hasOne(Claim);
 Claim.belongsTo(Ticket);
+
+Ticket.hasMany(Chat);
+Chat.belongsTo(Ticket);
 
 //Create Tables
 db
