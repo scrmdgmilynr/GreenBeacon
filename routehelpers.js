@@ -5,6 +5,7 @@ var Sequelize = require('sequelize');
 var User = require('./db/schema').User;
 var Ticket = require('./db/schema').Ticket;
 var Claim = require('./db/schema').Claim;
+var Fellers = require('./db/schema').Fellers;
 
 if(process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
@@ -37,6 +38,38 @@ module.exports = {
         req.session.userID = user[0].dataValues.id;
         next();
       });
+  },
+
+  setCookie: function(req, res, next) {
+    req.session.cookie.passport = req.session.passport;
+    next();
+  },
+
+  // check user on log in against fellow db
+  checkFellow: function(req, res, next) {
+    if (!req.session.cookie.passport.user.fellow) {
+      Fellers.find({ where: { githubHandle: req.session.passport.user.username }})
+      .then((fellow) => {
+        if (fellow === null) {
+          req.session.cookie.passport.user.fellow = false;
+        } else {
+          req.session.cookie.passport.user.fellow = true;
+        }
+        next();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+    next();
+  },
+
+  redirectStudentorFellow: function(req, res, next) {
+    if (req.session.cookie.passport.user.fellow === true) {
+      res.redirect('/#/fellow');
+    } else {
+      res.redirect('/#/student');
+    }
   },
 
   // middleware that validates the user is currently logged in by analyzing the session
