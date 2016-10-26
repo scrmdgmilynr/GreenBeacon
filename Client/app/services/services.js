@@ -14,8 +14,26 @@ angular.module('app.services', [])
         //Redirects to signing if authentication fails
         $window.location = '/#/signin';
       }
+      console.log('response ', resp);
       return resp;
     });
+  };
+
+  //Get one ticket from the database
+  var getTicket = function (ticketId) {
+    console.log(ticketId, ' ticket ticket ticket');
+    // return $http({
+    //   method: 'GET',
+    //   url: '/ticket/' + ticketId
+    // })
+    // .then(function (resp) {
+    //   if (resp.data === 'failed') {
+    //     //Redirects to signing if authentication fails
+    //     $window.location = '/#/signin';
+    //   }
+    //   console.log('response ', resp);
+    //   return resp;
+    // });
   };
 
   //Sends POST request to the server in order to post a new ticket
@@ -80,6 +98,7 @@ angular.module('app.services', [])
 
   return {
     getTickets: getTickets,
+    getTicket: getTicket,
     addTicket: addTicket,
     claimTicket: claimTicket,
     eraseClaim: eraseClaim,
