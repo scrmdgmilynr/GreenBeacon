@@ -30,7 +30,11 @@ var User = db.define('user', {
     autoIncrement: true
   },
   username: Sequelize.STRING, //GitHub username
-  displayname: Sequelize.STRING //full first and last name
+  displayname: Sequelize.STRING, //full first and last name
+  fellow: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  }
 });
 
 //Creates table of tickets
