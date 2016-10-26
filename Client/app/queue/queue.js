@@ -8,10 +8,9 @@ angular.module('app.queue', [])
   var SVGpulse;
   var SVGdot;
 
-  socket.on('ticketAdded', () =>{
+  socket.on('ticketChange', () =>{
     initializeQueue();
   });
-
 
   var initializeQueue = function() {
     //retrieve tickets from database
