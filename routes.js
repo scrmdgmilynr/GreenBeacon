@@ -8,17 +8,7 @@ module.exports.router = function(app) {
     // function will not be called.
   });
 
-  app.get('/callback', passport.authenticate('github', { failureRedirect: '/session' }), helpers.newUser, function(req, res) {
-    // upon Github authentication, add the passport object to the current cookie
-    // and redirect to tickets page
-    req.session.cookie.passport = req.session.passport;
-
-    res.setHeader('Set-Cookie', JSON.stringify(req.session.cookie.passport));
-
-    //if statement to check fellow or student
-    //redirect appropriately
-    res.redirect('/#/student');
-  });
+  app.get('/callback', passport.authenticate('github', { failureRedirect: '/session' }), helpers.newUser, helpers.setCookie, helpers.checkFellow, helpers.setHeader, helpers.redirectStudentorFellow);
 
   app.get('/tickets', helpers.isLoggedIn, helpers.getTickets);
 
