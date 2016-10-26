@@ -22,7 +22,7 @@ angular.module('app.services', [])
   var getUserTickets = function (user) {
     return $http({
       method: 'GET',
-      url: `/ticket/${user.username}`
+      url: `/tickets/${user.username}`
     })
     .then(function (resp) {
       return resp;
