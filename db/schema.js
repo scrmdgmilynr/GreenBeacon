@@ -105,8 +105,8 @@ Claim.belongsTo(Ticket);
 User.hasOne(Feller);
 Feller.belongsTo(User);
 
-Ticket.hasMany(Chat);
 User.hasMany(Chat);
+Ticket.hasMany(Chat);
 Chat.belongsTo(Ticket);
 
 //Create Tables
