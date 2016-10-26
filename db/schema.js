@@ -100,7 +100,7 @@ db
   })
   .then(function() {
     console.log('Tables created');
- });
+});
 
 module.exports = {
   User: User,
