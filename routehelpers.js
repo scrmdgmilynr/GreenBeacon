@@ -55,13 +55,14 @@ module.exports = {
         } else {
           req.session.cookie.passport.user.fellow = true;
         }
+      })
+      .then(() => {
         next();
       })
       .catch((err) => {
         console.log(err);
       })
     }
-    next();
   },
 
   setHeader: function(req, res, next) {
