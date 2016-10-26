@@ -95,7 +95,9 @@ Claim.belongsTo(Ticket);
 
 //Create Tables
 db
-  .sync()
+  .sync({
+    force: false
+  })
   .then(function() {
     console.log('Tables created');
  });
@@ -103,5 +105,6 @@ db
 module.exports = {
   User: User,
   Ticket: Ticket,
-  Claim: Claim
+  Claim: Claim,
+  Fellers: Fellers
 };
