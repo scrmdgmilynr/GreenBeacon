@@ -51,11 +51,7 @@ routes.router(app);
 
 app.set('port', process.env.PORT || 3000);
 
-<<<<<<< HEAD
 const server = app.listen(app.get('port'), function() {
-=======
-var server = app.listen(app.get('port'), function() {
->>>>>>> add
   console.log('listening on port: ', app.get('port'))
 });
 

@@ -2,7 +2,6 @@ var server = require('./server');
 var io = require('socket.io').listen(server);
 
 io.on('connection', (socket) => {
-<<<<<<< HEAD
   console.log('user connected');
   socket.on('addTicket', () => {
     io.emit('ticketChange');
@@ -20,7 +19,3 @@ io.on('connection', (socket) => {
     io.emit('ticketChange');
   })
 });
-=======
-    console.log('poop');
-});
->>>>>>> add
