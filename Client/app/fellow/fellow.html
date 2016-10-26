@@ -14,7 +14,7 @@
       <!-- Open Tickets queue -->
       <h1 style="color:#fff">Open Tickets</h1>
       <div class="list-group">				
-			  <div class="ticket" ng-repeat="ticket in data.tickets | filter: ({claimed: false}) | orderBy:'-id' ">
+			  <div class="ticket" ng-repeat="ticket in data.tickets | filter: {claimed: false} | orderBy:'-id' ">
 			    <!-- Renders each open ticket-->
 			    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
@@ -22,7 +22,7 @@
 	        	<button class="claimb btn btn-1" type="button" ng-show="!ticket.claimed" ng-click="claimTicket(ticket)">Claim</button>
 	        	<button class="deleteb btn btn-1" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
 	        	<button class="solv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
-	        	<button class="unsolv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button>
+	        	<!-- <button class="unsolv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button> -->
 	       		<p class="list-group-item-text" ng-bind="ticket.message"></p>
 					</a>
 				</div>
@@ -31,14 +31,14 @@
     <div class="col-md-4">
       <h1 style="color:#fff">Claimed Tickets</h1>		  
 		  <div class="list-group">	
-			  <div class="ticket" ng-repeat="ticket in data.tickets | filter: ({claimed: true} && {solved: false}) | orderBy:'-id' ">
+			  <div class="ticket" ng-repeat="ticket in data.tickets | filter: {claimed: true, solved: false}| orderBy:'-id' ">
 			    <!-- Renders each ticket to the queue -->
 			    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
 	        	<h5 class="list-group-item-heading" ng-bind="ticket.user.displayname || ticket.user.username"></h5>
 	        	<button class="deleteb btn btn-1" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
 	        	<button class="solv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
-	        	<button class="unsolv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button>
+	        	<!-- <button class="unsolv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button> -->
 	       		<p class="list-group-item-text" ng-bind="ticket.message"></p>
 			   	</a>
 			  </div>
@@ -46,7 +46,7 @@
     </div>
     <div class="col-md-4">
       <h1 style="color:#fff">Closed Tickets</h1>
-			<div class="ticket" ng-repeat="ticket in data.tickets | filter: {solved: true} | orderBy:'-id' ">
+			<div class="ticket" ng-repeat="ticket in data.tickets | filter: {solved: true}  | orderBy:'-id' ">
 		    <!-- Renders each ticket to the queue -->
 		    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
@@ -67,19 +67,19 @@
 <!-- ************************************************ -->
 
 <!-- Main page template -->
-<div class = 'headerq clearfix'>
+<!-- <div class = 'headerq clearfix'> -->
 <!-- 	<div class='logoq'>
 	    <img class='logoimgq' alt="Logo" src="/../../logo.png" /></div>
         <button type="button" class="signout btn btn-default" ng-click="signout()">Sign out</button>
   </div>
  -->
-<div id="big-container">
+<!-- <div id="big-container"> -->
 
   <!-- Tickets queue -->
 	<!-- <div id="queueContainer"> -->
 		<div class="list-group">
 			<h1 style="color:#fff">Open Tickets</h1>
-		  <div class="ticket" ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id' ">
+		  <div class="ticket" ng-repeat="ticket in data.tickets | filter: {solved: false, claimed: false} | orderBy:'-id' ">
 		    <!-- Renders each ticket to the queue -->
 		    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
@@ -94,7 +94,7 @@
 			
 			
 			<h1 style="color:#fff">Claimed Tickets</h1>		  
-		  <div class="ticket" ng-repeat="ticket in data.tickets | filter: {claimed: true} | orderBy:'-id' ">
+		  <div class="ticket" ng-repeat="ticket in data.tickets | filter: {claimed: true, solved: false} | orderBy:'-id' ">
 		    <!-- Renders each ticket to the queue -->
 		    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
@@ -107,7 +107,7 @@
 		  </div>
 
 		  <h1 style="color:#fff">Closed Tickets</h1>
-			<div class="ticket" ng-repeat="ticket in data.tickets | filter: ({solved: true} && {claimed : true} && {preSolved : true})) | orderBy:'-id' ">
+			<div class="ticket" ng-repeat="ticket in data.tickets | filter: {preSolved: true} | orderBy:'-id' ">
 		    <!-- Renders each ticket to the queue -->
 		    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 

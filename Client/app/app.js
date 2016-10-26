@@ -15,8 +15,11 @@ angular.module('app', ['app.auth', 'app.queue', 'app.services', 'app.student', '
 		})
 		.when('/fellow', {
 			templateUrl: 'app/fellow/fellow.html',
-			 // controller: 'QueueController'
-			 controller: 'FellowController'
+			controller: 'FellowController'
+		})
+		.when('/chatroom', {
+			templateUrl: 'app/chatroom/chatroom.html',
+			controller: 'ChatroomController'
 		})
 		.otherwise({
 			redirectTo: '/tickets'
