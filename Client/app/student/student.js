@@ -2,7 +2,7 @@
 
 angular.module('app.student', [])
 
-.controller('StudentController', ['$scope', '$cookies', 'Tickets', 'Auth', function($scope, $cookies, Tickets, Auth){
+.controller('StudentController', ['$scope', 'Tickets', 'Auth', function($scope, Tickets, Auth){
 
   $scope.data = {};
 
@@ -15,7 +15,8 @@ angular.module('app.student', [])
     //grab the cookie data from the session on passport
     const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
 
-    Tickets.getTicket(cookie.user)
+    //getUserTickets is what is should be next
+    Tickets.getTickets()
       .then(function(results){
 
         //add tickets to the scope
@@ -67,6 +68,7 @@ angular.module('app.student', [])
   $scope.ticket = {};
 
   $scope.addTicket = function () {
+    console.log('hELLOOOO')
     Tickets.addTicket($scope.ticket)
       .then(function () {
         $scope.ticket = {};

@@ -38,6 +38,7 @@ angular.module('app.services', [])
 
   //Sends POST request to the server in order to post a new ticket
   var addTicket = function (ticket) {
+    console.log(ticket)
     return $http({
       method: 'POST',
       url: '/tickets',
