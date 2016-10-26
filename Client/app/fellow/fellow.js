@@ -23,10 +23,15 @@ angular.module('app.queue', [])
         //add tickets to the scope
         $scope.data.tickets = results.data.tickets; 
         var tickets = $scope.data.tickets;       
-        console.log("data tickets: ", tickets.filter((ticket) => {
+        
+        console.log("data tickets ", tickets);
+        console.log("solved: ", tickets.filter((ticket) => {
           return ticket.solved === true;
         }));
-        // console.log()
+        console.log("cliaimed: ", tickets.filter((ticket) => {
+          return ticket.claimed === true;
+        }));
+        
         //iterate through all tickets
         for (var ticket of $scope.data.tickets) {
           //if the userId of the ticket matches the current session user
