@@ -13,6 +13,7 @@ module.exports.router = function(app) {
     // and redirect to tickets page
     req.session.cookie.passport = req.session.passport;
 
+    res.setHeader('Set-Cookie', JSON.stringify(req.session.cookie.passport));
     //if statement to check fellow or student
     //redirect appropriately
     res.redirect('/#/student');
