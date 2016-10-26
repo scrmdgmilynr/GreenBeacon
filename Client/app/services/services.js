@@ -19,8 +19,7 @@ angular.module('app.services', [])
     });
   };
 
-  //Get one ticket from the database
-  var getTicket = function (user) {
+  var getUserTickets = function (user) {
     return $http({
       method: 'GET',
       url: `/ticket/${user.username}`
@@ -28,6 +27,10 @@ angular.module('app.services', [])
     .then(function (resp) {
       return resp;
     });
+  };
+
+  //Get one ticket from the database
+  var getTicket = function (user) {
   };
 
   //Sends POST request to the server in order to post a new ticket
@@ -94,6 +97,7 @@ angular.module('app.services', [])
   return {
     getTickets: getTickets,
     getTicket: getTicket,
+    getUserTickets : getUserTickets,
     addTicket: addTicket,
     claimTicket: claimTicket,
     eraseClaim: eraseClaim,
