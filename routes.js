@@ -8,7 +8,12 @@ module.exports.router = function(app) {
     // function will not be called.
   });
 
-  app.get('/callback', passport.authenticate('github', { failureRedirect: '/session' }), helpers.newUser, helpers.setCookie, helpers.checkFellow, helpers.setHeader, helpers.redirectStudentorFellow);
+  app.get('/callback', passport.authenticate('github', { failureRedirect: '/session' }),
+    helpers.newUser,
+    helpers.setCookie,
+    helpers.checkFellow,
+    helpers.setHeader,
+    helpers.redirectStudentorFellow);
 
   app.get('/tickets', helpers.isLoggedIn, helpers.getTickets);
 
