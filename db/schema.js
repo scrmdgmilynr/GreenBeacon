@@ -30,11 +30,7 @@ var User = db.define('user', {
     autoIncrement: true
   },
   username: Sequelize.STRING, //GitHub username
-  displayname: Sequelize.STRING, //full first and last name
-  fellow: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false
-  }
+  displayname: Sequelize.STRING //full first and last name
 });
 
 //Creates table of tickets
@@ -77,6 +73,16 @@ var Claim = db.define('claim', {
   helpeeId: Sequelize.INTEGER
 });
 
+//creates table of fellers
+var Fellers = db.define('fellers', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  fellerName: Sequelize.STRING
+});
+
 //Defines relationships between tables
 User.hasMany(Ticket);
 Ticket.belongsTo(User);
@@ -89,7 +95,7 @@ Claim.belongsTo(Ticket);
 
 //Create Tables
 db
-  .sync({force: true})
+  .sync()
   .then(function() {
     console.log('Tables created');
  });
