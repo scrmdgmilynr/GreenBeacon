@@ -13,9 +13,10 @@ angular.module('app', ['app.auth', 'app.queue', 'app.services', 'app.student', '
 			templateUrl: 'app/student/student.html',
 			controller: 'StudentController'
 		})
-		.when('/tickets', {
-			templateUrl: 'app/queue/queue.html',
-			 controller: 'QueueController'
+		.when('/fellow', {
+			templateUrl: 'app/fellow/fellow.html',
+			 // controller: 'QueueController'
+			 controller: 'FellowController'
 		})
 		.otherwise({
 			redirectTo: '/tickets'

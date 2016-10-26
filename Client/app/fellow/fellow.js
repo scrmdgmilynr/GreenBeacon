@@ -2,7 +2,7 @@
 
 angular.module('app.queue', [])
 
-.controller('QueueController', ['$scope', 'Tickets', 'Auth', '$interval', function($scope, Tickets, Auth, $interval){
+.controller('FellowController', ['$scope', 'Tickets', 'Auth', '$interval', function($scope, Tickets, Auth, $interval){
 
   $scope.data = {};
   var SVGpulse;
@@ -21,7 +21,12 @@ angular.module('app.queue', [])
         SVGdot = document.getElementsByClassName('dot');
 
         //add tickets to the scope
-        $scope.data.tickets = results.data.tickets;
+        $scope.data.tickets = results.data.tickets; 
+        var tickets = $scope.data.tickets;       
+        console.log("data tickets: ", tickets.filter((ticket) => {
+          return ticket.solved === true;
+        }));
+        // console.log()
         //iterate through all tickets
         for (var ticket of $scope.data.tickets) {
           //if the userId of the ticket matches the current session user
