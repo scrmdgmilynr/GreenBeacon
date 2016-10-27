@@ -33,7 +33,8 @@ angular.module('app.chatroom', ['app.student'])
       data: data
     })
     .then((resp) => {
-      console.log(resp);
+      console.log("messages saved!");
+      getChatroom($scope.ticketID);
     })
     .catch((err) => {     
      console.log(err);
