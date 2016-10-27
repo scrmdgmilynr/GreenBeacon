@@ -12,7 +12,7 @@ angular.module('app.chatroom', ['app.student'])
 	
 	$scope.ticketFunc = function (){
 		return $scope.ticket;
-	}
+	};
 	
 	var getChatroom = (data) => {
     return $http({

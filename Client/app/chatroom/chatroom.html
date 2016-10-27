@@ -2,7 +2,7 @@
 	<button ng-click="ticketFunc()"> ticket </button>
 	<h1 style="color:#fff">{{ticket}}</h1>
 	<h1 style="color:#fff">{{chatroom}}</h1>
-	<div style="width: 400px; height: 400px; background-color: #fff; border: 1px solid red" ng-repeat="chat in chatroom | filter: {claimed: false} | orderBy:'-id' ">
-		
+	<div style="width: 400px; height: 400px; background-color: #fff; border: 1px solid red" ng-repeat="chat in chatroom ">
+		{{chat}}
 	</div>
 </div>
