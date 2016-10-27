@@ -140,4 +140,15 @@ angular.module('app.services', [])
 }])
 .factory('loading', function() {
   return {loading: 'loading...'};
+})
+.factory('checkStatus', function(){
+  var check = (cookie) => {
+    if(cookie.user.fellow){
+      return "fellow";
+    } else {
+      return "student";
+    }
+  }
+
+  return {check : check}
 });
