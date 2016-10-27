@@ -213,6 +213,12 @@ module.exports = {
       });
   },
 
+  postMessage: function(req, res, next) {
+    console.log(req.body);
+    res.status(200);
+    res.send('poop');
+  },
+
   db: db
 
 };
