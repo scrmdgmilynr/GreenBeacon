@@ -5,7 +5,7 @@ var Sequelize = require('sequelize');
 var User = require('./db/schema').User;
 var Ticket = require('./db/schema').Ticket;
 var Claim = require('./db/schema').Claim;
-var Fellers = require('./db/schema').Fellers;
+var Feller = require('./db/schema').Feller;
 
 if(process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
@@ -48,7 +48,7 @@ module.exports = {
   // check user on log in against fellow db
   checkFellow: function(req, res, next) {
     if (!req.session.cookie.passport.user.fellow) {
-      Fellers.find({ where: { githubHandle: req.session.passport.user.username }})
+      Feller.find({ where: { githubHandle: req.session.passport.user.username }})
       .then((fellow) => {
         if (fellow === null) {
           req.session.cookie.passport.user.fellow = false;
