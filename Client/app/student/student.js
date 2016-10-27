@@ -1,11 +1,12 @@
 //Queue controller
 
 angular.module('app.student', [])
+
 .factory('params', () =>{
   return {};
 })
-.controller('StudentController', ['$scope', '$location', 'params', 'Tickets', 'Auth', function($scope, $location, params, Tickets, Auth){
-
+.controller('StudentController', ['$scope', 'Tickets', 'Auth', function($scope, Tickets, Auth){
+  console.log('hello')
   $scope.data = {};
 
   socket.on('ticketChange', () =>{
@@ -19,7 +20,7 @@ angular.module('app.student', [])
 
     Tickets.getTickets(cookie.user)
       .then(function(results){
-
+        console.log(results.data)
         //add tickets to the scope
         $scope.data.tickets = results.data.tickets;
         //iterate through all tickets
@@ -64,6 +65,7 @@ angular.module('app.student', [])
       })
   }
 
+  console.log('initalize')
   initializeQueue();
 
   $scope.ticket = {};

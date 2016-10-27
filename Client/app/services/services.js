@@ -26,6 +26,11 @@ angular.module('app.services', [])
       url: `/tickets/${user.username}`
     })
     .then(function (resp) {
+      if (resp.data === 'failed') {
+        //Redirects to signing if authentication fails
+        $window.location = '/#/signin';
+      }
+
       return resp;
     });
   };
