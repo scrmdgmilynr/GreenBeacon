@@ -1,16 +1,17 @@
 angular.module('app.queue', [])
 
-.controller('FellowController', ['$scope', 'Tickets', 'Auth', '$interval', 'params', '$location', function($scope, Tickets, Auth, $interval, params, $location){
+.controller('FellowController', ['$scope', 'Tickets', 'Auth', '$interval', 'params', '$location', 'loading', function($scope, Tickets, Auth, $interval, params, $location, loading){
 
   $scope.data = {};
   var SVGpulse;
   var SVGdot;
+  $scope.loading = loading.loading;
 
   socket.on('ticketChange', () =>{
     initializeQueue();
   });
 
-  var initializeQueue = function() {
+  var initializeQueue = function(cb) {
     //retrieve tickets from database
     Tickets.getTickets()
       .then(function(results){
@@ -59,6 +60,7 @@ angular.module('app.queue', [])
             })
           }
         }
+        if(cb) cb();
       })
       .catch(function(error){
         console.error(error);
@@ -172,7 +174,9 @@ angular.module('app.queue', [])
       });
   }
 
-  initializeQueue();
+  initializeQueue(() =>{
+    $scope.loading = '';
+  });
 
   //place initialize queue in an interval so new tickets can be loaded continuously every 3 seconds
   // var interval = $interval(initializeQueue, 3000);
