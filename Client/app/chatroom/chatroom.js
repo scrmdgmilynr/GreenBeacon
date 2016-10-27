@@ -10,7 +10,10 @@ angular.module('app.chatroom', ['app.student'])
   $scope.ticketID = {ticketId: params.ticket.id};
   $scope.messageObj = {};  
   $scope.loading = loading.loading;
-  console.log("params after reload:", params.ticket);
+
+  socket.on('messageAdded', () =>{
+    getChatroom($scope.ticketID);
+  });  
 	
   //Post request to save ticket; server response will return all messages
 	var getChatroom = (data) => {
@@ -22,7 +25,7 @@ angular.module('app.chatroom', ['app.student'])
     .then((resp) => {
       $scope.loading = '';
     	$scope.chatroom = resp.data;      
-      console.log(resp);
+      $socket.emit('messageAdd');
     })
     .catch((err) => {
       console.log(err);
