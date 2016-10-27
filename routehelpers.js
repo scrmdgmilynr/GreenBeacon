@@ -166,6 +166,10 @@ module.exports = {
       });
   },
 
+  getChat: function(req, res, next) {
+    res.send('poopy');
+  },
+
   db: db
 
 };

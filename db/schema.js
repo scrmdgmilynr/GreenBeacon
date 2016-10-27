@@ -73,7 +73,7 @@ var Claim = db.define('claim', {
 });
 
 //creates table of fellers
-var Fellers = db.define('fellers', {
+var Feller = db.define('feller', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -102,7 +102,11 @@ Claim.belongsTo(User);
 Ticket.hasOne(Claim);
 Claim.belongsTo(Ticket);
 
+User.hasOne(Feller);
+Feller.belongsTo(User);
+
 Ticket.hasMany(Chat);
+User.hasMany(Chat);
 Chat.belongsTo(Ticket);
 
 //Create Tables
@@ -118,5 +122,6 @@ module.exports = {
   User: User,
   Ticket: Ticket,
   Claim: Claim,
-  Fellers: Fellers
+  Feller: Feller,
+  Chat: Chat
 };
