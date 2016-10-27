@@ -11,6 +11,7 @@ module.exports.router = function(app) {
   app.get('/callback', passport.authenticate('github', { failureRedirect: '/session' }),
     helpers.newUser,
     helpers.setCookie,
+    helpers.setUserId,
     helpers.checkFellow,
     helpers.setHeader,
     helpers.redirectStudentorFellow);
