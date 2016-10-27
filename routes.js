@@ -34,6 +34,6 @@ module.exports.router = function(app) {
 
   app.get('/signout', helpers.isLoggedIn, helpers.terminateSession);
 
-  app.post('/ticket/:ticketid')
+  app.post('/chatroom/', helpers.getChat);
 
 };
