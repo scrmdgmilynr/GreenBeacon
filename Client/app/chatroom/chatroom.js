@@ -47,7 +47,7 @@ angular.module('app.chatroom', ['app.student'])
     $scope.messageObj = {
       message: $scope.message,
       ticketId: params.ticket.id,
-      // userId: cookie.user.mainId
+      userId: cookie.user.mainId
     }
     saveChatMessage($scope.messageObj)
     $scope.message = '';
