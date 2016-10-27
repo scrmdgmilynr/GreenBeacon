@@ -1,11 +1,9 @@
-//Queue controller
-
 angular.module('app.student', [])
 
 .factory('params', () =>{
   return {};
 })
-.controller('StudentController', ['$scope', 'Tickets', 'Auth', function($scope, Tickets, Auth){
+.controller('StudentController', ['$scope', 'Tickets', 'Auth', 'params', '$location', function($scope, Tickets, Auth, params, $location){
   console.log('hello')
   $scope.data = {};
 

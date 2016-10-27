@@ -6,6 +6,7 @@ var User = require('./db/schema').User;
 var Ticket = require('./db/schema').Ticket;
 var Claim = require('./db/schema').Claim;
 var Feller = require('./db/schema').Feller;
+
 var Chat = require('./db/schema').Chat;
 
 
