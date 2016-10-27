@@ -129,7 +129,7 @@ module.exports = {
         console.log('tickets ', tickets)
         Claim.findAll({include: [User, Ticket], where: {ticketId: tickets[0].id}})
           .then(function(claims) {
-            res.send({ tickets: tickets, claims: claims, userID: req.session.userID });
+            res.send({ tickets: tickets, claims: claims, userID: req.params.userid });
           })
       });
   },
