@@ -37,4 +37,6 @@ module.exports.router = function(app) {
 
   app.post('/chatroom/chat', helpers.postMessage);
 
+  app.post('/addFellow', helpers.addFellow)
+
 };

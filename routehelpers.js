@@ -220,6 +220,10 @@ module.exports = {
       });
   },
 
+  addFellow: function(req, res, next) {
+    console.log('fellow added', req.body)
+  },
+
   db: db
 
 };
