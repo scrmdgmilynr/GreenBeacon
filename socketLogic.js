@@ -17,5 +17,9 @@ io.on('connection', (socket) => {
 
   socket.on('unsolvedTicket', () => {
     io.emit('ticketChange');
-  })
+  });
+
+  socket.on('messageAdd', () => {
+    io.emit('messageAdded');
+  });
 });
