@@ -1,7 +1,7 @@
 angular.module('app.chatroom', ['app.student'])
 .controller('ChatroomController', ['$scope', 'Tickets', 'Auth', 'params', '$http', function($scope, Tickets, Auth, params, $http){	
 	$scope.chatroom = [];
-  $scope.ticketID = {ticketId: params.ticket.id};  
+  $scope.ticketID = {ticketId: params.ticket.id};
   $scope.messageObj = {};  
 	
   //Post request to save ticket; server response will return all messages
@@ -40,7 +40,7 @@ angular.module('app.chatroom', ['app.student'])
   $scope.saveChat = function() {    
     $scope.messageObj = {
       message: $scope.message,
-      ticketId: $scope.ticketID,
+      ticketId: params.ticket.id,
       // userId: //will come from token
     }
     saveChatMessage($scope.messageObj)
