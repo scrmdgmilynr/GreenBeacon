@@ -1,8 +1,10 @@
 
 <!-- Main page template -->
 <div class = 'headerq clearfix'>
-	<div class='logoq'>
+	<div class='logoq' ng-model='logoticket'>
+		<a href='' ng-href='/#/{{logoticket}}'>
 	    <img class='logoimgq' alt="Logo" src="/../../logo.png" />
+		</a>
 	</div>
   <button type="button" class="signout btn btn-default" ng-click="signout()">Sign out</button>
 </div>
