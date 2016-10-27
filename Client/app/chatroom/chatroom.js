@@ -7,18 +7,21 @@ angular.module('app.chatroom', ['app.student'])
 		return $scope.ticket;
 	}
 	
-	var getChatroom = () => {
+	var getChatroom = (data) => {
     return $http({
       method: 'POST',
-      url: '/chatroom',
-      data: $scope.ticket
+      url: '/chatroom/',
+      data: data
     })
     .then((resp) => {
     	$scope.chatroom = resp;
+      console.log(resp);
     })
     .catch((err) => {
       console.log(err);
     });    
   }
+
+  getChatroom({id: 2});
 
 }]);
