@@ -52,13 +52,15 @@ module.exports = {
       Feller.find({ where: { githubHandle: req.session.passport.user.username }})
       .then((fellow) => {
         req.session.cookie.passport.user.mainId = fellow.dataValues.id;
-        console.log('USER: ', req.session.cookie.passport.user);
+        // console.log('USER: ', req.session.cookie.passport.user);
         if (fellow === null) {
+          console.log('FELLOW');
           req.session.cookie.passport.user.fellow = {
             is: false,
             mainId: fellow.dataValues.id
           };
         } else {
+          console.log('STUDENT');
           req.session.cookie.passport.user.fellow = {
             is: true,
             mainId: fellow.dataValues.id
