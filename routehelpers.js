@@ -6,14 +6,8 @@ var User = require('./db/schema').User;
 var Ticket = require('./db/schema').Ticket;
 var Claim = require('./db/schema').Claim;
 var Feller = require('./db/schema').Feller;
-<<<<<<< HEAD
 var Chat = require('./db/schema').Chat;
-=======
-<<<<<<< HEAD
-=======
-var Chat = require('./db/schema').Chat;
->>>>>>> master
->>>>>>> feature
+
 
 if(process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
@@ -54,25 +48,29 @@ module.exports = {
     next();
   },
 
+  setUserId: function(req, res, next) {
+      User.find({ where: { username: req.session.passport.user.username } })
+        .then((user) => {
+          req.session.cookie.passport.user.mainId = user.dataValues.id;
+        })
+        .then(() => {
+          console.log('USER: ', req.session.cookie.passport.user);
+          next();
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+  },
+
   // check user on log in against fellow db
   checkFellow: function(req, res, next) {
     if (!req.session.cookie.passport.user.fellow) {
       Feller.find({ where: { githubHandle: req.session.passport.user.username }})
       .then((fellow) => {
-        req.session.cookie.passport.user.mainId = fellow.dataValues.id;
-        // console.log('USER: ', req.session.cookie.passport.user);
         if (fellow === null) {
-          console.log('FELLOW');
-          req.session.cookie.passport.user.fellow = {
-            is: false,
-            mainId: fellow.dataValues.id
-          };
+          req.session.cookie.passport.user.fellow = false;
         } else {
-          console.log('STUDENT');
-          req.session.cookie.passport.user.fellow = {
-            is: true,
-            mainId: fellow.dataValues.id
-          };
+          req.session.cookie.passport.user.fellow = true;
         }
       })
       .then(() => {
