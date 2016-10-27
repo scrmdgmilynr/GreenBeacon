@@ -52,5 +52,10 @@ angular.module('app.chatroom', ['app.student'])
     }
     saveChatMessage($scope.messageObj)
     $scope.message = '';
-  }    
+  } 
+
+  $scope.log = function() {
+    console.log('poop');
+  }
+
 }]);
