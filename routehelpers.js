@@ -40,6 +40,7 @@ module.exports = {
       });
   },
 
+  // put passport information into cookie
   setCookie: function(req, res, next) {
     req.session.cookie.passport = req.session.passport;
     next();
@@ -50,6 +51,7 @@ module.exports = {
     if (!req.session.cookie.passport.user.fellow) {
       Fellers.find({ where: { githubHandle: req.session.passport.user.username }})
       .then((fellow) => {
+        req.session.cookie.passport.user.mainId = fellow.dataValues.id;
         if (fellow === null) {
           req.session.cookie.passport.user.fellow = false;
         } else {
@@ -103,6 +105,27 @@ module.exports = {
             res.send({ tickets: tickets, claims: claims, userID: req.session.userID });
           });
       });
+  },
+
+  getUserTickets: function(req, res) {
+    console.log('REQUEST: ', req);
+    Ticket.findAll({include: [User], where: { id: 1}})
+      .then(function(tickets) {
+        Claim.findAll({include: [User, Ticket], where: {ticketId: tickets[0].id}})
+          .then(function(claims) {
+            console.log(tickets, claims)
+            console.log(JSON.stringify({ tickets: tickets, claims: claims, userID: req.session.userID }, null, 3))
+            res.send({ tickets: tickets, claims: claims, userID: req.session.userID });
+          })
+      });
+
+    // User.find({ where: { username: req.params.username } })
+    //   .then((user) => {
+    //     Ticket.findAll({ where: { userId: user.id } })
+    //       .then((tickets) => {
+    //         res.send({ tickets: tickets, claims: claims, userID: req.session.userID });
+    //       })
+    //   })
   },
 
   // create a new ticket instance and add it to the tickets table
