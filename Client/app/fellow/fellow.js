@@ -24,13 +24,13 @@ angular.module('app.queue', [])
         $scope.data.tickets = results.data.tickets; 
         var tickets = $scope.data.tickets;       
         
-        console.log("data tickets ", tickets);
-        console.log("solved: ", tickets.filter((ticket) => {
-          return ticket.solved === true;
-        }));
-        console.log("cliaimed: ", tickets.filter((ticket) => {
-          return ticket.claimed === true;
-        }));
+        // console.log("data tickets ", tickets);
+        // console.log("solved: ", tickets.filter((ticket) => {
+        //   return ticket.solved === true;
+        // }));
+        // console.log("cliaimed: ", tickets.filter((ticket) => {
+        //   return ticket.claimed === true;
+        // }));
         
         //iterate through all tickets
         for (var ticket of $scope.data.tickets) {

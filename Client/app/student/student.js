@@ -69,7 +69,7 @@ angular.module('app.student', [])
   $scope.ticket = {};
 
   $scope.addTicket = function () {
-    console.log('hELLOOOO')
+    // console.log('hELLOOOO')
     Tickets.addTicket($scope.ticket)
       .then(function () {
         $scope.ticket = {};
@@ -123,8 +123,8 @@ angular.module('app.student', [])
       });
   }
 
-  $scope.getTicket = function(ticket) {
-    params.ticket = ticket;
+  $scope.getTicket = function(ticket) {    
+    params.ticket = ticket; 
     $location.path('chatroom');
   };
 }]);
