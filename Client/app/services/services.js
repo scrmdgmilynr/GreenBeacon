@@ -137,4 +137,7 @@ angular.module('app.services', [])
     signin: signin,
     signout: signout
   }
-}]);
+}])
+.factory('loading', function() {
+  return {loading: 'loading...'};
+});
