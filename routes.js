@@ -19,7 +19,7 @@ module.exports.router = function(app) {
   app.get('/tickets', helpers.isLoggedIn, helpers.getTickets);
 
   // add route for specific tickets
-  app.get('/tickets/:username', helpers.getUserTickets);
+  app.get('/tickets/:userid', helpers.getUserTickets);
 
   app.post('/tickets', helpers.isLoggedIn, helpers.addToQueue);
 
