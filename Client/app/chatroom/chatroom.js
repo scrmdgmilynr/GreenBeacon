@@ -25,7 +25,7 @@ angular.module('app.chatroom', ['app.student'])
     .then((resp) => {
       $scope.loading = '';
     	$scope.chatroom = resp.data;      
-      $socket.emit('messageAdd');
+      socket.emit('messageAdd');
     })
     .catch((err) => {
       console.log(err);
