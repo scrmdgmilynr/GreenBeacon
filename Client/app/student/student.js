@@ -4,6 +4,7 @@ angular.module('app.student', [])
   return {};
 })
 .controller('StudentController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', function($scope, Tickets, Auth, params, $location, loading){
+
   $scope.data = {};
   $scope.loading = loading.loading;
 
@@ -15,6 +16,8 @@ angular.module('app.student', [])
     //retrieve tickets from database
     //grab the cookie data from the session on passport
     const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+    
+    if(cookie.user.fellow) $location.path('fellow');
 
     Tickets.getUserTickets(cookie.user)
       .then(function(results){
