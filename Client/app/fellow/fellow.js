@@ -2,6 +2,9 @@ angular.module('app.queue', [])
 
 .controller('FellowController', ['$scope', 'Tickets', 'Auth', '$interval', 'params', '$location', 'loading', function($scope, Tickets, Auth, $interval, params, $location, loading){
 
+  const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+  if(!cookie.user.fellow) $location.path('student');
+
   $scope.data = {};
   var SVGpulse;
   var SVGdot;
