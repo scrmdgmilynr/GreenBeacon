@@ -16,11 +16,12 @@ angular.module('app.student', [])
   var initializeQueue = function() {
     //retrieve tickets from database
     //grab the cookie data from the session on passport
+    console.log(document.cookie)
     const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
 
     Tickets.getUserTickets(cookie.user)
       .then(function(results){
-        console.log(results.data)
+        console.log(results.data);
         //add tickets to the scope
         $scope.data.tickets = results.data.tickets;
         //iterate through all tickets

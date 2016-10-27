@@ -3,54 +3,57 @@ body {
 	background-color: #2d2d2d;
 }
 
-#welcome, #support {
+/*#welcome, #support {
 	color: #E8E9F9;
 	margin-left: 20px;
   display: inline-block;
-}
+}*/
 
-#welcome {
+/*#welcome {
   font-family: "Unica One", "Times New Roman", serif;
   font-size: 54px
-}
+}*/
 
- h2 {
+h2 {
   font-size: 40px
 }
 
-#support {
+/*#support {
 	padding-bottom: 10px;
   font-size: 23px
-}
-.signoutb {
+}*/
+
+/*.signoutb {
   margin: 0 auto;
   margin-top: 20px;
   width: 250px;
-}
+}*/
 
-.list-group {
+/*.list-group {
 	height: 575px;
-}
+}*/
 
-.list-group, .input-group {
+/*.list-group, .input-group {
    width: 450px;
-}
-.list-group {
-  margin-right: 100px;
-}
+}*/
 
-.input-group {
+/*.list-group {
+  margin-right: 100px;
+}*/
+
+/*.input-group {
 	padding-top: 42px;
 	display: inline-block;
-}
+}*/
 
-.ticket {
+/*.ticket {
 	padding-bottom: 2px;
-}
+}*/
 
-.list-group-item, .form-control, .input-text {
+/*.list-group-item, .form-control, .input-text {
 	background-color: #E8E9F9;
-}
+}*/
+
 .locationtext {
 	color: #E8E9F9;
 }
