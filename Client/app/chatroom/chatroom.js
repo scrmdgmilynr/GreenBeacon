@@ -1,13 +1,17 @@
 angular.module('app.chatroom', ['app.student'])
-.controller('ChatroomController', ['$scope', 'Tickets', 'Auth', 'params', '$http', 'loading', function($scope, Tickets, Auth, params, $http, loading){	
-	$scope.chatroom = [];
+.controller('ChatroomController', ['$scope', 'Tickets', 'Auth', 'params', '$http', 'loading', 'checkStatus', '$location', function($scope, Tickets, Auth, params, $http, loading, checkStatus, $location){	
+	const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+  
+  if(params.ticket === undefined){
+    console.log(checkStatus);
+    $location.path(checkStatus.check(cookie));
+  }
+  $scope.chatroom = [];
   $scope.ticketID = {ticketId: params.ticket.id};
   $scope.messageObj = {};  
   $scope.loading = loading.loading;
+  console.log("params after reload:", params.ticket);
 	
-
-  const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
-
   //Post request to save ticket; server response will return all messages
 	var getChatroom = (data) => {
     return $http({
