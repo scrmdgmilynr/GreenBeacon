@@ -124,7 +124,6 @@ module.exports = {
   getUserTickets: function(req, res) {
     Ticket.findAll({include: [User], where: { userId: req.params.userid}})
       .then(function(tickets) {
-        console.log('tickets ', tickets)
         Claim.findAll({include: [User, Ticket], where: {ticketId: tickets[0].id}})
           .then(function(claims) {
             res.send({ tickets: tickets, claims: claims, userID: req.session.userID });

@@ -16,16 +16,16 @@
     <div class="col-md-4">
       <!-- Open Tickets queue -->
       <h1 style="color:#fff">Open Tickets</h1>
-      <div class="list-group">				
-			  <div ng-click='getTicket(ticket)' class="ticket" ng-repeat="ticket in data.tickets | filter: {claimed: false} | orderBy:'-id' " >
+      <div>				
+			  <div ng-click='getTicket(ticket)' ng-repeat="ticket in data.tickets | filter: {claimed: false} | orderBy:'-id' " >
 			    <!-- Renders each open ticket-->
-			    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
+			    <a class="list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
-	        	<h5 class="list-group-item-heading" ng-bind="ticket.user.displayname || ticket.user.username"></h5>
-	        	<button class="claimb btn btn-1" type="button" ng-show="!ticket.claimed" ng-click="claimTicket(ticket)">Claim</button>
-	        	<button class="deleteb btn btn-1" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
-	        	<button class="solv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
-	        	<!-- <button class="unsolv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button> -->
+	        	<h5 ng-bind="ticket.user.displayname || ticket.user.username"></h5>
+	        	<button class="claimb" type="button" ng-show="!ticket.claimed" ng-click="claimTicket(ticket)">Claim</button>
+	        	<button class="deleteb" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
+	        	<button class="solv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
+	        	<!-- <button class="unsolv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button> -->
 	       		<p class="list-group-item-text" ng-bind="ticket.message"></p>
 					</a>
 				</div>
@@ -33,15 +33,15 @@
     </div>
     <div class="col-md-4">
       <h1 style="color:#fff">Claimed Tickets</h1>		  
-		  <div class="list-group">	
-			  <div ng-click='getTicket(ticket)' class="ticket" ng-repeat="ticket in data.tickets | filter: {claimed: true, solved: false}| orderBy:'-id' ">
+		  <div>	
+			  <div ng-click='getTicket(ticket)' ng-repeat="ticket in data.tickets | filter: {claimed: true, solved: false}| orderBy:'-id' ">
 			    <!-- Renders each ticket to the queue -->
-			    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
+			    <a class="list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
-	        	<h5 class="list-group-item-heading" ng-bind="ticket.user.displayname || ticket.user.username"></h5>
-	        	<button class="deleteb btn btn-1" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
-	        	<button class="solv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
-	        	<!-- <button class="unsolv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button> -->
+	        	<h5 ng-bind="ticket.user.displayname || ticket.user.username"></h5>
+	        	<button class="deleteb" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
+	        	<button class="solv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
+	        	<!-- <button class="unsolv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button> -->
 	       		<p class="list-group-item-text" ng-bind="ticket.message"></p>
 			   	</a>
 			  </div>
@@ -49,12 +49,12 @@
     </div>
     <div class="col-md-4">
       <h1 style="color:#fff">Closed Tickets</h1>
-			<div ng-click='getTicket(ticket)' class="ticket" ng-repeat="ticket in data.tickets | filter: {solved: true}  | orderBy:'-id' ">
+			<div ng-click='getTicket(ticket)' ng-repeat="ticket in data.tickets | filter: {solved: true}  | orderBy:'-id' ">
 		    <!-- Renders each ticket to the queue -->
-		    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
+		    <a class="list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
-        	<h5 class="list-group-item-heading" ng-bind="ticket.user.displayname || ticket.user.username"></h5>
-        	<!-- <button class="deleteb btn btn-1" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button> -->
+        	<h5 ng-bind="ticket.user.displayname || ticket.user.username"></h5>
+        	<!-- <button class="deleteb" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button> -->
        		<p class="list-group-item-text" ng-bind="ticket.message"></p>
 		   	</a>
 		  </div>
@@ -86,11 +86,11 @@
 		    <!-- Renders each ticket to the queue -->
 		    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
-        	<h5 class="list-group-item-heading" ng-bind="ticket.user.displayname || ticket.user.username"></h5>
-        	<button class="claimb btn btn-1" type="button" ng-show="!ticket.ismine" ng-disabled="ticket.claimed" ng-click="claimTicket(ticket)">Claim</button>
-        	<button class="deleteb btn btn-1" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
-        	<button class="solv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
-        	<button class="unsolv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button>
+        	<h5 ng-bind="ticket.user.displayname || ticket.user.username"></h5>
+        	<button class="claimb" type="button" ng-show="!ticket.ismine" ng-disabled="ticket.claimed" ng-click="claimTicket(ticket)">Claim</button>
+        	<button class="deleteb" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
+        	<button class="solv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
+        	<button class="unsolv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button>
        		<p class="list-group-item-text" ng-bind="ticket.message"></p>
 		   	</a>
 		  </div>
@@ -101,10 +101,10 @@
 		    <!-- Renders each ticket to the queue -->
 		    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
-        	<h5 class="list-group-item-heading" ng-bind="ticket.user.displayname"></h5>
-        	<button class="deleteb btn btn-1" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
-        	<button class="solv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
-        	<button class="unsolv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button>
+        	<h5 ng-bind="ticket.user.displayname"></h5>
+        	<button class="deleteb" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
+        	<button class="solv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
+        	<button class="unsolv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button>
        		<p class="list-group-item-text" ng-bind="ticket.message"></p>
 		   	</a>
 		  </div>
@@ -114,10 +114,10 @@
 		    <!-- Renders each ticket to the queue -->
 		    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
-        	<h5 class="list-group-item-heading" ng-bind="ticket.user.displayname"></h5>
-        	<!-- <button class="deleteb btn btn-1" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button> -->
-        	<button class="solv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
-        	<button class="unsolv btn btn-1" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button>
+        	<h5 ng-bind="ticket.user.displayname"></h5>
+        	<!-- <button class="deleteb" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button> -->
+        	<button class="solv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
+        	<button class="unsolv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button>
        		<p class="list-group-item-text" ng-bind="ticket.message"></p>
 		   	</a>
 		  </div>
@@ -125,7 +125,7 @@
 		</div>
 
 		<!-- Form for submitting new tickets -->
-		<form autocomplete="off" name="input-group" class="input-group" ng-submit="addTicket()">
+		<form autocomplete="off" name="input-group" ng-submit="addTicket()">
 		  <label class="locationtext" for="select"> Select your location: </label>
 		    <select name="select" class="form-control" ng-model="ticket.location" required>
           <option value="Lecture Hall">Lecture Hall</option> <!-- x: 25-190; y: 50-100-->
@@ -138,8 +138,8 @@
           <option value="The Ada">The Ada</option><!-- x: 290-370 ; y: 655-760 -->
           <option value="Entrance Hall">Entrance Hall</option><!-- x: 25-260 ; y: 690-760 -->
 		    </select>
-		    <input name="ticket" class="input-text" type="text" ng-model="ticket.message" placeholder="Enter your question here" required/>
-		    <input class="submit btn btn-default" type="submit" value="Add" ng-disabled="!ticket.location">
+		    <input name="ticket" type="text" ng-model="ticket.message" placeholder="Enter your question here" required/>
+		    <input class="btn-default" type="submit" value="Add" ng-disabled="!ticket.location">
 		</form>
 	<!-- </div> -->
 
