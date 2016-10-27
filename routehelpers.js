@@ -127,19 +127,9 @@ module.exports = {
       .then(function(tickets) {
         Claim.findAll({include: [User, Ticket], where: {ticketId: tickets[0].id}})
           .then(function(claims) {
-            // console.log(tickets, claims)
-            // console.log(JSON.stringify({ tickets: tickets, claims: claims, userID: req.session.userID }, null, 3))
             res.send({ tickets: tickets, claims: claims, userID: req.session.userID });
           })
       });
-
-    // User.find({ where: { username: req.params.username } })
-    //   .then((user) => {
-    //     Ticket.findAll({ where: { userId: user.id } })
-    //       .then((tickets) => {
-    //         res.send({ tickets: tickets, claims: claims, userID: req.session.userID });
-    //       })
-    //   })
   },
 
   // create a new ticket instance and add it to the tickets table
