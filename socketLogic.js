@@ -22,4 +22,8 @@ io.on('connection', (socket) => {
   socket.on('messageAdd', () => {
     io.emit('messageAdded');
   });
+
+  socket.on('typing', () => {
+    io.emit('otherTyping');
+  });
 });
