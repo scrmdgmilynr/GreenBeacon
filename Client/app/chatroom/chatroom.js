@@ -5,6 +5,9 @@ angular.module('app.chatroom', ['app.student'])
   $scope.messageObj = {};  
   $scope.loading = loading.loading;
 	
+
+  const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+
   //Post request to save ticket; server response will return all messages
 	var getChatroom = (data) => {
     return $http({
@@ -39,11 +42,12 @@ angular.module('app.chatroom', ['app.student'])
 
   getChatroom($scope.ticketID);
   
-  $scope.saveChat = function() {    
+  $scope.saveChat = function() { 
+    console.log("cookie.user.mainId", cookie.user.mainId);
     $scope.messageObj = {
       message: $scope.message,
       ticketId: params.ticket.id,
-      // userId: //will come from token
+      // userId: cookie.user.mainId
     }
     saveChatMessage($scope.messageObj)
     $scope.message = '';
