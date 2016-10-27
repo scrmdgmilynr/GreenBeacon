@@ -6,14 +6,8 @@ var User = require('./db/schema').User;
 var Ticket = require('./db/schema').Ticket;
 var Claim = require('./db/schema').Claim;
 var Feller = require('./db/schema').Feller;
-<<<<<<< HEAD
 var Chat = require('./db/schema').Chat;
-=======
-<<<<<<< HEAD
-=======
-var Chat = require('./db/schema').Chat;
->>>>>>> master
->>>>>>> feature
+
 
 if(process.env.NODE_ENV !== 'production') {
   require('dotenv').config();

@@ -1,8 +1,6 @@
-//Queue controller
-
 angular.module('app.queue', [])
 
-.controller('FellowController', ['$scope', 'Tickets', 'Auth', '$interval', function($scope, Tickets, Auth, $interval){
+.controller('FellowController', ['$scope', 'Tickets', 'Auth', '$interval', 'params', '$location', function($scope, Tickets, Auth, $interval, params, $location){
 
   $scope.data = {};
   var SVGpulse;
@@ -23,14 +21,7 @@ angular.module('app.queue', [])
         //add tickets to the scope
         $scope.data.tickets = results.data.tickets; 
         var tickets = $scope.data.tickets;       
-        
-        // console.log("data tickets ", tickets);
-        // console.log("solved: ", tickets.filter((ticket) => {
-        //   return ticket.solved === true;
-        // }));
-        // console.log("cliaimed: ", tickets.filter((ticket) => {
-        //   return ticket.claimed === true;
-        // }));
+
         
         //iterate through all tickets
         for (var ticket of $scope.data.tickets) {
@@ -206,6 +197,11 @@ angular.module('app.queue', [])
       }
     }
   }
+
+  $scope.getTicket = function(ticket) {
+    params.ticket = ticket;
+    $location.path('chatroom');
+  };
 
   //renews interval if it has not been running already when hover event is over 
   // $scope.renew = function () {

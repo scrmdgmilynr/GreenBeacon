@@ -14,7 +14,7 @@
       <!-- Open Tickets queue -->
       <h1 style="color:#fff">Open Tickets</h1>
       <div class="list-group">				
-			  <div class="ticket" ng-repeat="ticket in data.tickets | filter: {claimed: false} | orderBy:'-id' ">
+			  <div ng-click='getTicket(ticket)' class="ticket" ng-repeat="ticket in data.tickets | filter: {claimed: false} | orderBy:'-id' " >
 			    <!-- Renders each open ticket-->
 			    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
@@ -31,7 +31,7 @@
     <div class="col-md-4">
       <h1 style="color:#fff">Claimed Tickets</h1>		  
 		  <div class="list-group">	
-			  <div class="ticket" ng-repeat="ticket in data.tickets | filter: {claimed: true, solved: false}| orderBy:'-id' ">
+			  <div ng-click='getTicket(ticket)' class="ticket" ng-repeat="ticket in data.tickets | filter: {claimed: true, solved: false}| orderBy:'-id' ">
 			    <!-- Renders each ticket to the queue -->
 			    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
@@ -46,7 +46,7 @@
     </div>
     <div class="col-md-4">
       <h1 style="color:#fff">Closed Tickets</h1>
-			<div class="ticket" ng-repeat="ticket in data.tickets | filter: {solved: true}  | orderBy:'-id' ">
+			<div ng-click='getTicket(ticket)' class="ticket" ng-repeat="ticket in data.tickets | filter: {solved: true}  | orderBy:'-id' ">
 		    <!-- Renders each ticket to the queue -->
 		    <a class="list-group-item list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
