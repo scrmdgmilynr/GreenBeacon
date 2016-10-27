@@ -3,23 +3,21 @@ angular.module('app.student', [])
 .factory('params', () =>{
   return {};
 })
-.controller('StudentController', ['$scope', 'Tickets', 'Auth', 'params', '$location', function($scope, Tickets, Auth, params, $location){
-  console.log('hello')
+.controller('StudentController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', function($scope, Tickets, Auth, params, $location, loading){
   $scope.data = {};
+  $scope.loading = loading.loading;
 
   socket.on('ticketChange', () =>{
     initializeQueue();
   });
 
-  var initializeQueue = function() {
+  var initializeQueue = function(cb) {
     //retrieve tickets from database
     //grab the cookie data from the session on passport
-    console.log(document.cookie)
     const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
 
     Tickets.getUserTickets(cookie.user)
       .then(function(results){
-        console.log(results.data);
         //add tickets to the scope
         $scope.data.tickets = results.data.tickets;
         //iterate through all tickets
@@ -58,14 +56,17 @@ angular.module('app.student', [])
             })
           }
         }
+        if(cb) cb();
       })
       .catch(function(error){
         console.error(error);
-      })
+      });
   }
 
-  console.log('initalize')
-  initializeQueue();
+  initializeQueue(() =>{
+    console.log('initalize');
+    $scope.loading = '';
+  });
 
   $scope.ticket = {};
 
@@ -125,7 +126,9 @@ angular.module('app.student', [])
   }
 
   $scope.getTicket = function(ticket) {
-    params.ticket = ticket;
-    $location.path('chatroom');
+    if(ticket.claimed){
+      params.ticket = ticket;
+      $location.path('chatroom');
+    }
   };
 }]);
