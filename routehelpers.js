@@ -214,9 +214,11 @@ module.exports = {
   },
 
   postMessage: function(req, res, next) {
-    console.log(req.body);
-    res.status(200);
-    res.send('poop');
+    Chat.create({ message: req.body.message, ticketId: req.body.ticketId, userId: req.body.userId})
+      .then(function(chat) {
+        res.status(200);
+        res.send('Message posted to chatroom table in DB!');
+      });
   },
 
   db: db
