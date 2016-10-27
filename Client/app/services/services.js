@@ -20,7 +20,7 @@ angular.module('app.services', [])
   };
 
   var getUserTickets = function (user) {
-    console.log(user)
+    console.log(user, ' user object')
     return $http({
       method: 'GET',
       url: `/tickets/${user.username}`

@@ -18,7 +18,7 @@ angular.module('app.student', [])
     //grab the cookie data from the session on passport
     const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
 
-    Tickets.getTickets(cookie.user)
+    Tickets.getUserTickets(cookie.user)
       .then(function(results){
         console.log(results.data)
         //add tickets to the scope
@@ -125,8 +125,8 @@ angular.module('app.student', [])
       });
   }
 
-  $scope.getTicket = function(ticket) {    
-    params.ticket = ticket; 
+  $scope.getTicket = function(ticket) {
+    params.ticket = ticket;
     $location.path('chatroom');
   };
 }]);
