@@ -35,4 +35,6 @@ module.exports.router = function(app) {
 
   app.post('/chatroom/', helpers.getChat);
 
+  app.post('/chatroom/chat', helpers.postMessage);
+
 };
