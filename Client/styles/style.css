@@ -3,6 +3,14 @@ body {
 	background-color: #2d2d2d;
 }
 
+.ticket-claimed, .ticket-claimed:hover {
+	background-color: grey;
+}
+
+h2 {
+  font-size: 40px
+}
+
 /*#welcome, #support {
 	color: #E8E9F9;
 	margin-left: 20px;
@@ -13,10 +21,6 @@ body {
   font-family: "Unica One", "Times New Roman", serif;
   font-size: 54px
 }*/
-
-h2 {
-  font-size: 40px
-}
 
 /*#support {
 	padding-bottom: 10px;
@@ -54,41 +58,39 @@ h2 {
 	background-color: #E8E9F9;
 }*/
 
-.locationtext {
+/*.locationtext {
 	color: #E8E9F9;
 }
+*/
 
-.input-text {
+/*.input-text {
 	margin-top: 20px;
 	width:360px;
   height: 40px
 }
+*/
 
-.submit {
+/*.submit {
 	width: 80px;
 	display: inline;
 
-}
+}*/
 
-.btn {
+/*.btn {
 	color: #613DC1;
   
-}
+}*/
 
-.btn-1 {
+/*.btn-1 {
 	display: inline;
 	float: right;
-}
+}*/
 
-.list-group-item-heading {
+/*.list-group-item-heading {
 	display: inline
-}
+}*/
 
-.ticket-claimed, .ticket-claimed:hover {
-	background-color: grey;
-}
-
-#queueContainer, #map {
+/*#queueContainer, #map {
 	display: inline-block
 }
 
@@ -257,4 +259,4 @@ footer {
 
 .signinbtn:hover, .signout:hover {
   background-color: #c7c8d6;
-}
+}*/
