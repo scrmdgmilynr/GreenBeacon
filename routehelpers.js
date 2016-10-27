@@ -6,9 +6,7 @@ var User = require('./db/schema').User;
 var Ticket = require('./db/schema').Ticket;
 var Claim = require('./db/schema').Claim;
 var Feller = require('./db/schema').Feller;
-
 var Chat = require('./db/schema').Chat;
-
 
 if(process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
@@ -197,12 +195,21 @@ module.exports = {
       });
   },
 
+  // get ticket's chat
   getChat: function(req, res, next) {
     Chat.findAll({ where: { ticketId: req.body.ticketId } })
       .then(function(chatMessages) {
-        console.log(chatMessages);
-        res.status(200);
-        res.send(chatMessages);
+        Promise.all(chatMessages.map((chatMessage) => {
+          return User.find({ where: { id: chatMessage.dataValues.userId } })
+            .then((user) => {
+              chatMessage.dataValues.username = user.username;
+              return chatMessage;
+            })
+        }))
+          .then((newChatMessages) => {
+            res.status(200);
+            res.send(newChatMessages);
+          })
       });
   },
 
