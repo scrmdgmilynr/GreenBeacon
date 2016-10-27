@@ -23,7 +23,7 @@ angular.module('app.services', [])
     console.log(user, ' user object')
     return $http({
       method: 'GET',
-      url: `/tickets/${user.username}`
+      url: `/tickets/${user.username}/${user.mainId}`
     })
     .then(function (resp) {
       if (resp.data === 'failed') {
