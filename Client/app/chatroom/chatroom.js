@@ -1,18 +1,9 @@
+// chatroom.js
 angular.module('app.chatroom', ['app.student'])
 .controller('ChatroomController', ['$scope', 'Tickets', 'Auth', 'params', '$http', function($scope, Tickets, Auth, params, $http){	
-	$scope.ticket = params.ticket.id;	
-	$scope.chatroom = [{
-		message: "hello",
-		// id
-	}, {
-		message: "how are ",
-	}, {
-		message: "hello",
-	}];
-	
-	$scope.ticketFunc = function (){
-		return $scope.ticket;
-	};
+	$scope.ticketID = {ticketId: params.ticket.id};
+	console.log("chatroom ticket", $scope.ticket);
+	$scope.chatroom = [];
 	
 	var getChatroom = (data) => {
     return $http({
@@ -21,16 +12,29 @@ angular.module('app.chatroom', ['app.student'])
       data: data
     })
     .then((resp) => {
-    	$scope.chatroom = resp;
+    	$scope.chatroom = resp.data;      
       console.log(resp);
     })
     .catch((err) => {
       console.log(err);
     });    
   };
+	
+	// var getChatroom = (data) => {
+ //    return $http({
+ //      method: 'POST',
+ //      url: '/chatroom/chat',
+ //      data: data
+ //    })
+ //    .then((resp) => {
+ //    	$scope.chatroom = resp.data;      
+ //      console.log(resp);
+ //    })
+ //    .catch((err) => {
+ //      console.log(err);
+ //    });    
+ //  };  
 
-  getChatroom({'ticketId': 1});
-
-  getChatroom({id: 2});
+  getChatroom($scope.ticketID);
 
 }]);

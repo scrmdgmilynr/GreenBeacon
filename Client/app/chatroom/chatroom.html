@@ -1,8 +1,13 @@
-<div>
-	<button ng-click="ticketFunc()"> ticket </button>
-	<h1 style="color:#fff">{{ticket}}</h1>
+<input type="text" name="">
+<div >
 	<h1 style="color:#fff">{{chatroom}}</h1>
-	<div style="width: 400px; height: 400px; background-color: #fff; border: 1px solid red" ng-repeat="chat in chatroom ">
-		{{chat}}
+	<div style="margin:10px 0px 10px 100px;width: 3000px; height: 150px; paddding:10px; border-radius: 5px; background-color: #fff; border: 2px solid red" ng-repeat="chat in chatroom | filter: {userId: 1}">
+		<h3>{{chat.userId}}</h3>
+		<h4>{{chat.message}}</h4>
 	</div>
+	
+	<div style="margin:10px 0px 10px 100px;width: 3000px; height: 150px; paddding:10px; border-radius: 5px; background-color: #fff; border: 2px solid red" ng-repeat="chat in chatroom | filter: {userId: 2}">
+		<h3>{{chat.userId}}</h3>
+		<h4>{{chat.message}}</h4>
+	</div>	
 </div>
