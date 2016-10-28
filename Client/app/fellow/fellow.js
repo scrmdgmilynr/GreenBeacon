@@ -19,8 +19,8 @@ angular.module('app.queue', [])
     Tickets.getTickets()
       .then(function(results){
 
-        SVGpulse = document.getElementsByClassName('pulse');
-        SVGdot = document.getElementsByClassName('dot');
+        // SVGpulse = document.getElementsByClassName('pulse');
+        // SVGdot = document.getElementsByClassName('dot');
 
         //add tickets to the scope
         $scope.data.tickets = results.data.tickets; 
@@ -185,24 +185,29 @@ angular.module('app.queue', [])
 
 
   //functionality: on hover of ticket, hide all dots that do not match ticket's x and y coordinates
-  $scope.showDot = function (ticketX, ticketY) {
+  // $scope.showDot = function (ticketX, ticketY) {
 
-    //iterate through all dots
-    for (var i = 0; i < SVGdot.length; i++) {
-      //find each dot's x and y coordinates
-      var x = SVGdot[i].parentElement.parentElement.getAttribute('x');
-      var y = SVGdot[i].parentElement.parentElement.getAttribute('y');
+  //   //iterate through all dots
+  //   for (var i = 0; i < SVGdot.length; i++) {
+  //     //find each dot's x and y coordinates
+  //     var x = SVGdot[i].parentElement.parentElement.getAttribute('x');
+  //     var y = SVGdot[i].parentElement.parentElement.getAttribute('y');
 
-      //given the x and y coordinates of the ticket (ticketX, ticketY, if the dot and the ticket coordinates do NOT match, add class 'hidden' to dot.
-      if (x !== ticketX.toString() && y !== ticketY.toString()) {
-        SVGpulse[i].setAttribute('class', 'pulse hiddenPulse');
-        SVGdot[i].setAttribute('class', 'dot hiddenDot');
-      }
-    }
-  }
+  //     //given the x and y coordinates of the ticket (ticketX, ticketY, if the dot and the ticket coordinates do NOT match, add class 'hidden' to dot.
+  //     if (x !== ticketX.toString() && y !== ticketY.toString()) {
+  //       SVGpulse[i].setAttribute('class', 'pulse hiddenPulse');
+  //       SVGdot[i].setAttribute('class', 'dot hiddenDot');
+  //     }
+  //   }
+  // }
 
   $scope.getTicket = function(ticket) {
     params.ticket = ticket;
     $location.path('chatroom');
   };
-}])
+
+  $scope.sendToForm = function() {
+    $location.path('addfellow');
+  };
+
+}]);
