@@ -1,4 +1,4 @@
-  angular.module('app.chatroom', ['app.student'])
+angular.module('app.chatroom', ['app.student'])
 .controller('ChatroomController', ['$scope', 'Tickets', 'Auth', 'params', '$http', 'loading', 'checkStatus', '$location', function($scope, Tickets, Auth, params, $http, loading, checkStatus, $location){	
 	const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
   
