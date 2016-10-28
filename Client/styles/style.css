@@ -11,8 +11,12 @@ h2 {
   font-size: 40px
 }
 
+
 #gif {
     display: none;
+}
+.hidden {
+	display: none;
 }
 
 /*#welcome, #support {

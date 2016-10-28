@@ -222,6 +222,19 @@ module.exports = {
 
   addFellow: function(req, res, next) {
     console.log('fellow added', req.body)
+    User.create({username: req.body.handle, displayname: req.body.name})
+    .then(function(user) {
+      return user.dataValues.id;
+    }).then((id) =>{
+      Feller.create({fellerName: req.body.name, githubHandle: req.body.handle, userId: id})
+      .then(() =>{
+        res.status(200);
+        res.send('Added fellow');
+      });
+    })
+    .catch((err) => {
+        console.log(err);
+    });
   },
 
   db: db
