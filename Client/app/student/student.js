@@ -15,7 +15,7 @@ angular.module('app.student', [])
   socket.on('messageAdded', (data) => {
     console.log(data);
     console.log(typeof data);
-    // document.getElementById('data').style.display = 'block';
+    console.log(document.getElementById(data.toString()));
   });
 
   var initializeQueue = function(cb) {
@@ -138,7 +138,7 @@ angular.module('app.student', [])
     console.log(ticket);
     if(ticket.claimed){
       params.ticket = ticket;
-      // $location.path('chatroom');
+      $location.path('chatroom');
     }
   };
 }]);
