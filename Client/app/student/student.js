@@ -16,6 +16,7 @@ angular.module('app.student', [])
     console.log(data);
     console.log(typeof data);
     console.log(document.getElementById(data.toString()));
+    document.getElementById(data.toString()).style.display = 'block';
   });
 
   var initializeQueue = function(cb) {
