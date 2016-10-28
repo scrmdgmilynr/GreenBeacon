@@ -90,8 +90,6 @@ angular.module('app.chatroom', ['app.student'])
     $location.path(checkStatus.check(cookie));
   }
 
-}]);
-
   var initText = "";
   var defaultMode = "javascript";
 
