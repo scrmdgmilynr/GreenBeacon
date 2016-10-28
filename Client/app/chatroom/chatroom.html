@@ -25,9 +25,9 @@
 	</form>
 
 	<!-- <h1 style="color:#fff">{{chatroom}}</h1> -->
-	<div style="margin:10px 0px 10px 100px;width: 300px; height: 150px; paddding:10px; border-radius: 5px; background-color: #fff; border: 2px solid red" ng-repeat="chat in chatroom  | orderBy : -createdAt">
-		<h3>{{chat.userId}}</h3>
-		<h4>{{chat.message}}</h4>
-		{{chat.createdAt}}
+	<div style="margin:10px 0px 10px 100px;width: 300px; height: 150px; paddding:10px; border-radius: 5px; background-color: #fff; border: 2px solid red" ng-repeat="chat in chatroom track by $index">
+		<h3>{{chatroom[chatroom.length - 1 - $index].userId}}</h3>
+		<h4>{{chatroom[chatroom.length - 1 - $index].message}}</h4>
+		{{chatroom[chatroom.length - 1 - $index].createdAt}}
 	</div>
 </div>
