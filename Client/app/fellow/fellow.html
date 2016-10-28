@@ -2,8 +2,6 @@
 		<h3>{{loading}}</h3>
 	</div> -->
 
-
-
 <!-- BODY CONTAINER -->
 <div class="container-fluid" style="margin-top: 50px">
   <!-- start nav row -->
@@ -15,7 +13,6 @@
 	    </div>
 	    <div class="col-md-9"></div>
 	  </div>
-
 	  <div class="col-md-6">
 		  <div class="col-md-7"></div>
 	    <div class="col-md-3">
@@ -50,18 +47,17 @@
 		        			</td>
 		        		</tr>	        		
 		        	</table>	        		        
-		        	<table>
+		        	<table class="location-table">
 		        		<tr style="width: 100%">
 		        			<td style="vertical-align: top; width:95%">
-			        			<p class="list-group-item-text" ng-bind="ticket.message"></p>		        			
-		        				
-		        				<table style="margin-top:1%; vertical-align: bottom">
+			        			<p class="list-group-item-text" ng-bind="ticket.message"></p>	
+		        				<table class="location-table">
 					        		<tr style="width: 100%">
 					        			<td>
-					        				<p style="color:#48A6B6" class="list-group-item-text">Located in</p> 
+					        				<p class="list-group-item-text primary-font">Located in</p> 
 					        			</td>
 					        			<td>
-					        				<p style="color:#48A6B6;" class="list-group-item-text" ng-bind="ticket.location"></p>	
+					        				<p class="list-group-item-text primary-font" ng-bind="ticket.location"></p>	
 					        			</td>
 					        		</tr>
 					        	</table>
@@ -96,15 +92,14 @@
 		        	<table>
 		        		<tr style="width: 100%">
 		        			<td style="vertical-align: top; width:95%">
-			        			<p class="list-group-item-text" ng-bind="ticket.message"></p>		        			
-		        				
-		        				<table style="margin-top:1%">
+			        			<p class="list-group-item-text" ng-bind="ticket.message"></p>	
+		        				<table class="claimed-table">
 					        		<tr style="width: 100%">
 					        			<td>
-					        				<p style="color:#48A6B6" class="list-group-item-text">Claimed by </p> 
+					        				<p class="list-group-item-text primary-font">Claimed by </p> 
 					        			</td>
 					        			<td>
-					        				<p style="color:#48A6B6;" class="list-group-item-text"> fellow_name</p>	
+					        				<p class="list-group-item-text primary-font"> fellow_name</p>	
 					        			</td>
 					        		</tr>
 					        	</table>
