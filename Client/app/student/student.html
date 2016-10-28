@@ -50,7 +50,7 @@
 			<br />
 			<br />	
 			<h1>My Tickets</h1>	
-			<div ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id' " ng-click='getTicket(ticket)' id="{{ticket.id}}"class="ticket-primary">
+			<div ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id' " ng-click='getTicket(ticket)' class="ticket-primary">
 		    <!-- Renders each ticket to the queue -->
 					<!-- Username & TimeStamp Table -->
 					<table>
@@ -60,6 +60,7 @@
 	      			</td>
 	      			<td style="vertical-align: top">
 	      				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>
+	      				<div id="{{ticket.id}}" class="newMessage">New Message</div>
 	      			</td>
 	      		</tr>	        		
 	      	</table>
