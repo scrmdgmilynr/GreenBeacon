@@ -29,7 +29,6 @@
     .then((resp) => {
       $scope.loading = '';
     	$scope.chatroom = resp.data;      
-      socket.emit('messageAdd');
     })
     .catch((err) => {
       console.log(err);
@@ -45,7 +44,7 @@
     })
     .then((resp) => {
       console.log("messages saved!");
-      getChatroom($scope.ticketID);
+      socket.emit('messageAdd');
     })
     .catch((err) => {     
      console.log(err);

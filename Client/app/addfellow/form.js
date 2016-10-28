@@ -20,7 +20,7 @@ angular.module('app.addfellow', [])
 
 		$http({
 			method: 'POST',
-			url: '/addFellow'
+			url: '/addFellow',
 			data: fellowObj
 		}).then((resp) =>{
 			$scope.fullName = '';
