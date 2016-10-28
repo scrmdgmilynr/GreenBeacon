@@ -17,8 +17,10 @@ angular.module('app.chatroom', ['app.student'])
 
   socket.on('otherTyping', (data) => {
     if (data !== cookie.user.mainId) {
-      console.log('someone typing');
       document.getElementById('gif').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('gif').style.display = 'none';
+      }, 750);
     }
   });
   
