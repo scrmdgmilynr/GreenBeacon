@@ -19,8 +19,8 @@ io.on('connection', (socket) => {
     io.emit('ticketChange');
   });
 
-  socket.on('messageAdd', () => {
-    io.emit('messageAdded');
+  socket.on('messageAdd', (data) => {
+    io.emit('messageAdded', data);
   });
 
   socket.on('typing', (data) => {

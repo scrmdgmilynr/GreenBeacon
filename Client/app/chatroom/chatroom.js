@@ -58,7 +58,7 @@ angular.module('app.chatroom', ['app.student'])
     })
     .then((resp) => {
       console.log("messages saved!");
-      socket.emit('messageAdd');
+      socket.emit('messageAdd', params.ticket.id);
     })
     .catch((err) => {     
      console.log(err);
