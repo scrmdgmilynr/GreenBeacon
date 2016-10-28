@@ -7,6 +7,9 @@ var passport = require('passport');
 var GitHubStrategy = require('passport-github2').Strategy;
 var routes = require('./routes');
 var cookieParser = require('cookie-parser');
+var removeChats = require('./worker/chatRemoval'); // add the cron to the server
+
+removeChats();
 
 if(process.env.NODE_ENV !== 'production') {
   var config = require('./config');
