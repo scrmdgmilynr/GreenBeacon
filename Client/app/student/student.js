@@ -13,7 +13,7 @@ angular.module('app.student', [])
   });
 
   socket.on('messageAdded', (data) => {
-    document.getElementsById('data').style.display = 'block';
+    document.getElementById('data').style.display = 'block';
     console.log(data);
   });
 
