@@ -1,6 +1,6 @@
   angular.module('app.chatroom', ['app.student'])
-.controller('ChatroomController', ['$scope', 'Tickets', 'Auth', 'params', '$http', 'loading', 'checkStatus', '$location', function($scope, Tickets, Auth, params, $http, loading, checkStatus, $location){	
-	const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+.controller('ChatroomController', ['$scope', 'Tickets', 'Auth', 'params', '$http', 'loading', 'checkStatus', '$location', function($scope, Tickets, Auth, params, $http, loading, checkStatus, $location){  
+  const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
   
   if(params.ticket === undefined){
     console.log(checkStatus);
@@ -18,9 +18,9 @@
   socket.on('otherTyping', () => {
     console.log('someone typing');
   });
-	
+  
   //Post request to save ticket; server response will return all messages
-	var getChatroom = (data) => {
+  var getChatroom = (data) => {
     return $http({
       method: 'POST',
       url: '/chatroom/',
@@ -34,9 +34,9 @@
       console.log(err);
     });    
   };
-	
+  
   //Post request to save each message
-	var saveChatMessage = (data) => {    
+  var saveChatMessage = (data) => {    
     return $http({
       method: 'POST',
       url: '/chatroom/chat',

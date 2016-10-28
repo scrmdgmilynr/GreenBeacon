@@ -105,7 +105,7 @@ angular.module('app.services', [])
     })
     .then(() =>{
       socket.emit('unsolveTicket');
-    });;
+    });
   };
 
   return {
