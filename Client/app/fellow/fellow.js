@@ -206,6 +206,7 @@ angular.module('app.queue', [])
   // }
 
   $scope.getTicket = function(ticket) {
+    console.log(ticket)
     params.ticket = ticket;
     $location.path('chatroom');
   };
