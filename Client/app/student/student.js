@@ -13,7 +13,7 @@ angular.module('app.student', [])
   });
 
   socket.on('messageAdded', () => {
-    console.log('poop');
+    document.getElementById('newMessage').style.display = 'block';
   });
 
   var initializeQueue = function(cb) {
