@@ -42,7 +42,6 @@
 			    <!-- Renders each ticket to the queue -->
 			    <a class="list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}>
 
-						<h5 ng-bind="ticket.claimName"></h5>
 	        	<h5 ng-bind="ticket.user.displayname || ticket.user.username"></h5>
 	        	<button class="deleteb" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
 	        	<button class="solv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
