@@ -30,9 +30,23 @@ h6{
   font-size: 16px;
 }
 
-.logoImg{}
+.logoImg{
+	width: 70%;
+	padding: 5%;
+	margin-left: 100%;
+}
 
-.navlist{}
+@media (max-width: 840px){
+	.logoImg{
+		width: 15%;
+		padding: 1%;
+		margin-left: 0%;
+	}
+}
+
+.navlist{
+	margin-right: 5%;
+}
 
 /*---------------------------------------------------------*/
 /*------------------------ FELLOW PAGE --------------------*/
