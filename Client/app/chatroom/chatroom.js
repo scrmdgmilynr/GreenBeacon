@@ -97,14 +97,14 @@ angular.module('app.chatroom', ['app.student'])
     initText = window.localStorage.myEditor;
   }
 
-  $scope.editor = CodeMirror(document.getElementById("codeArea"),
+  $scope.editor = new CodeMirror(document.getElementById("codeArea"),
     {
       value: initText,
       theme: 'monokai',
       autoCloseBrackets: true,
       lineNumbers: true,
       tabSize: 2,
-      mode: defaultMode,
+      mode: 'javascript',
       smartIndent: true,
       autofocus: true,
     });
@@ -112,6 +112,6 @@ angular.module('app.chatroom', ['app.student'])
   window.localStorage.myEditor = $scope.editor.getValue();
 
   $scope.editor.on('change', function() {
-    window.localStorage.myEditor = editor.getValue();
+    window.localStorage.myEditor = $scope.editor.getValue();
   });
 }])
