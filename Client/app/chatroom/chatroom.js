@@ -86,4 +86,8 @@ angular.module('app.chatroom', ['app.student'])
     socket.emit('codeChange', $scope.code);
   }
 
+  $scope.backToTickets = function() {
+    $location.path(checkStatus.check(cookie));
+  }
+
 }]);
