@@ -55,15 +55,15 @@ var chats = [
   },
 ];
 
-// Feller.destroy({ where: {} }).then(() => {
-//   fellers.forEach((feller) => {
-//     Feller.create({
-//       fellerName: feller.fellerName,
-//       githubHandle: feller.githubHandle,
-//       userId: feller.userId
-//     });
-//   });
-// });
+Feller.destroy({ where: {} }).then(() => {
+  fellers.forEach((feller) => {
+    Feller.create({
+      fellerName: feller.fellerName,
+      githubHandle: feller.githubHandle,
+      userId: feller.userId
+    });
+  });
+});
 
 // chats.forEach((chat) => {
 //   Chat.create({
