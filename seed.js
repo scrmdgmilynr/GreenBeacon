@@ -6,11 +6,6 @@ var Chat = require('./db/schema').Chat;
 
 var fellers = [
   {
-    fellerName: 'Melba Madrigal',
-    githubHandle: 'melbee',
-    userId: 1
-  },
-  {
     fellerName: 'Alex Ting',
     githubHandle: 'acting326',
     userId: 2

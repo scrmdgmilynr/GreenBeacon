@@ -1,4 +1,4 @@
-  angular.module('app.chatroom', ['app.student'])
+angular.module('app.chatroom', ['app.student'])
 .controller('ChatroomController', ['$scope', 'Tickets', 'Auth', 'params', '$http', 'loading', 'checkStatus', '$location', function($scope, Tickets, Auth, params, $http, loading, checkStatus, $location){  
   const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
   
@@ -15,8 +15,10 @@
     getChatroom($scope.ticketID);
   });
 
-  socket.on('otherTyping', () => {
-    console.log('someone typing');
+  socket.on('otherTyping', (data) => {
+    if (data !== cookie.user.mainId) {
+      console.log('someone typing');
+    }
   });
   
   //Post request to save ticket; server response will return all messages
@@ -65,8 +67,7 @@
   } 
 
   $scope.typing = function() {
-    console.log('front end')
-    socket.emit('typing');
+    socket.emit('typing', cookie.user.mainId);
   }
 
 }]);

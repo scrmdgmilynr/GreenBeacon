@@ -23,7 +23,7 @@ io.on('connection', (socket) => {
     io.emit('messageAdded');
   });
 
-  socket.on('typing', () => {
-    io.emit('otherTyping');
+  socket.on('typing', (data) => {
+    io.emit('otherTyping', data);
   });
 });
