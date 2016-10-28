@@ -151,24 +151,4 @@ angular.module('app.services', [])
   }
 
   return {check : check}
-})
-.factory('getMessages', ['$http', function($http) {
-
-  var getChatroom = (data, cb) => {
-    $http({
-      method: 'POST',
-      url: '/chatroom/',
-      data: data
-    })
-    .then((resp) => {
-      cb(resp)
-    })
-    .catch((err) => {
-      console.log(err);
-    });    
-  };
-
-  return {
-    getChatroom: getChatroom
-  }
-}]);
+});
