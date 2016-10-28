@@ -83,6 +83,7 @@ var Feller = db.define('feller', {
   githubHandle: Sequelize.STRING
 });
 
+//creates table of chat messages
 var Chat = db.define('chat', {
   id: {
     type: Sequelize.INTEGER,
