@@ -12,9 +12,9 @@ angular.module('app.student', [])
     initializeQueue();
   });
 
-  socket.on('messageAdded', () => {
-    document.getElementById('newMessage').style.display = 'block';
-    console.log('poop');
+  socket.on('messageAdded', (data) => {
+    // document.getElementsByClassName('newMessage').style.display = 'block';
+    console.log(data);
   });
 
   var initializeQueue = function(cb) {
