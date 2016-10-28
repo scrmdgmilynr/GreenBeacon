@@ -10,6 +10,7 @@ angular.module('app.chatroom', ['app.student'])
   $scope.ticketID = {ticketId: params.ticket.id};
   $scope.messageObj = {};  
   $scope.loading = loading.loading;
+  $scope.code = '';
 
   socket.on('messageAdded', () =>{
     getChatroom($scope.ticketID);
@@ -22,6 +23,10 @@ angular.module('app.chatroom', ['app.student'])
         document.getElementById('gif').style.display = 'none';
       }, 750);
     }
+  });
+
+  socket.on('changedCode', (data) => {
+    $scope.code = data;
   });
   
   //Post request to save ticket; server response will return all messages
@@ -75,6 +80,10 @@ angular.module('app.chatroom', ['app.student'])
 
   $scope.typing = function() {
     socket.emit('typing', cookie.user.mainId);
+  }
+
+  $scope.codeChange = function() {
+    socket.emit('codeChange', $scope.code);
   }
 
 }]);
