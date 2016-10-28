@@ -12,6 +12,10 @@ angular.module('app.student', [])
     initializeQueue();
   });
 
+  socket.on('messageAdded', () => {
+    console.log('poop');
+  });
+
   var initializeQueue = function(cb) {
     //retrieve tickets from database
     //grab the cookie data from the session on passport
