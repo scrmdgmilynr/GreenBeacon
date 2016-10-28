@@ -13,7 +13,7 @@ angular.module('app.student', [])
   });
 
   socket.on('messageAdded', (data) => {
-    document.getElementById(ticket.id.toString()).style.display = 'block';
+    document.getElementById(data.toString()).style.display = 'block';
   });
 
   var initializeQueue = function(cb) {
