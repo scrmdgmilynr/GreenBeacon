@@ -33,6 +33,10 @@ angular.module('app.chatroom', ['app.student'])
     })
     .then((resp) => {
       $scope.loading = '';
+      resp.data.forEach(function(item) {
+        item.createdAt = moment(item.createdAt).startOf('minute').fromNow();        
+        item.updatedAt = moment(item.updatedAt).startOf('hour').fromNow();
+      });
     	$scope.chatroom = resp.data;      
     })
     .catch((err) => {
