@@ -16,17 +16,24 @@
     </div>
   </div>
 </nav>
+
 <!-- Main page template -->
 
-<div id="big-container">
+<div ng-model='loading'>
+	<h3>{{loading}}</h3>
+</div>					  
 
-  <!-- Tickets Student --> 
-	<div id="queueContainer">
-		<div>
+<div class="container-fluid" style="margin-top: 50px">
+  <!-- start nav row -->
+  <div class="row">
+	  <div class="col-md-3"></div>
+	  <div class="col-md-6">
+			<!-- All Student Tickets --> 
+			<h1>Submit Help Desk Request</h1>	
 			<!-- Form for submitting new tickets -->
-			<form autocomplete="off" name="input-group" ng-submit="addTicket()">
-			  <label class="locationtext" for="select"> Select your location: </label>
-			    <select name="select" class="form-control" ng-model="ticket.location" required>
+			<form autocomplete="off" name="input-group" ng-submit="addTicket()" style="margin-top:0px">
+			  <label class="locationtext" for="select" placeholder="Select your location"></label>
+			    <select name="select" class="form-control" ng-model="ticket.location" required style="margin-bottom: 5px">
 	          <option value="Lecture Hall">Lecture Hall</option> <!-- x: 25-190; y: 50-100-->
 	          <option value="Pairing Station">Pairing Station</option> <!-- x: 25-190; y: 140-210 -->
 	          <option value="Kitchen">Kitchen</option><!-- x: 25-190 ; y: 240-320 -->
@@ -36,28 +43,68 @@
 	          <option value="The Dijkstra">The Dijkstra</option><!-- x: 25-160 ; y: 590-655 -->
 	          <option value="The Ada">The Ada</option><!-- x: 290-370 ; y: 655-760 -->
 	          <option value="Entrance Hall">Entrance Hall</option><!-- x: 25-260 ; y: 690-760 -->
-			    </select>
-			    <input name="ticket" type="text" ng-model="ticket.message" placeholder="Enter your question here" required/>
-			    <input class="submit btn-default" type="submit" value="Add" ng-disabled="!ticket.location">
+			    </select>			    
+			    <textarea rows="4" cols="50" name="ticket" type="text" ng-model="ticket.message" class="form-control" placeholder="Enter your question here" style="margin-bottom:6px"required></textarea>
+			    <input class="submit btn btn-secondary" type="submit" value="Add" ng-disabled="!ticket.location" style="float:right">
 			</form>
 			<br />
-			<br />
-
-			<div ng-model='loading'>
-				<h3>{{loading}}</h3>
-			</div>
-		  <div ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id' " ng-click='getTicket(ticket)' id='{{ticket.id}}'>
+			<br />	
+			<h1>My Tickets</h1>	
+			<div ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id' " ng-click='getTicket(ticket)' class="ticket-primary">
 		    <!-- Renders each ticket to the queue -->
-		    <a class="list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}">
-
-        	<h5 ng-bind="ticket.user.displayname || ticket.user.username"></h5>
-        	<button class="deleteb" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button>
-        	<button class="solv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
-        	<button class="unsolv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="unsolveTicket(ticket)">Not Solved</button>
-       		<p class="list-group-item-text" ng-bind="ticket.message"></p>
-       		<div class="newMessage">New Message</div>
-		   	</a>
-		  </div>
-		</div>
+					<!-- Username & TimeStamp Table -->
+					<table>
+	      		<tr>
+	      			<td style="vertical-align: top;">
+	      				<h5 ng-bind="ticket.user.displayname || ticket.user.username" style="margin-right: 7px;  padding-top:0px; margin-top:0px"></h5>
+	      			</td>
+	      			<td style="vertical-align: top">
+	      				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>
+	      			</td>
+	      		</tr>	        		
+	      	</table>
+					
+					<!-- Ticket Message Table -->       		        
+        	<table style="width: 100%">
+        		<tr>
+        			<td style="vertical-align: top; width:70%">
+	        			<p class="list-group-item-text" ng-bind="ticket.message"></p>	
+        				
+        				<!-- Location Table -->       		        
+        				<table class="claimed-table">
+			        		<tr style="width: 100%">
+			        			<td>
+			        				<p class="list-group-item-text primary-font">Located in </p> 
+			        			</td>
+			        			<td>
+			        				<p class="list-group-item-text primary-font" ng-bind="ticket.location"></p>		
+			        			</td>
+			        		</tr>
+			        	</table>
+        			</td>
+        			<td style="width:30%;">
+	        			<table class="claimed-table" style="width: 100%">
+				        		<tr>
+				        			<td>
+				        				<button class=" btn btn-primary-inverted" ng-show="ticket.claimed" type="button" ng-click='getTicket(ticket)'">Chat</button>	
+				        			</td>
+				        			<td>
+				        				<span class="glyphicon glyphicon-remove" ng-click="solveTicket(ticket)"></span>
+				        			</td>
+				        			<td>
+				        				<button class="btn btn-primary" type="button" ng-show="!ticket.solved" ng-click="solveTicket(ticket)">Solved</button>
+				        			</td>			        						        			
+			        			</tr>
+	        			</table>			        	
+        			</td>	        			
+        		</tr>
+        	</table>	      	
+		  </div>  	  	
+	  </div>
+	  <div class="col-md-3"></div>
 	</div>
 </div>
+
+				  	 
+		        	
+			   

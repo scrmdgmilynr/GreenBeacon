@@ -93,13 +93,52 @@ h6{
 	opacity: .8;
 }
 
+
 /*---------------------------------------------------------*/
 /*------------------------ STUDEND PAGE -------------------*/
 /*---------------------------------------------------------*/
 .newMessage {
     display: none;
 }
+.btn-secondary {
+	background-color: #48A6B6;
+	border-color: #2B656F;
+	color: #FFFFFF;
+	border-radius: 1px;
+	border-width: .5px;
+}
+.btn-primary-secondary:hover {
+	background-color: #48A6B6;
+	border-color: #2B656F;
+	color: #FFFFFF;
+	border-radius: 1px;
+	border-width: .5px;
+}
 
+.btn-secondary-inverted {
+	background-color: #2B656F;
+	border-color: #48A6B6;
+	color: #FFFFFF;
+	border-radius: 1px;
+	border-width: .5px;
+}
+.btn-primary-secondary-inverted:hover {
+	background-color: #2B656F;
+	border-color: #48A6B6;
+	color: #FFFFFF;
+	border-radius: 1px;
+	border-width: .5px;
+}
+
+
+.location-table, .claimed-table {
+	margin-top:2%; 
+	vertical-align: bottom;
+}
+
+.primary-font {
+	color:#48A6B6;
+}
 
 /*---------------------------------------------------------*/
 /*------------------------ FONTS --------------------------*/
