@@ -13,7 +13,7 @@ angular.module('app.student', [])
   });
 
   socket.on('messageAdded', (data) => {
-    // document.getElementsByClassName('newMessage').style.display = 'block';
+    document.getElementsByClassName('data').style.display = 'block';
     console.log(data);
   });
 
@@ -134,9 +134,10 @@ angular.module('app.student', [])
   }
 
   $scope.getTicket = function(ticket) {
+    console.log(ticket);
     if(ticket.claimed){
       params.ticket = ticket;
-      $location.path('chatroom');
+      // $location.path('chatroom');
     }
   };
 }]);

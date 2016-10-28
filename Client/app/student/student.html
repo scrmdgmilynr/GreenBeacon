@@ -46,7 +46,7 @@
 			<div ng-model='loading'>
 				<h3>{{loading}}</h3>
 			</div>
-		  <div ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id' " ng-click='getTicket(ticket)'>
+		  <div ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id' " ng-click='getTicket(ticket)' id='{{ticket.id}}'>
 		    <!-- Renders each ticket to the queue -->
 		    <a class="list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}">
 
