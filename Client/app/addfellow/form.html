@@ -1,16 +1,21 @@
 <div>
+	<a href='/#/fellow'>Back to Fellow</a>
 	<form ng-submit='addFellow()'> 
 		<div class="form-group">
-			<input type='text' name='fullName' ng-model='fullName' ng-change='' required />
+			<label>Full Name:</label>
+			<input type='text' name='fullName' ng-model='fullName' ng-change='hideMsg()' required />
 		</div>
 		<div class="form-group">
-			<input type='text' name='gitHandle' ng-model='gitHandle' ng-change='' require />
-	
+			<label>Github Handel</label>
+			<input type='text' name='gitHandle' ng-model='gitHandle' ng-change='hideMsg()' require />
 		</div>
 		<div class="form-group">
 		<input type='submit' value='Add Fellow' />
 		</div>
 	</form>
+	<div class='alert alert-info {{message.cl}}' ng-model='message'>
+		{{message.msg}}
+	</div>
 </div>
 
 		<!-- 
