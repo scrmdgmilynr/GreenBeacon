@@ -14,6 +14,7 @@ angular.module('app.student', [])
 
   socket.on('messageAdded', () => {
     document.getElementById('newMessage').style.display = 'block';
+    console.log('poop');
   });
 
   var initializeQueue = function(cb) {
