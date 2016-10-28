@@ -21,7 +21,7 @@ angular.module('app', ['app.auth', 'app.queue', 'app.services', 'app.student', '
 			templateUrl: 'app/chatroom/chatroom.html',
 			controller: 'ChatroomController'
 		})
-		.when('/addFellow', {
+		.when('/addfellow', {
 			templateUrl: 'app/addfellow/form.html',
 			controller: 'AddFellowController'
 		})
