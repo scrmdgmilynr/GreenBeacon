@@ -15,8 +15,10 @@
     getChatroom($scope.ticketID);
   });
 
-  socket.on('otherTyping', () => {
-    console.log('someone typing');
+  socket.on('otherTyping', (data) => {
+    if (data !== cookie.user.mainId) {
+      console.log('someone typing');
+    }
   });
   
   //Post request to save ticket; server response will return all messages
@@ -65,8 +67,7 @@
   } 
 
   $scope.typing = function() {
-    console.log('front end')
-    socket.emit('typing');
+    socket.emit('typing', cookie.user.mainId);
   }
 
 }]);
