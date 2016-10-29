@@ -15,8 +15,10 @@ angular.module('app.queue', [])
   });
 
   socket.on('messageAdded', (data) => {
-    // document.getElementById(data.toString()).style.display = 'block';
-    console.log(data);
+    if (document.getElementById(data.toString())) {
+      document.getElementById(data.toString()).style.display = 'block';
+      console.log(data);
+    }
   });
 
   var initializeQueue = function(cb) {
