@@ -9,12 +9,13 @@ angular.module('app.student', [])
   $scope.loading = loading.loading;
 
   socket.on('ticketChange', () =>{
+    console.log('ticketchanged')
     initializeQueue();
   });
 
-  socket.on('messageAdded', (data) => {
-    document.getElementById(data.toString()).style.display = 'block';
-  });
+  // socket.on('messageAdded', (data) => {
+  //   document.getElementById(data.toString()).style.display = 'block';
+  // });
 
   var initializeQueue = function(cb) {
     //retrieve tickets from database

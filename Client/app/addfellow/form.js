@@ -5,8 +5,8 @@ angular.module('app.addfellow', [])
 	if(!cookie.user.fellow) $location.path('student');
 	
 	$scope.message = { 
-		msg: '',
-		cl: 'hidden'
+		msg: 'Add New Fellow',
+		cl: 'show'
 	};
 
 	$scope.addFellow = function() {
@@ -33,8 +33,8 @@ angular.module('app.addfellow', [])
 
 			if(resp){
 				$scope.message = { 
-					msg: '',
-					cl: 'hidden'
+					msg: 'Add New Fellow',
+					cl: 'show'
 				};
 			}
 		})
