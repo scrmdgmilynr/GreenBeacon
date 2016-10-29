@@ -59,7 +59,8 @@
 
 		<!-- <h1 style="color:#fff">{{chatroom}}</h1> -->
 		<div class='chatcontainer'>
-			<div ng-repeat="chat in chatroom track by $index" class="chat-primary" ng-class='{{checkId(chat.userId)}}'>
+			<div class='chatsbox'>
+			<div ng-repeat="chat in chatroom track by $index" class="chat-primary">
 						<table>
 		      		<tr>
 		      			<td style="vertical-align: top;">
@@ -89,6 +90,7 @@
 	        			</td>		
 	        		</tr>
 	        	</table>      
+			</div>
 			</div>
 			<form ng-submit="saveChat()">
 				<input type="text" ng-model="message" ng-keyup="typing()"/>

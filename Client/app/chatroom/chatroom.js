@@ -37,6 +37,7 @@ angular.module('app.chatroom', ['app.student'])
       data: data
     })
     .then((resp) => {
+      console.log(resp)
       $scope.loading = '';
       resp.data.forEach(function(item) {
         item.createdAt = moment(item.createdAt).startOf('minute').fromNow();
@@ -115,11 +116,11 @@ angular.module('app.chatroom', ['app.student'])
     window.localStorage.myEditor = editor.getValue();
   });
 
-  $scope.checkId = (id) =>{
-    if(id === cookie.user.mainId){
-      return 'userMe';
-    }else {
-      return 'userOther';
-    }
-  }
+  // $scope.checkId = (id) =>{
+  //   if(id === cookie.user.mainId){
+  //     return 'userMe';
+  //   }else {
+  //     return 'userOther';
+  //   }
+  // }
 }])

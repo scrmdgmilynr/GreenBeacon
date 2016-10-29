@@ -189,7 +189,13 @@ h6{
 	border-radius: 7px;
 }
 
+.chatsbox {
+	overflow: auto;
+	height: 200px;
+}
+
 .chat-primary {
+	background-color: #D8D8D8;
 	border-radius: 7px;
 	padding: 1%;
 	margin-bottom: 2%;
