@@ -1,24 +1,41 @@
 <!-- Signin page template -->
 <style>
   body {
-    background-image: url('../back.jpg');
+    background-image: url('../assets/bg-3.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 
     background-size: cover;
   }
 </style>
-<div id="signin">
-  <div class='logo'><img class='logoimg' alt="Logo" src="/../../logo.png" /></div>
-  <h2>BEACON</h2>
-  <br>
-  <h5>Dynamic support for Makersquare students</h5>
-  <div>
-  	<div role="group" aria-label="...">
-      <button type='button' class='btn-default' ng-click='signin()'>Sign in with GitHub</button>
+<div class="container-fluid">
+  <!-- start nav row -->
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" >
+      <div>
+        <center id="signin" style="background-color: #fff; padding: 100px; margin-top:15%">
+          <div class='logo' style="margin-bottom:2%">
+            <img class='logoimg' alt="Logo" src="../../assets/logo-large.png" style="width: 100px;"/>
+          </div>
+          <h1 style="font-size:40px; color:#48A6B6;margin-bottom:3% ">BEACON</h1>
+          <h5 style="font-size:22px; color:#48A6B6; font-family: 'ProximaNova-thin'">Dynamic support for Makersquare students</h5>
+          
+<!--           <div style="margin-top: 5%">
+            <div role="group" aria-label="...">
+              <button type='button' class='btn btn-secondary' ng-click='signin()'>Sign in with GitHub</button>
+            </div>
+          </div> -->
+
+          <div class="github-div" ng-click='signin()'>
+            <p style="color:transparent;">.</p>
+          </div>
+        </center>
     </div>
+    <div class="col-md-3"></div>
   </div>
 </div>
+
 
 <!-- <button class="btn btn-block btn-login-github waves-effect waves-light" alt="sign in" ng-click="authenticate()" >Sign in with github</button>   -->
 

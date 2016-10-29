@@ -24,7 +24,6 @@ var fellers = [
     fellerName: 'Jemil Ezzet',
     githubHandle: 'jemilezzet',
     userId: 4
-  }
 ];
 
 var chats = [
