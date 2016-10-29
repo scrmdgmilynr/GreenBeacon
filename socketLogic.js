@@ -27,8 +27,8 @@ io.on('connection', (socket) => {
     io.emit('otherTyping', data);
   });
 
-  socket.on('codeChange', (data) => {
-    io.emit('changedCode', data);
+  socket.on('codeChange', (code, id, flag) => {
+    io.emit('codeReceived', code, id, flag);
   });
 
 

@@ -121,10 +121,26 @@ angular.module('app.chatroom', ['app.student'])
       autofocus: true,
     });
 
-  window.localStorage.myEditor = $scope.editor.getValue();
+  window.localStorage[`myEditor${params.ticket.id}`] = $scope.editor.getValue();
+  var flag = true;
 
   $scope.editor.on('change', function() {
-    window.localStorage.myEditor = $scope.editor.getValue();
+    if (flag !== false) {
+      window.localStorage[`myEditor${params.ticket.id}`] = $scope.editor.getValue();
+      flag = false;
+      socket.emit('codeChange', window.localStorage[`myEditor${params.ticket.id}`], cookie.user.mainId, flag);
+    }
+  });
+
+  socket.on('codeReceived', (code, id) => {
+    if (id !== cookie.user.mainId) {
+      $scope.editor.setValue(code);
+      flag = true;
+      console.log('editor updated');
+    } else {
+      console.log('this is you');
+      console.log(window.localStorage[`myEditor${params.ticket.id}`]);
+    }
   });
 
   $scope.checkId = (chat) =>{
