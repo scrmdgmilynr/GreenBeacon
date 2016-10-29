@@ -124,6 +124,7 @@ module.exports = {
   getUserTickets: function(req, res) {
     Ticket.findAll({include: [User], where: { userId: req.params.userid}})
       .then(function(tickets) {
+        console.log(tickets.length)
         if(tickets.length === 0){
           res.end();
           //this is here because a new user has no tickets to check claim for

@@ -28,6 +28,8 @@ angular.module('app.student', [])
       .then(function(results){
         //add tickets to the scope
         $scope.data.tickets = results.data.tickets;
+        console.log($scope.data.tickets)
+        if($scope.data.tickets === undefined) return;
         //iterate through all tickets
         for (var ticket of $scope.data.tickets) {
           //if the userId of the ticket matches the current session user
