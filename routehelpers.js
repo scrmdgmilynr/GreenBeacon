@@ -34,10 +34,14 @@ module.exports = {
   // if the current user does not exist in the users table, create a new record,
   // then retrieve the user's information
   newUser: function(req, res, next) {
-      User.findOrCreate({ where: { username: req.session.passport.user.username, displayname: req.session.passport.user.displayName } })
+      User.findOrCreate({ where: { username: req.session.passport.user.username.replace('/<script.*>.*<\/script>/ims', " "), 
+                                   displayname: req.session.passport.user.displayName.replace('/<script.*>.*<\/script>/ims', " ") } })
         .then(function(user) {
           req.session.userID = user[0].dataValues.id;
           next();
+        })
+        .catch((err) => {
+          console.log(err);
         });
   },
 
@@ -117,7 +121,13 @@ module.exports = {
         Claim.findAll({ include: [User, Ticket] })
           .then(function(claims) {
             res.send({ tickets: tickets, claims: claims, userID: req.session.userID });
+          })
+          .catch((err) => {
+            console.log(err);
           });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 
@@ -145,12 +155,21 @@ module.exports = {
 
   // create a new ticket instance and add it to the tickets table
   addToQueue: function(req, res) {
-    Ticket.create({ message: req.body.message, location: req.body.location, x: req.body.x, y: req.body.y, color: req.body.color, userId: req.session.userID })
+    Ticket.create({ message: req.body.message.replace('/<script.*>.*<\/script>/ims', " "), 
+                    location: req.body.location.replace('/<script.*>.*<\/script>/ims', " "), 
+                    x: req.body.x, y: req.body.y, color: req.body.color.replace('/<script.*>.*<\/script>/ims', " "), 
+                    userId: req.session.userID })
       .then(function(ticket) {
         Ticket.findAll({})
           .then(function(tickets) {
             res.json(tickets);
+          })
+          .catch((err) => {
+            console.log(err);
           });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 
@@ -164,8 +183,17 @@ module.exports = {
             Claim.create({ userId: req.session.userID, ticketId: req.body.id, helpeeId: req.body.userId })
               .then(function() {
                 res.end();
+              })
+              .catch((err) => {
+                console.log(err);
               });
+          })
+          .catch((err) => {
+            console.log(err);
           });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 
@@ -179,8 +207,17 @@ module.exports = {
             ticket.update({ preSolved: true } )
               .then(function() {
                 res.end();
+              })
+              .catch((err) => {
+                console.log(err);
               });
+          })
+          .catch((err) => {
+            console.log(err);
           });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 
@@ -191,7 +228,13 @@ module.exports = {
         ticket.update({ solved: true })
           .then(function () {
             res.end();
+          })
+          .catch((err) => {
+            console.log(err);
           });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 
@@ -202,7 +245,13 @@ module.exports = {
         ticket.update({ preSolved: false, claimed: false })
           .then(function () {
             res.end();
+          })
+          .catch((err) => {
+            console.log(err);
           });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 
@@ -216,32 +265,50 @@ module.exports = {
               chatMessage.dataValues.username = user.username;
               return chatMessage;
             })
+            .catch((err) => {
+              console.log(err);
+            });
         }))
           .then((newChatMessages) => {
             res.status(200);
             res.send(newChatMessages);
           })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 
   postMessage: function(req, res, next) {
-    Chat.create({ message: req.body.message, ticketId: req.body.ticketId, userId: req.body.userId})
+    Chat.create({ message: req.body.message.replace('/<script.*>.*<\/script>/ims', " "), 
+                  ticketId: req.body.ticketId, userId: req.body.userId})
       .then(function(chat) {
         res.status(200);
         res.send('Message posted to chatroom table in DB!');
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 
   addFellow: function(req, res, next) {
     console.log('fellow added', req.body)
-    User.create({username: req.body.handle, displayname: req.body.name})
+    User.create({ username: req.body.handle.replace('/<script.*>.*<\/script>/ims', " "), 
+                  displayname: req.body.name.replace('/<script.*>.*<\/script>/ims', " ")})
     .then(function(user) {
       return user.dataValues.id;
     }).then((id) =>{
-      Feller.create({fellerName: req.body.name, githubHandle: req.body.handle, userId: id})
+      Feller.create({ fellerName: req.body.name.replace('/<script.*>.*<\/script>/ims', " "), 
+                      githubHandle: req.body.handle.replace('/<script.*>.*<\/script>/ims', " "), userId: id})
       .then(() =>{
         res.status(200);
         res.send('Added fellow');
+      })
+      .catch((err) => {
+        console.log(err);
       });
     })
     .catch((err) => {
