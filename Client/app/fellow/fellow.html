@@ -44,7 +44,8 @@
 		        				<h5 ng-bind="ticket.user.displayname || ticket.user.username" style="margin-right: 7px;  padding-top:0px; margin-top:0px"></h5>
 		        			</td>
 		        			<td style="vertical-align: top">
-		        				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"> </p>
+		        				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>
+                                <div id="{{ticket.id}}" class="newMessage">New Message</div>
 		        			</td>
 		        		</tr>	        		
 		        	</table>	        		        
