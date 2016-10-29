@@ -29,20 +29,17 @@
 			<table>
 	  		<tr>
 	  			<td style="vertical-align: top;">
-	  				<!-- ng-bind="ticket.user.displayname || ticket.user.username" -->
-	  				<h5  style="margin-right: 7px;  padding-top:0px; margin-top:0px">displayname</h5>
+	  				<h5  style="margin-right: 7px;  padding-top:0px; margin-top:0px" ng-bind="ticket.user.displayname || ticket.user.username"></h5>
 	  			</td>
 	  			<td style="vertical-align: top">
-	  			<!-- ng-bind="ticket.createdAt" -->
-	  				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" >created at</p>
+	  				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>
 	  			</td>
 	  		</tr>	        		
 	  	</table>
 	  	<table style="width: 100%">
 	  		<tr>
 	  			<td style="vertical-align: top; width:70%">
-	  			<!-- ng-bind="ticket.message" -->
-	    			<p class="list-group-item-text" >message</p>	
+	    			<p class="list-group-item-text" ng-bind="ticket.message"></p>	
 	  				
 	  				<!-- Location Table -->       		        
 	 
@@ -60,21 +57,21 @@
 		<!-- <h1 style="color:#fff">{{chatroom}}</h1> -->
 		<div class='chatcontainer'>
 			<div class='chatsbox'>
-			<div ng-repeat="chat in chatroom track by $index" class="chat-primary">
+			<div ng-repeat="chat in chatroom | orderBy: '-createdAt' " class="chat-primary" ng-class='checkId(chat);'>
 						<table>
 		      		<tr>
 		      			<td style="vertical-align: top;">
-		      				<h5 ng-bind="chatroom[chatroom.length - 1 - $index].username" style="margin-right: 7px;  padding-top:0px; margin-top:0px"></h5>
+		      				<h5 ng-bind="chat.username" style="margin-right: 7px;  padding-top:0px; margin-top:0px"></h5>
 		      			</td>
 		      			<td style="vertical-align: top">
-		      				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="chatroom[chatroom.length - 1 - $index].createdAt"></p>
+		      				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="chat.createdAtUpdate"></p>
 		      			</td>
 		      		</tr>	        		
 		      	</table>
 		      	<table style="width: 100%">
 	        		<tr>
 	        			<td style="vertical-align: top; width:70%">
-		        			<p class="list-group-item-text" ng-bind="chatroom[chatroom.length - 1 - $index].message"></p>	
+		        			<p class="list-group-item-text" ng-bind="chat.message"></p>	
 	        				
 	        				<!-- Location Table -->       		        
 	        				<table class="claimed-table">
@@ -100,3 +97,11 @@
 	</div>
 	<div class='col-md-3'></div>
 </div>
+	<footer style="margin-top:50px"">
+			<center>
+				<p>&copy; 2016 Made with  &hearts; at Makersquare | BeaconDev</p>
+			</center>
+	</footer>
+</div>
+
+

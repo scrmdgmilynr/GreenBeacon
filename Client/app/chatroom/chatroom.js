@@ -6,8 +6,11 @@ angular.module('app.chatroom', ['app.student'])
     console.log(checkStatus);
     $location.path(checkStatus.check(cookie));
   }
+
+  console.log(params.ticket, ' ticket')
   $scope.chatroom = [];
   $scope.ticketID = {ticketId: params.ticket.id};
+  $scope.ticket = params.ticket;
   $scope.messageObj = {};
   $scope.loading = loading.loading;
   $scope.code = '';
@@ -37,13 +40,14 @@ angular.module('app.chatroom', ['app.student'])
       data: data
     })
     .then((resp) => {
-      console.log(resp)
+      console.log('resp', resp)
       $scope.loading = '';
       resp.data.forEach(function(item) {
-        item.createdAt = moment(item.createdAt).startOf('minute').fromNow();
-        item.updatedAt = moment(item.updatedAt).startOf('hour').fromNow();
+        item.createdAtUpdate = moment(item.createdAt).startOf('minute').fromNow();
+        item.updatedAtUpdate = moment(item.updatedAt).startOf('hour').fromNow();
       });
     	$scope.chatroom = resp.data;
+      $scope.$digest();
     })
     .catch((err) => {
       console.log(err);
@@ -116,11 +120,11 @@ angular.module('app.chatroom', ['app.student'])
     window.localStorage.myEditor = editor.getValue();
   });
 
-  // $scope.checkId = (id) =>{
-  //   if(id === cookie.user.mainId){
-  //     return 'userMe';
-  //   }else {
-  //     return 'userOther';
-  //   }
-  // }
+  $scope.checkId = (chat) =>{
+    if(cookie.user.username === chat.username){
+      return 'userMe';
+    }else {
+      return 'userOther';
+    }
+  }
 }])
