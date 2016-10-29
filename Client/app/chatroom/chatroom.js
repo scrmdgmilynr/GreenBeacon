@@ -118,6 +118,7 @@ angular.module('app.chatroom', ['app.student'])
 
   socket.on('snippetAdded', (data, id) => {
     if (id !== cookie.user.mainId) {
+      console.log('User changing snippet.');
       window.localStorage.myEditor = data;
     } else {
       console.log('I am me.');
