@@ -124,10 +124,21 @@ module.exports = {
   getUserTickets: function(req, res) {
     Ticket.findAll({include: [User], where: { userId: req.params.userid}})
       .then(function(tickets) {
+        if(tickets.length === 0){
+          res.end();
+          //this is here because a new user has no tickets to check claim for
+          return;
+        } 
         Claim.findAll({include: [User, Ticket], where: {ticketId: tickets[0].id}})
           .then(function(claims) {
             res.send({ tickets: tickets, claims: claims, userID: req.session.userID });
+          })
+          .catch((err) => {
+            console.log(err);
           });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 
