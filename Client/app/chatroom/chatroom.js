@@ -132,14 +132,14 @@ angular.module('app.chatroom', ['app.student'])
     }
   });
 
-  socket.on('codeReceived', (code, id, cursor) => {
-    if (id !== cookie.user.mainId) {
-      window.localStorage[`myEditor${params.ticket.id}`] = code;
-      $scope.editor.setValue(code);
-      $scope.editor.setCursor($scope.editor.lineCount(), 0);
-      flag = true;
-    }
-  });
+  // socket.on('codeReceived', (code, id, cursor) => {
+  //   if (id !== cookie.user.mainId) {
+  //     window.localStorage[`myEditor${params.ticket.id}`] = code;
+  //     $scope.editor.setValue(code);
+  //     $scope.editor.setCursor($scope.editor.lineCount(), 0);
+  //     flag = true;
+  //   }
+  // });
 
   $scope.checkId = (chat) =>{
     if(cookie.user.username === chat.username){
