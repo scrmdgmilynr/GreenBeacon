@@ -34,7 +34,7 @@
 				<!-- Open Tickets queue -->
 	      <h1>Open Tickets</h1>
 	      <div style="margin-top: 10px">				
-				  <div ng-repeat="ticket in data.tickets | filter: {claimed: false} | orderBy:'-id' " class="ticket-primary">
+				  <div ng-repeat="ticket in data.tickets | filter: {claimed: false} | orderBy:'-id' " class="ticket-primary" ng-show="!ticket.ismine">
 				    <!-- Renders each open ticket-->
 						<!-- 		    <a class="list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}> -->
 

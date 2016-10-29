@@ -137,7 +137,7 @@ angular.module('app.student', [])
     console.log(ticket);
     if(ticket.claimed){
       params.ticket = ticket;
-      // $location.path('chatroom');
+      $location.path('chatroom');
     }
   };
 }]);
