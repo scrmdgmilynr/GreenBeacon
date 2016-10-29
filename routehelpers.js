@@ -157,7 +157,7 @@ module.exports = {
   addToQueue: function(req, res) {
     Ticket.create({ message: req.body.message.replace(/<script.*>.*<\/script>/g, "empty message"), 
                     location: req.body.location.replace(/<script.*>.*<\/script>/g, "empty message"), 
-                    x: req.body.x, y: req.body.y, color: req.body.color.replace(/<script.*>.*<\/script>/g, "empty message"), 
+                    x: req.body.x, y: req.body.y, 
                     userId: req.session.userID })
       .then(function(ticket) {
         Ticket.findAll({})
