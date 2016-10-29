@@ -20,83 +20,105 @@
 <div style="margin-top:70px">
 
 <div class='container-fluid'>
-	<div class='col-md-2'></div>
-	<div class='col-md-8'>
-		<div ng-model='loading'>
-			<h3>{{loading}}</h3>
-		</div>
-		<div class="ticket-primary" ng-model='ticket'>
-			<table>
-	  		<tr>
-	  			<td style="vertical-align: top;">
-	  				<h5  style="margin-right: 7px;  padding-top:0px; margin-top:0px" ng-bind="ticket.user.displayname || ticket.user.username"></h5>
-	  			</td>
-	  			<td style="vertical-align: top">
-	  				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>
-	  			</td>
-	  		</tr>	        		
-	  	</table>
-	  	<table style="width: 100%">
-	  		<tr>
-	  			<td style="vertical-align: top; width:70%">
-	    			<p class="list-group-item-text" ng-bind="ticket.message"></p>	
-	  				
-	  				<!-- Location Table -->       		        
-	 
-	  			</td>		
-	  		</tr>
-	  	</table>
-		</div>
-
-		<div id="codeArea"></div>
-
-		<!-- <h1 style="color:#fff">{{chatroom}}</h1> -->
-		<div class='chatcontainer container-fluid'>
-			<div>
-				<img id="gif" src="http://cdn.nextshark.com/wp-content/uploads/2015/10/bMB7QpX.gif"></img>
-			</div>
-			<form ng-submit="saveChat()">
-				<div class="form-group">
-					<input type="text" class="form-control" ng-model="message" ng-keyup="typing()" required/>
-					<input type="submit" class="form-control" class="submit btn btn-secondary" value="submit"/>
+	<div class="row">
+		<div class='col-md-1'></div>
+		<div class='col-md-11'>
+			<h1>Codeshare Chat</h1>
+				<div ng-model='loading'>
+					<h3 style="">{{loading}}</h3>
 				</div>
-			</form>
-			<div id='chatbox' class='chatsbox'>
-			<div ng-repeat="chat in chatroom | orderBy: '-createdAt' " class="chat-primary" ng-class='checkId(chat);'>
-						<table>
-		      		<tr>
-		      			<td style="vertical-align: top;">
-		      				<h5 ng-bind="chat.username" style="margin-right: 7px;  padding-top:0px; margin-top:0px"></h5>
-		      			</td>
-		      			<td style="vertical-align: top">
-		      				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="chat.createdAtUpdate"></p>
-		      			</td>
-		      		</tr>	        		
-		      	</table>
-		      	<table style="width: 100%">
-	        		<tr>
-	        			<td style="vertical-align: top; width:70%">
-		        			<p class="list-group-item-text" ng-bind="chat.message"></p>	
-	        				
-	        				<!-- Location Table -->       		        
-	        				<table class="claimed-table">
-				        		<tr style="width: 100%">
-				        			<td>
-				        				<p class="list-group-item-text primary-font"> </p> 
-				        			</td>
-				        			<td>
-				        				<p class="list-group-item-text primary-font" ng-bind="ticket.location"></p>		
-				        			</td>
-				        		</tr>
-				        	</table>
-	        			</td>		
-	        		</tr>
-	        	</table>      
-			</div>
-			</div>
-		</div>	
+		</div>
 	</div>
-	<div class='col-md-2'></div>
+	
+	<div class="row">
+		<div class='col-md-1'></div>
+		<div class='col-md-6'>
+			<div id="codeArea"></div>
+		</div>
+		<div class='col-md-4'>	
+			<div class="ticket-secondary" ng-model='ticket'>
+				<table style="width: 100%">
+		  		<tr>
+		  			<td style="margin-right:10px">
+		  				<h3 style="margin:0px">Ticket</h3>
+		  			</td>
+		  			<td style="vertical-align: top;">		  				
+		  				<h5  style="margin-right: 3px;  padding-top:0px; margin-top:0px" ng-bind="ticket.user.displayname || ticket.user.username"></h5>
+		  			</td>
+		  			<td style="vertical-align: top">
+		  				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>
+		  			</td>
+		  		</tr>	        		
+		  	</table>
+		  	<table style="width: 100%">
+		  		<tr>
+		  			<td></td>
+		  			<td style="vertical-align: top; width:70%">
+		    			<p class="list-group-item-text" ng-bind="ticket.message"></p>	
+		  				
+		  				<!-- Location Table -->       		        
+		 
+		  			</td>		
+		  		</tr>
+		  	</table>
+			</div>
+
+			<!-- <h1 style="color:#fff">{{chatroom}}</h1> -->
+			<div class='chatcontainer container-fluid'>
+				<div>
+					<img id="gif" src="http://cdn.nextshark.com/wp-content/uploads/2015/10/bMB7QpX.gif"></img>
+				</div>
+				<form ng-submit="saveChat()">
+					<div class="form-group">
+					<table style="width:100%">
+	      		<tr>
+	      			<td style="vertical-align: top; width:80%; padding-right:2%">
+	      				<input type="text" class="form-control" ng-model="message" ng-keyup="typing()" placeholder="Type in message" required/>
+	      			</td>
+	      			<td style="vertical-align: top; width:20%">
+		      			<input type="submit" class="form-control submit btn btn-primary" value="Send Message"/>
+	      			</td>
+	      		</tr>
+			    </table>
+					</div>
+				</form>				
+				<div id='chatbox' class='chatsbox'>
+				<div ng-repeat="chat in chatroom | orderBy: '-createdAt' " class="chat-primary" ng-class='checkId(chat);'>
+							<table>
+			      		<tr>
+			      			<td style="vertical-align: top;">
+			      				<h5 ng-bind="chat.username" style="margin-right: 7px;  padding-top:0px; margin-top:0px"></h5>
+			      			</td>
+			      			<td style="vertical-align: top">
+			      				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="chat.createdAtUpdate"></p>
+			      			</td>
+			      		</tr>	        		
+			      	</table>
+			      	<table style="width: 100%">
+		        		<tr>
+		        			<td style="vertical-align: top; width:70%">
+			        			<p class="list-group-item-text" ng-bind="chat.message"></p>	
+		        				
+		        				<!-- Location Table -->       		        
+		        				<table class="claimed-table">
+					        		<tr style="width: 100%">
+					        			<td>
+					        				<p class="list-group-item-text primary-font"> </p> 
+					        			</td>
+					        			<td>
+					        				<p class="list-group-item-text primary-font" ng-bind="ticket.location"></p>		
+					        			</td>
+					        		</tr>
+					        	</table>
+		        			</td>		
+		        		</tr>
+		        	</table>      
+				</div>
+				</div>
+			</div>	
+		</div>
+		<div class='col-md-1'></div>
+	</div>
 </div>
 	<footer style="margin-top:50px"">
 			<center>

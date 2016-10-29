@@ -151,6 +151,17 @@ h6{
 }
 
 /*---------------------------------------------------------*/
+/*------------------------ CHATROOM PAGE --------------------*/
+/*---------------------------------------------------------*/
+.ticket-secondary {
+	background-color: #FFFFFF;
+	border-radius: 7px;
+	padding: 2%;
+	margin-bottom: 1%;
+	border: .5px solid #D5D5D5;
+}
+
+/*---------------------------------------------------------*/
 /*------------------------ FONTS --------------------------*/
 /*---------------------------------------------------------*/
 @font-face {
@@ -184,8 +195,8 @@ h6{
 #codeArea {
 	margin-top: 1%;
 	text-align: left;
-	height: 70%;
-	margin-bottom: 2%;
+	height: 10000px;
+	/*margin-bottom: 2%;*/
 }
 
 
@@ -197,6 +208,8 @@ h6{
 	background-color: white;
 	padding: 2%;
 	border-radius: 7px;
+	margin-top: 2%;
+		border: .5px solid #D5D5D5;
 }
 
 .chatsbox {
