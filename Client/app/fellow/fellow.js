@@ -19,8 +19,8 @@ angular.module('app.queue', [])
     Tickets.getTickets()
       .then(function(results){
 
-        // SVGpulse = document.getElementsByClassName('pulse');
-        // SVGdot = document.getElementsByClassName('dot');
+        SVGpulse = document.getElementsByClassName('pulse');
+        SVGdot = document.getElementsByClassName('dot');
 
         //add tickets to the scope
         $scope.data.tickets = results.data.tickets; 

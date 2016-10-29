@@ -14,12 +14,13 @@ var fellers = [
     fellerName: 'Alex Ting',
     githubHandle: 'acting326',
     userId: 2
-  },
-  {
-    fellerName: 'Andrew Sherman',
-    githubHandle: 'ashermanwmf',
-    userId: 3
   }
+  // ,
+  // {
+  //   fellerName: 'Andrew Sherman',
+  //   githubHandle: 'ashermanwmf',
+  //   userId: 3
+  // }
 ];
 
 var chats = [
