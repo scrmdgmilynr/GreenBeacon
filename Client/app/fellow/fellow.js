@@ -15,6 +15,8 @@ angular.module('app.queue', [])
   });
 
   socket.on('messageAdded', (data) => {
+    console.log(data);
+    console.log(document.getElementById(data.toString()));
     if (document.getElementById(data.toString())) {
       document.getElementById(data.toString()).style.display = 'block';
       console.log(data);
