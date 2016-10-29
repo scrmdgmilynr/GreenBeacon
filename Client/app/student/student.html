@@ -50,9 +50,9 @@
 			<br />
 			<br />	
 			<h1>My Tickets</h1>	
-			<div ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id' " ng-click='getTicket(ticket)' class="ticket-primary">
+			<div ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id'" class="ticket-primary">
 		    <!-- Renders each ticket to the queue -->
-		    	<span class="glyphicon glyphicon-remove" style="color:#979797; float:right"></span>
+		    	<span class="glyphicon glyphicon-remove" style="color:#979797; float:right" ng-click="solveTicket(ticket)"></span>
 					<!-- Username & TimeStamp Table -->
 					<table>
 	      		<tr>
@@ -91,7 +91,7 @@
 				        				<button class=" btn btn-primary-inverted" ng-show="ticket.claimed" type="button" ng-click='getTicket(ticket)'">Chat</button>	
 
 				        				<button class="btn btn-primary" type="button" ng-show="!ticket.solved" ng-click="solveTicket(ticket)">Solved</button>
-				        			</td>			        						        			
+				        			</td>     			
 			        			</tr>
 	        			</table>			        	
         			</td>	        			
