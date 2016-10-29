@@ -27,12 +27,12 @@ angular.module('app.chatroom', ['app.student'])
   });
 
   socket.on('otherTyping', (data) => {
-    // if (data !== cookie.user.mainId) {
+    if (data !== cookie.user.mainId) {
       document.getElementById('gif').style.display = 'block';
       setTimeout(() => {
         document.getElementById('gif').style.display = 'none';
       }, 1000);
-    // }
+    }
   });
 
   socket.on('changedCode', (data) => {
