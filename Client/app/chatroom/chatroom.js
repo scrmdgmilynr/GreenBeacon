@@ -80,7 +80,6 @@ angular.module('app.chatroom', ['app.student'])
   getChatroom($scope.ticketID)
 
   $scope.saveChat = function() {
-    console.log("cookie.user.mainId", cookie.user.mainId);
     $scope.messageObj = {
       message: $scope.message,
       ticketId: params.ticket.id,
@@ -127,20 +126,20 @@ angular.module('app.chatroom', ['app.student'])
   $scope.editor.on('change', function() {
     if (flag) {
       window.localStorage[`myEditor${params.ticket.id}`] = $scope.editor.getValue();
-      var cursorPos = $scope.editor.coordsChar($scope.editor.cursorCoords());
+      // var cursorPos = $scope.editor.coordsChar($scope.editor.cursorCoords());
       flag = false;
       socket.emit('codeChange', window.localStorage[`myEditor${params.ticket.id}`], cookie.user.mainId,  cursorPos);
     }
   });
 
-  socket.on('codeReceived', (code, id, cursor) => {
-    if (id !== cookie.user.mainId) {
-      window.localStorage[`myEditor${params.ticket.id}`] = code;
-      $scope.editor.setValue(code);
-      $scope.editor.setCursor($scope.editor.lineCount(), 0);
-      flag = true;
-    }
-  });
+  // socket.on('codeReceived', (code, id, cursor) => {
+  //   if (id !== cookie.user.mainId) {
+  //     window.localStorage[`myEditor${params.ticket.id}`] = code;
+  //     $scope.editor.setValue(code);
+  //     $scope.editor.setCursor($scope.editor.lineCount(), 0);
+  //     flag = true;
+  //   }
+  // });
 
   $scope.checkId = (chat) =>{
     if(cookie.user.username === chat.username){

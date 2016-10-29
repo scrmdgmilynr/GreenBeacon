@@ -27,9 +27,9 @@ io.on('connection', (socket) => {
     io.emit('otherTyping', data);
   });
 
-  socket.on('codeChange', (code, id, cursor) => {
-    io.emit('codeReceived', code, id, cursor);
-  });
+  // socket.on('codeChange', (code, id, cursor) => {
+  //   io.emit('codeReceived', code, id, cursor);
+  // });
 
 
 });
