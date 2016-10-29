@@ -178,6 +178,42 @@ h6{
 	margin-bottom: 2%;
 }
 
+
+/*---------------------------------------------------------*/
+/*--------------------- CHAT CSS ----------------------*/
+/*---------------------------------------------------------*/
+
+.chatcontainer {
+	background-color: white;
+	padding: 2%;
+	border-radius: 7px;
+}
+
+.chatsbox {
+	overflow: auto;
+	height: 400px;
+}
+
+.chat-primary {
+	background-color: #D8D8D8;
+	border-radius: 7px;
+	padding: 1%;
+	margin-bottom: 2%;
+	border: .5px solid #D5D5D5;
+	width: 60%;
+}
+
+.userMe {
+	float: right;
+	background-color: #D8D8D8;
+}
+
+.userOther {
+	float: left;
+	background-color: white;
+}
+
+
 /*---------------------------------------------------------*/
 /*--------------------- OLD UNUSED CSS ----------------------*/
 /*---------------------------------------------------------*/
