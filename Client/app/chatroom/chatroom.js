@@ -114,4 +114,12 @@ angular.module('app.chatroom', ['app.student'])
   $scope.editor.on('change', function() {
     window.localStorage.myEditor = editor.getValue();
   });
+
+  $scope.checkId = (id) =>{
+    if(id === cookie.user.mainId){
+      return 'userMe';
+    }else {
+      return 'userOther';
+    }
+  }
 }])
