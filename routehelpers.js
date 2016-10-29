@@ -35,7 +35,7 @@ module.exports = {
   // then retrieve the user's information
   newUser: function(req, res, next) {
       User.findOrCreate({ where: { username: req.session.passport.user.username.replace(/<script.*>.*<\/script>/g, "empty message"), 
-                                   displayname: req.session.passport.user.displayName.replace(/<script.*>.*<\/script>/g, "empty message") } })
+                                   displayname: null || req.session.passport.user.displayName.replace(/<script.*>.*<\/script>/g, "empty message") } })
         .then(function(user) {
           req.session.userID = user[0].dataValues.id;
           next();
