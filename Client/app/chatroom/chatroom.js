@@ -105,8 +105,8 @@ angular.module('app.chatroom', ['app.student'])
   var initText = "";
   var defaultMode = "javascript";
 
-  if(window.localStorage.myEditor !== undefined) {
-    initText = window.localStorage.myEditor;
+  if(window.localStorage[`myEditor${params.ticket.id}`] !== undefined) {
+    initText = window.localStorage[`myEditor${params.ticket.id}`];
   }
 
   $scope.editor = new CodeMirror(document.getElementById("codeArea"),
