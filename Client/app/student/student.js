@@ -9,12 +9,13 @@ angular.module('app.student', [])
   $scope.loading = loading.loading;
 
   socket.on('ticketChange', () =>{
+    console.log('ticketchanged')
     initializeQueue();
   });
 
-  socket.on('messageAdded', (data) => {
-    document.getElementById(data.toString()).style.display = 'block';
-  });
+  // socket.on('messageAdded', (data) => {
+  //   document.getElementById(data.toString()).style.display = 'block';
+  // });
 
   var initializeQueue = function(cb) {
     //retrieve tickets from database
@@ -27,6 +28,8 @@ angular.module('app.student', [])
       .then(function(results){
         //add tickets to the scope
         $scope.data.tickets = results.data.tickets;
+        console.log($scope.data.tickets)
+        if($scope.data.tickets === undefined) return;
         //iterate through all tickets
         for (var ticket of $scope.data.tickets) {
           //if the userId of the ticket matches the current session user

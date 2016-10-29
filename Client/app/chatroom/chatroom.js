@@ -140,4 +140,8 @@ angular.module('app.chatroom', ['app.student'])
     }
   }
 
+  $scope.signout = function () {
+    Auth.signout();
+  }
+
 }])
