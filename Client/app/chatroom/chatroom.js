@@ -15,6 +15,12 @@ angular.module('app.chatroom', ['app.student'])
   $scope.loading = loading.loading;
   $scope.code = '';
 
+  // var updateScroll = (element) =>{
+  //   console.dir(element.scrollTop, 'before')
+  //   element.scrollTop = element.scrollHeight + 1000;
+  //   console.dir(element.scrollTop, 'after')
+  // };
+
   socket.on('messageAdded', () =>{
     console.log('messageAdded')
     getChatroom($scope.ticketID);
@@ -48,7 +54,7 @@ angular.module('app.chatroom', ['app.student'])
         item.updatedAtUpdate = moment(item.updatedAt).startOf('hour').fromNow();
       });
     	$scope.chatroom = resp.data;
-      $scope.$digest();
+      // $scope.$digest();
     })
     .catch((err) => {
       console.log(err);
@@ -71,7 +77,7 @@ angular.module('app.chatroom', ['app.student'])
     });
   };
 
-  getChatroom($scope.ticketID);
+  getChatroom($scope.ticketID)
 
   $scope.saveChat = function() {
     console.log("cookie.user.mainId", cookie.user.mainId);
