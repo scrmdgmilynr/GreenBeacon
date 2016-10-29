@@ -86,8 +86,7 @@
 		        				<h5 ng-bind="ticket.user.displayname || ticket.user.username" style="margin-right: 7px;  padding-top:0px; margin-top:0px"></h5>
 		        			</td>
 		        			<td style="vertical-align: top">
-		        				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>
-                                <div id="{{ticket.id}}" class="newMessage">New Message</div>
+		        				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>                    
 		        			</td>
 		        		</tr>	        		
 		        	</table>	        		        
@@ -104,7 +103,24 @@
 					        				<p class="list-group-item-text primary-font"> fellow_name</p>	
 					        			</td>
 					        		</tr>
+					        		<tr>
+					        		<div id="{{ticket.id}}" class="newMessage">
+					        			<table style="width:100%; padding: none; margin-top:10px">
+				        					<tr>
+						        				<td style="width:11%; vertical-align: center">
+						        					<div id="holder">
+																<div class="dot" ng-style="{'border': '10px solid ' + '#971919'}"></div>
+																<div class="pulse" ng-style="{'border': '5px solid '+ '#FF9797'}"></div>
+															</div>
+						        				</td>
+						        				<td style=" width:89%; vertical-align: center">
+						        					<p style="font-size: 10px">New Message Received!</p>
+						        				</td>
+						        			</tr>
+						        		</table>
+					        		</tr>
 					        	</table>
+					        	</div>
 		        			</td>
 		        			<td style="width:5%">
 					        	<!-- <button class="deleteb" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button> -->
