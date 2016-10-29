@@ -31,7 +31,7 @@ angular.module('app.chatroom', ['app.student'])
       document.getElementById('gif').style.display = 'block';
       setTimeout(() => {
         document.getElementById('gif').style.display = 'none';
-      }, 750);
+      }, 1000);
     }
   });
 

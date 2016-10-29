@@ -188,6 +188,12 @@ h6{
 #gif {
     display: none;
 }
+
+#gifMedia {
+    height: 50px;
+    width: auto;
+}
+
 .hidden {
 	display: none;
 }
