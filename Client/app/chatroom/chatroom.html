@@ -39,26 +39,24 @@
 			<div class="ticket-secondary" ng-model='ticket'>
 				<table style="width: 100%">
 		  		<tr>
-		  			<td style="margin-right:10px">
+		  			<td style="width:25%">
 		  				<h3 style="margin:0px">Ticket</h3>
 		  			</td>
-		  			<td style="vertical-align: top;">		  				
-		  				<h5  style="margin-right: 3px;  padding-top:0px; margin-top:0px" ng-bind="ticket.user.displayname || ticket.user.username"></h5>
+		  			<td style="vertical-align: top; width:10%">		  				
+		  				<h5  style="margin-right: 5px;  padding-top:0px; margin-top:0px;margin-left: 0px" ng-bind="ticket.user.displayname || ticket.user.username"></h5>
 		  			</td>
-		  			<td style="vertical-align: top">
+		  			<td style="vertical-align: top; width:65%">
 		  				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>
 		  			</td>
 		  		</tr>	        		
 		  	</table>
 		  	<table style="width: 100%">
 		  		<tr>
-		  			<td></td>
-		  			<td style="vertical-align: top; width:70%">
-		    			<p class="list-group-item-text" ng-bind="ticket.message"></p>	
-		  				
-		  				<!-- Location Table -->       		        
-		 
-		  			</td>		
+		  			<td style="width:25%"></td>
+		  			<td style="vertical-align: top; width:75%">
+		    			<p class="list-group-item-text" ng-bind="ticket.message" style="margin-left: 0px"></p>	
+		  				<!-- Location Table --> 
+		  			</td>
 		  		</tr>
 		  	</table>
 			</div>

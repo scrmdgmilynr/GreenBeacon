@@ -68,7 +68,7 @@ h6{
 .btn-primary {
 	background-color: #4EB7A0;
 	border-color: #3F9985;
-	border-radius: 1px;
+	border-radius: 2px;
 	border-width: .5px;
 }
 .btn-primary:hover {
@@ -82,7 +82,7 @@ h6{
 	background-color: #EFF1F2;
 	border-color: #4EB7A0;
 	color: #4EB7A0;
-	border-radius: 1px;
+	border-radius: 2px;
 	border-width: .5px;
 }
 .btn-primary-inverted:hover {
@@ -104,14 +104,14 @@ h6{
 	background-color: #48A6B6;
 	border-color: #2B656F;
 	color: #FFFFFF;
-	border-radius: 1px;
+	border-radius: 2px;
 	border-width: .5px;
 }
 .btn-primary-secondary:hover {
 	background-color: #48A6B6;
 	border-color: #2B656F;
 	color: #FFFFFF;
-	border-radius: 1px;
+	border-radius: 2px;
 	border-width: .5px;
 }
 
@@ -119,14 +119,14 @@ h6{
 	background-color: #2B656F;
 	border-color: #48A6B6;
 	color: #FFFFFF;
-	border-radius: 1px;
+	border-radius: 2px;
 	border-width: .5px;
 }
 .btn-primary-secondary-inverted:hover {
 	background-color: #2B656F;
 	border-color: #48A6B6;
 	color: #FFFFFF;
-	border-radius: 1px;
+	border-radius: 2px;
 	border-width: .5px;
 }
 
@@ -195,8 +195,6 @@ h6{
 #codeArea {
 	margin-top: 1%;
 	text-align: left;
-	height: 10000px;
-	/*margin-bottom: 2%;*/
 }
 
 
@@ -214,7 +212,7 @@ h6{
 
 .chatsbox {
 	overflow: auto;
-	height: 400px;
+	height: 320px;
 }
 
 .chat-primary {
