@@ -5,29 +5,21 @@ var Feller = require('./db/schema').Feller;
 var Chat = require('./db/schema').Chat;
 
 var fellers = [
-  // {
-  //   fellerName: 'Melba Madrigal',
-  //   githubHandle: 'melbee',
-  //   userId: 1
-  // },
+  {
+    fellerName: 'Melba Madrigal',
+    githubHandle: 'melbee',
+    userId: 1
+  },
   {
     fellerName: 'Alex Ting',
     githubHandle: 'acting326',
     userId: 2
   },
-<<<<<<< HEAD
-  {
-    fellerName: 'Andrew Sherman',
-    githubHandle: 'ashermanwmf',
-    userId: 3
-  },
-=======
   // {
   //   fellerName: 'Andrew Sherman',
   //   githubHandle: 'ashermanwmf',
   //   userId: 50
   // },
->>>>>>> [merge] - seed merge for pull
   {
     fellerName: 'Jemil Ezzet',
     githubHandle: 'jemilezzet',

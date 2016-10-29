@@ -93,7 +93,8 @@
 		        	<table>
 		        		<tr style="width: 100%">
 		        			<td style="vertical-align: top; width:95%">
-			        			<p class="list-group-item-text" ng-bind="ticket.message"></p>	
+			        			<p class="list-group-item-text" ng-bind="ticket.message"></p>
+			        				
 		        				<table class="claimed-table">
 					        		<tr style="width: 100%">
 					        			<td>
@@ -104,22 +105,24 @@
 					        			</td>
 					        		</tr>
 					        		<tr>
-					        		<div id="{{ticket.id}}" class="newMessage">
-					        			<table style="width:100%; padding: none; margin-top:10px">
-				        					<tr>
-						        				<td style="width:11%; vertical-align: center">
-						        					<div id="holder">
-																<div class="dot" ng-style="{'border': '10px solid ' + '#971919'}"></div>
-																<div class="pulse" ng-style="{'border': '5px solid '+ '#FF9797'}"></div>
-															</div>
-						        				</td>
-						        				<td style=" width:89%; vertical-align: center">
-						        					<p style="font-size: 10px">New Message Received!</p>
-						        				</td>
-						        			</tr>
-						        		</table>
-					        		</tr>
-					        	</table>
+					        			<td>
+							        		<div id="{{ticket.id}}" class="newMessage">
+							        			<table style="width:100%; padding: none; margin-top:10px">
+						        					<tr>
+								        				<td style="width:11%; vertical-align: center">
+								        					<div id="holder">
+																		<div class="dot" ng-style="{'border': '10px solid ' + '#971919'}"></div>
+																		<div class="pulse" ng-style="{'border': '5px solid '+ '#FF9797'}"></div>
+																	</div>
+								        				</td>
+								        				<td style=" width:89%; vertical-align: center">
+								        					<p style="font-size: 10px">New Message Received!</p>
+								        				</td>
+								        			</tr>
+								        		</table>
+								        	</td>
+						        		</tr>
+						        	</table>
 					        	</div>
 		        			</td>
 		        			<td style="width:5%">
