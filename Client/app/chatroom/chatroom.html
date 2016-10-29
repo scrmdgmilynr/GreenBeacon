@@ -50,13 +50,18 @@
 
 		<div id="codeArea"></div>
 
-		<div>
-			<img id="gif" src="http://cdn.nextshark.com/wp-content/uploads/2015/10/bMB7QpX.gif"></img>
-		</div>
-
 		<!-- <h1 style="color:#fff">{{chatroom}}</h1> -->
-		<div class='chatcontainer'>
-			<div class='chatsbox'>
+		<div class='chatcontainer container-fluid'>
+			<div>
+				<img id="gif" src="http://cdn.nextshark.com/wp-content/uploads/2015/10/bMB7QpX.gif"></img>
+			</div>
+			<form ng-submit="saveChat()">
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="message" ng-keyup="typing()" required/>
+					<input type="submit" class="form-control" class="submit btn btn-secondary" value="submit"/>
+				</div>
+			</form>
+			<div id='chatbox' class='chatsbox'>
 			<div ng-repeat="chat in chatroom | orderBy: '-createdAt' " class="chat-primary" ng-class='checkId(chat);'>
 						<table>
 		      		<tr>
@@ -89,12 +94,6 @@
 	        	</table>      
 			</div>
 			</div>
-			<form ng-submit="saveChat()">
-				<div class="form-group">
-					<input type="text" class="form-control" ng-model="message" ng-keyup="typing()"/>
-					<input type="submit" class="form-control" class="submit btn btn-secondary" value="submit"/>
-				</div>
-			</form>
 		</div>	
 	</div>
 	<div class='col-md-2'></div>

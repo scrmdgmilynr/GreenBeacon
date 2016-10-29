@@ -31,9 +31,11 @@ angular.module('app.student', [])
         //add tickets to the scope
         $scope.data.tickets = results.data.tickets;
         console.log($scope.data.tickets)
+
         if($scope.data.tickets === undefined) return;
         //iterate through all tickets
         for (var ticket of $scope.data.tickets) {
+          ticket.createdAt = moment(ticket.createdAt).startOf('minute').fromNow();
           //if the userId of the ticket matches the current session user
           if (ticket.userId === results.data.userID) {
             //add and set isMine attribute to true
