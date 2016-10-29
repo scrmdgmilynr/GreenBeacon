@@ -34,8 +34,8 @@ module.exports = {
   // if the current user does not exist in the users table, create a new record,
   // then retrieve the user's information
   newUser: function(req, res, next) {
-      User.findOrCreate({ where: { username: req.session.passport.user.username.replace('/<script.*>.*<\/script>/ims', " "), 
-                                   displayname: req.session.passport.user.displayName.replace('/<script.*>.*<\/script>/ims', " ") } })
+      User.findOrCreate({ where: { username: req.session.passport.user.username.replace(/<script.*>.*<\/script>/g, "empty message"), 
+                                   displayname: req.session.passport.user.displayName.replace(/<script.*>.*<\/script>/g, "empty message") } })
         .then(function(user) {
           req.session.userID = user[0].dataValues.id;
           next();
@@ -155,9 +155,9 @@ module.exports = {
 
   // create a new ticket instance and add it to the tickets table
   addToQueue: function(req, res) {
-    Ticket.create({ message: req.body.message.replace('/<script.*>.*<\/script>/ims', " "), 
-                    location: req.body.location.replace('/<script.*>.*<\/script>/ims', " "), 
-                    x: req.body.x, y: req.body.y, color: req.body.color.replace('/<script.*>.*<\/script>/ims', " "), 
+    Ticket.create({ message: req.body.message.replace(/<script.*>.*<\/script>/g, "empty message"), 
+                    location: req.body.location.replace(/<script.*>.*<\/script>/g, "empty message"), 
+                    x: req.body.x, y: req.body.y, color: req.body.color.replace(/<script.*>.*<\/script>/g, "empty message"), 
                     userId: req.session.userID })
       .then(function(ticket) {
         Ticket.findAll({})
@@ -283,7 +283,7 @@ module.exports = {
   },
 
   postMessage: function(req, res, next) {
-    Chat.create({ message: req.body.message.replace('/<script.*>.*<\/script>/ims', " "), 
+    Chat.create({ message: req.body.message.replace(/<script.*>.*<\/script>/g, "empty message"), 
                   ticketId: req.body.ticketId, userId: req.body.userId})
       .then(function(chat) {
         res.status(200);
@@ -296,13 +296,13 @@ module.exports = {
 
   addFellow: function(req, res, next) {
     console.log('fellow added', req.body)
-    User.create({ username: req.body.handle.replace('/<script.*>.*<\/script>/ims', " "), 
-                  displayname: req.body.name.replace('/<script.*>.*<\/script>/ims', " ")})
+    User.create({ username: req.body.handle.replace(/<script.*>.*<\/script>/g, "empty message"), 
+                  displayname: req.body.name.replace(/<script.*>.*<\/script>/g, "empty message")})
     .then(function(user) {
       return user.dataValues.id;
     }).then((id) =>{
-      Feller.create({ fellerName: req.body.name.replace('/<script.*>.*<\/script>/ims', " "), 
-                      githubHandle: req.body.handle.replace('/<script.*>.*<\/script>/ims', " "), userId: id})
+      Feller.create({ fellerName: req.body.name.replace(/<script.*>.*<\/script>/g, "empty message"), 
+                      githubHandle: req.body.handle.replace(/<script.*>.*<\/script>/g, "empty message"), userId: id})
       .then(() =>{
         res.status(200);
         res.send('Added fellow');
