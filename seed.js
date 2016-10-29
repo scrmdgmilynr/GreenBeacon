@@ -15,11 +15,19 @@ var fellers = [
     githubHandle: 'acting326',
     userId: 2
   },
+<<<<<<< HEAD
   {
     fellerName: 'Andrew Sherman',
     githubHandle: 'ashermanwmf',
     userId: 3
   },
+=======
+  // {
+  //   fellerName: 'Andrew Sherman',
+  //   githubHandle: 'ashermanwmf',
+  //   userId: 50
+  // },
+>>>>>>> [merge] - seed merge for pull
   {
     fellerName: 'Jemil Ezzet',
     githubHandle: 'jemilezzet',
