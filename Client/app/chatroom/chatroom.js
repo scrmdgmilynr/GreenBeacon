@@ -125,7 +125,7 @@ angular.module('app.chatroom', ['app.student'])
   var flag = true;
 
   $scope.editor.on('change', function() {
-    if (flag !== false) {
+    if (flag) {
       window.localStorage[`myEditor${params.ticket.id}`] = $scope.editor.getValue();
       flag = false;
       socket.emit('codeChange', window.localStorage[`myEditor${params.ticket.id}`], cookie.user.mainId, flag);
