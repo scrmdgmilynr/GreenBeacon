@@ -52,7 +52,7 @@
 			<h1>My Tickets</h1>	
 			<div ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id'" class="ticket-primary">
 		    <!-- Renders each ticket to the queue -->
-		    	<span class="glyphicon glyphicon-remove" style="color:#979797; float:right"></span>
+		    	<span class="glyphicon glyphicon-remove" style="color:#979797; float:right" ng-click="solveTicket(ticket)"></span>
 					<!-- Username & TimeStamp Table -->
 					<table>
 	      		<tr>
