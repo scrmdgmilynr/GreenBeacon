@@ -29,5 +29,9 @@ io.on('connection', (socket) => {
 
   socket.on('codeChange', (data) => {
     io.emit('changedCode', data);
-  })
+  });
+
+  socket.on('snippetChanged', (data, id) => {
+    io.emit('snippetAdded', data, id);
+  });
 });
