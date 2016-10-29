@@ -14,7 +14,12 @@
       <img class='logoImg' alt="Logo" src="../assets/logov1.png" />
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="navlist nav navbar-nav navbar-right">
+      <ul class="navlist nav navbar-nav navbar-right" >
+        <!-- <li id="custom-nav">
+					  <form>
+	        		<input type="text" class="form-control" name="" style="margin-top:7px; border-radius:0px; /*border:0; border-bottom: 1px solid #E97B64;*/ outline:0" placeholder="Search Tickets">
+	        	</form>
+        </li> -->
         <li id="custom-nav"><a  ng-click='sendToForm()'>Add Fellow</a></li>
         <li id="custom-nav"><a  ng-click="signout()" target="_self">Sign out</a></li>
       </ul>
@@ -98,10 +103,10 @@
 		        				<table class="claimed-table">
 					        		<tr style="width: 100%">
 					        			<td>
-					        				<p class="list-group-item-text primary-font">Claimed by </p> 
+					        				
 					        			</td>
 					        			<td>
-					        				<p class="list-group-item-text primary-font"> fellow_name</p>	
+					        					
 					        			</td>
 					        		</tr>
 					        		<tr>
@@ -131,7 +136,7 @@
 		        			</td>	        			
 		        		</tr>
 		        	</table>
-			   	</a>
+			   	<!-- </a> -->
 			  </div>
 			</div>
 			<div class="col-md-1"></div>
