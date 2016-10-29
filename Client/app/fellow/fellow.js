@@ -14,9 +14,10 @@ angular.module('app.queue', [])
     initializeQueue();
   });
 
-  // socket.on('messageAdded', (data) => {
-  //   document.getElementById(data.toString()).style.display = 'block';
-  // });
+  socket.on('messageAdded', (data) => {
+    // document.getElementById(data.toString()).style.display = 'block';
+    console.log(data);
+  });
 
   var initializeQueue = function(cb) {
     //retrieve tickets from database
@@ -206,7 +207,7 @@ angular.module('app.queue', [])
   // }
 
   $scope.getTicket = function(ticket) {
-    console.log(ticket)
+    console.log(ticket);
     params.ticket = ticket;
     $location.path('chatroom');
   };
