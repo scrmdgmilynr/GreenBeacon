@@ -120,6 +120,7 @@ angular.module('app.chatroom', ['app.student'])
     if (id !== cookie.user.mainId) {
       console.log('User changing snippet.');
       window.localStorage.myEditor = data;
+      $scope.editor.setValue(data);
     } else {
       console.log('I am me.');
     }
