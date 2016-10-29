@@ -16,6 +16,7 @@ angular.module('app.chatroom', ['app.student'])
   $scope.code = '';
 
   socket.on('messageAdded', () =>{
+    console.log('messageAdded')
     getChatroom($scope.ticketID);
   });
 

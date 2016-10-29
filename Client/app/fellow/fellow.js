@@ -14,9 +14,9 @@ angular.module('app.queue', [])
     initializeQueue();
   });
 
-  socket.on('messageAdded', (data) => {
-    document.getElementById(data.toString()).style.display = 'block';
-  });
+  // socket.on('messageAdded', (data) => {
+  //   document.getElementById(data.toString()).style.display = 'block';
+  // });
 
   var initializeQueue = function(cb) {
     //retrieve tickets from database
