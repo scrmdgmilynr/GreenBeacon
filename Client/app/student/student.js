@@ -14,7 +14,9 @@ angular.module('app.student', [])
   });
 
   socket.on('messageAdded', (data) => {
-    document.getElementById(data.toString()).style.display = 'block';
+    if (document.getElementById(data.toString())) {
+      document.getElementById(data.toString()).style.display = 'block';
+    }
   });
 
   var initializeQueue = function(cb) {
