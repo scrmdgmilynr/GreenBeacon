@@ -52,6 +52,7 @@
 			<h1>My Tickets</h1>	
 			<div ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id' " ng-click='getTicket(ticket)' class="ticket-primary">
 		    <!-- Renders each ticket to the queue -->
+		    	<span class="glyphicon glyphicon-remove" style="color:#979797; float:right"></span>
 					<!-- Username & TimeStamp Table -->
 					<table>
 	      		<tr>
@@ -75,7 +76,7 @@
         				<table class="claimed-table">
 			        		<tr style="width: 100%">
 			        			<td>
-			        				<p class="list-group-item-text primary-font">Located in </p> 
+			        				<p class="list-group-item-text primary-font" style="margin-right:3px">Located in </p> 
 			        			</td>
 			        			<td>
 			        				<p class="list-group-item-text primary-font" ng-bind="ticket.location"></p>		
@@ -86,13 +87,9 @@
         			<td style="width:30%;">
 	        			<table class="claimed-table" style="width: 100%">
 				        		<tr>
-				        			<td>
+				        			<td style="float:right">
 				        				<button class=" btn btn-primary-inverted" ng-show="ticket.claimed" type="button" ng-click='getTicket(ticket)'">Chat</button>	
-				        			</td>
-				        			<td>
-				        				<span class="glyphicon glyphicon-remove" ng-click="solveTicket(ticket)"></span>
-				        			</td>
-				        			<td>
+
 				        				<button class="btn btn-primary" type="button" ng-show="!ticket.solved" ng-click="solveTicket(ticket)">Solved</button>
 				        			</td>			        						        			
 			        			</tr>
