@@ -54,7 +54,7 @@ angular.module('app.student', [])
           if (claim.helpeeId === results.data.userID) {
             //alert the helpee and include the name of the user who claimed the ticket
             console.log('claimed!');
-            sweetAlert(claim.user.displayname + ' is on the way!');
+            sweetAlert('Ticket claimed!', claim.user.displayname + ' is on the way!', 'success');
 
             for (var ticket of $scope.data.tickets) {
               //if the ticket's claimed attribute is true and the user of the claimed ticket matches the current session user
