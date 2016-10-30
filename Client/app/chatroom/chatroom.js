@@ -7,7 +7,6 @@ angular.module('app.chatroom', ['app.student'])
     $location.path(checkStatus.check(cookie));
   }
 
-  console.log(params.ticket, ' ticket')
   $scope.chatroom = [];
   $scope.ticketID = {ticketId: params.ticket.id};
   $scope.ticket = params.ticket;
@@ -27,7 +26,6 @@ angular.module('app.chatroom', ['app.student'])
   // };
 
   socket.on('messageAdded', () =>{
-    console.log('messageAdded')
     getChatroom($scope.ticketID);
   });
 
@@ -52,7 +50,6 @@ angular.module('app.chatroom', ['app.student'])
       data: data
     })
     .then((resp) => {
-      console.log('resp', resp)
       $scope.loading = '';
       $scope.sniptMsg = {
         msg:'Click the code area to edit, when finished click submit.', 
@@ -78,7 +75,6 @@ angular.module('app.chatroom', ['app.student'])
       data: data
     })
     .then((resp) => {
-      console.log("messages saved!");
       socket.emit('messageAdd', params.ticket.id);
     })
     .catch((err) => {
@@ -146,7 +142,6 @@ angular.module('app.chatroom', ['app.student'])
 
   socket.on('codeReceived', (code, id) => {
     if (id !== cookie.user.mainId) {
-      console.log('code: ', code);
       window.localStorage[`myEditor${params.ticket.id}`] = code;
       editor.setValue(code);
       $scope.sniptMsg.msg = 'Code recieved!'
