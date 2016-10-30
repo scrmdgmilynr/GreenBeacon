@@ -23,7 +23,7 @@ angular.module('app.student', [])
     //retrieve tickets from database
     //grab the cookie data from the session on passport
     const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
-    
+
     if(cookie.user.fellow) $location.path('fellow');
 
     Tickets.getUserTickets(cookie.user)
@@ -96,8 +96,9 @@ angular.module('app.student', [])
       });
   }
 
-  $scope.signout = function () {
+  $scope.signout = function ($location) {
     Auth.signout();
+    $location.path('/signin');
   }
 
   $scope.claimTicket = function (ticket) {

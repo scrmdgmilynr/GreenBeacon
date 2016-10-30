@@ -32,12 +32,12 @@ angular.module('app.queue', [])
         SVGdot = document.getElementsByClassName('dot');
 
         //add tickets to the scope
-        $scope.data.tickets = results.data.tickets; 
-        var tickets = $scope.data.tickets;   
+        $scope.data.tickets = results.data.tickets;
+        var tickets = $scope.data.tickets;
 
         //set claims to the scope
-        $scope.data.claims = results.data.claims; 
-        
+        $scope.data.claims = results.data.claims;
+
         //iterate through all tickets
         for (var ticket of $scope.data.tickets) {
           //if the userId of the ticket matches the current session user
@@ -84,7 +84,7 @@ angular.module('app.queue', [])
 
   // MAPPPPPPPP
   // $scope.addTicket = function () {
-    
+
   // //assign random color for each ticket's dot
   // function getRandomColor() {
   //   var letters = '0123456789ABCDEF'.split(''),
@@ -145,8 +145,9 @@ angular.module('app.queue', [])
   //   });
   // }
 
-  $scope.signout = function () {
+  $scope.signout = function ($location) {
     Auth.signout();
+    $location.path('/signin');
   }
 
   $scope.claimTicket = function (ticket) {
