@@ -38,7 +38,7 @@
     	<div class="col-md-11">
 				<!-- Open Tickets queue -->
 	      <h1>Open Tickets</h1>
-	      <div style="margin-top: 10px">				
+	      <div style="margin-top: 10px">
 				  <div ng-repeat="ticket in data.tickets | filter: {claimed: false} | orderBy:'-id' " class="ticket-primary" ng-show="!ticket.ismine">
 				    <!-- Renders each open ticket-->
    					<!-- <a class="list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}> -->
@@ -51,19 +51,19 @@
 		        			<td style="vertical-align: top">
 		        				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>
 		        			</td>
-		        		</tr>	        		
-		        	</table>	        		        
+		        		</tr>
+		        	</table>
 		        	<table class="location-table">
 		        		<tr style="width: 100%">
 		        			<td style="vertical-align: top; width:95%">
-			        			<p class="list-group-item-text" ng-bind="ticket.message"></p>	
+			        			<p class="list-group-item-text" ng-bind="ticket.message"></p>
 		        				<table class="location-table">
 					        		<tr style="width: 100%">
 					        			<td>
-					        				<p class="list-group-item-text primary-font">Located in</p> 
+					        				<p class="list-group-item-text primary-font">Located in&nbsp</p> 
 					        			</td>
 					        			<td>
-					        				<p class="list-group-item-text primary-font" ng-bind="ticket.location"></p>	
+					        				<p class="list-group-item-text primary-font" ng-bind="ticket.location"></p>
 					        			</td>
 					        		</tr>
 					        	</table>
@@ -71,17 +71,17 @@
 		        			<td style="width:5%">
 		        				<button class="btn btn-primary" type="button" ng-show="!ticket.claimed" ng-click="claimTicket(ticket)">Claim</button>
 					        	<button class="btn btn-primary"solv" type="button" ng-show="ticket.preSolved && ticket.ismine" ng-click="solveTicket(ticket)">Solved</button>
-		        			</td>	        			
+		        			</td>
 		        		</tr>
-		        	</table>						
+		        	</table>
 					</div>
-				</div>				
+				</div>
 			</div>
-    </div>    
-    <div class="col-md-6">	        	
+    </div>
+    <div class="col-md-6">
     	<div class="col-md-11">
-			<h1>Claimed Tickets</h1>		  
-		  <div>	
+			<h1>Claimed Tickets</h1>
+		  <div>
 			  <div ng-repeat="ticket in data.tickets | filter: {claimed: true, solved: false}| orderBy:'-id' " class="ticket-primary">
 			    <!-- Renders each ticket to the queue -->
 					<!-- 		    <a class="list-group-item-action" ng-class="{'ticket-claimed list-group-item list-group-item-action': ticket.claimed, 'list-group-item list-group-item-action': !ticket.claimed}" ng-mouseover = 'showDot(ticket.x, ticket.y)' x = {{ticket.x}} y ={{ticket.y}}> -->
@@ -91,22 +91,22 @@
 		        				<h5 ng-bind="ticket.user.displayname || ticket.user.username" style="margin-right: 7px;  padding-top:0px; margin-top:0px"></h5>
 		        			</td>
 		        			<td style="vertical-align: top">
-		        				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>                    
+		        				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>
 		        			</td>
-		        		</tr>	        		
-		        	</table>	        		        
+		        		</tr>
+		        	</table>
 		        	<table>
 		        		<tr style="width: 100%">
 		        			<td style="vertical-align: top; width:95%">
 			        			<p class="list-group-item-text" ng-bind="ticket.message"></p>
-			        				
+
 		        				<table class="claimed-table">
 					        		<tr style="width: 100%">
 					        			<td>
-					        				
+
 					        			</td>
 					        			<td>
-					        					
+
 					        			</td>
 					        		</tr>
 					        		<tr>
@@ -132,8 +132,8 @@
 		        			</td>
 		        			<td style="width:5%">
 					        	<!-- <button class="deleteb" type="button" ng-show="ticket.ismine && !ticket.preSolved" ng-disabled="ticket.claimed" ng-click="solveTicket(ticket)">Delete</button> -->
-					        	<button class=" btn btn-primary-inverted" type="button" ng-click='getTicket(ticket)'">Chat</button>	       		
-		        			</td>	        			
+					        	<button class=" btn btn-primary-inverted" type="button" ng-click='getTicket(ticket)'">Chat</button>
+		        			</td>
 		        		</tr>
 		        	</table>
 			   	<!-- </a> -->
@@ -141,8 +141,8 @@
 			</div>
 			<div class="col-md-1"></div>
 		</div>
-    </div>	
-    
+    </div>
+
       <!-- end body content row -->
   </div>
 	<footer style="margin-top:50px"">
