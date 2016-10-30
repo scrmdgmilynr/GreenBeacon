@@ -156,6 +156,8 @@ h6{
 /*------------------------ CHATROOM PAGE --------------------*/
 /*---------------------------------------------------------*/
 .ticket-secondary {
+	word-wrap: break-word;
+	word-break:break-all;   
 	background-color: #FFFFFF;
 	border-radius: 7px;
 	padding: 2%;
@@ -224,6 +226,8 @@ h6{
 }
 
 .chat-primary {
+	word-wrap: break-word;
+	word-break:break-all;   
 	background-color: #D8D8D8;
 	border-radius: 7px;
 	padding: 1%;
