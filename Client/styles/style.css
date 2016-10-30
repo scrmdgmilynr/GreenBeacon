@@ -155,9 +155,7 @@ h6{
 /*---------------------------------------------------------*/
 /*------------------------ CHATROOM PAGE --------------------*/
 /*---------------------------------------------------------*/
-.ticket-secondary {
-	word-wrap: break-word;
-	word-break:break-all;   
+.ticket-secondary {  
 	background-color: #FFFFFF;
 	border-radius: 7px;
 	padding: 2%;
