@@ -15,11 +15,11 @@ var fellers = [
     githubHandle: 'acting326',
     userId: 2
   },
-  // {
-  //   fellerName: 'Andrew Sherman',
-  //   githubHandle: 'ashermanwmf',
-  //   userId: 50
-  // },
+  {
+    fellerName: 'Andrew Sherman',
+    githubHandle: 'ashermanwmf',
+    userId: 50
+  },
   {
     fellerName: 'Jemil Ezzet',
     githubHandle: 'jemilezzet',
