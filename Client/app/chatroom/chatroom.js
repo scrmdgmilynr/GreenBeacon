@@ -1,5 +1,5 @@
 angular.module('app.chatroom', ['app.student'])
-.controller('ChatroomController', ['$scope', 'Tickets', 'Auth', 'params', '$http', 'loading', 'checkStatus', '$location', function($scope, Tickets, Auth, params, $http, loading, checkStatus, $location){
+.controller('ChatroomController', ['$scope', '$timeout', 'Tickets', 'Auth', 'params', '$http', 'loading', 'checkStatus', '$location', function($scope, $timeout, Tickets, Auth, params, $http, loading, checkStatus, $location){
   const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
 
   if(params.ticket === undefined){
@@ -14,6 +14,11 @@ angular.module('app.chatroom', ['app.student'])
   $scope.messageObj = {};
   $scope.loading = loading.loading;
   $scope.code = '';
+
+  $scope.sniptMsg = {
+    msg: '',
+    cl: 'hidden'
+  }
 
   // var updateScroll = (element) =>{
   //   console.dir(element.scrollTop, 'before')
@@ -49,6 +54,10 @@ angular.module('app.chatroom', ['app.student'])
     .then((resp) => {
       console.log('resp', resp)
       $scope.loading = '';
+      $scope.sniptMsg = {
+        msg:'Click the code area to edit, when finished click submit.', 
+        cl: 'show'
+      }
       resp.data.forEach(function(item) {
         item.createdAtUpdate = moment(item.createdAt).startOf('minute').fromNow();
         item.updatedAtUpdate = moment(item.updatedAt).startOf('hour').fromNow();
@@ -130,6 +139,7 @@ angular.module('app.chatroom', ['app.student'])
   $scope.submitCode = function() {
     console.log('submitted');
     socket.emit('codeChange', window.localStorage[`myEditor${params.ticket.id}`], cookie.user.mainId);
+    $scope.sniptMsg.msg = 'Code sending...';
   }
 
   socket.on('codeReceived', (code, id) => {
@@ -137,8 +147,16 @@ angular.module('app.chatroom', ['app.student'])
       console.log('code: ', code);
       window.localStorage[`myEditor${params.ticket.id}`] = code;
       editor.setValue(code);
+      $scope.sniptMsg.msg = 'Code recieved!'
+      socket.emit('codeRecieved')
       // Sets cursor to end of doc after edit...develop live edit later.
       // $scope.editor.setCursor($scope.editor.lineCount(), 0);
+    }else{
+      $scope.sniptMsg.msg = 'Code sent!';
+      $scope.$digest();
+      $timeout(() =>{
+        $scope.sniptMsg.msg = 'Click the code area to edit, when finished click submit.'
+      }, 3000)
     }
   });
 
