@@ -108,7 +108,7 @@ angular.module('app.chatroom', ['app.student'])
     initText = window.localStorage[`myEditor${params.ticket.id}`];
   }
 
-  $scope.editor = new CodeMirror(document.getElementById("codeArea"),
+  var editor = new CodeMirror(document.getElementById("codeArea"),
     {
       value: initText,
       theme: 'monokai',
@@ -120,10 +120,10 @@ angular.module('app.chatroom', ['app.student'])
       autofocus: true,
     });
 
-  window.localStorage[`myEditor${params.ticket.id}`] = $scope.editor.getValue();
+  window.localStorage[`myEditor${params.ticket.id}`] = editor.getValue();
 
-  $scope.editor.on('change', function() {
-      window.localStorage[`myEditor${params.ticket.id}`] = $scope.editor.getValue();
+  editor.on('change', function() {
+      window.localStorage[`myEditor${params.ticket.id}`] = editor.getValue();
       console.log(window.localStorage[`myEditor${params.ticket.id}`]);
   });
 
@@ -136,7 +136,7 @@ angular.module('app.chatroom', ['app.student'])
     if (id !== cookie.user.mainId) {
       console.log('code: ', code);
       window.localStorage[`myEditor${params.ticket.id}`] = code;
-      $scope.editor.setValue(code);
+      editor.setValue(code);
       // Sets cursor to end of doc after edit...develop live edit later.
       // $scope.editor.setCursor($scope.editor.lineCount(), 0);
     }
