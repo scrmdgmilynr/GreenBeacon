@@ -25,21 +25,22 @@
 		<div class='col-md-10'>
 			<h1>Codeshare Chat</h1>
 				<div ng-model='loading'>
-					<h3 style="">{{loading}}</h3>
+					<h3>{{loading}}</h3>
 				</div>
-				<div ng-model='sniptMsg' class='col-md-7 alert alert-info {{sniptMsg.cl}}'>
-						{{sniptMsg.msg}}
-				</div>
+				
 		</div>
 	</div>
 
 	<div class="row">
 		<div class='col-md-1'></div>
 		<div class='col-md-6'>
+		<div ng-model='sniptMsg' class='{{sniptMsg.cl}}'>
+			{{sniptMsg.msg}}
 			<div id="codeArea"></div>
-      <form ng-submit="submitCode()">
+			<form ng-submit="submitCode()">
         <input type="submit" class="form-control submit btn btn-primary" value="Submit"/>
       </form>
+		</div>
     </div>
 		<div class='col-md-4'>
 			<div class="ticket-secondary" ng-model='ticket'>

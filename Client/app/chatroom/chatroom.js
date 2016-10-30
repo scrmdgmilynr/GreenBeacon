@@ -53,7 +53,7 @@ angular.module('app.chatroom', ['app.student'])
       $scope.loading = '';
       $scope.sniptMsg = {
         msg:'Click the code area to edit, when finished click submit.', 
-        cl: 'show'
+        cl: 'alert alert-info'
       }
       resp.data.forEach(function(item) {
         item.createdAtUpdate = moment(item.createdAt).startOf('minute').fromNow();
@@ -145,17 +145,21 @@ angular.module('app.chatroom', ['app.student'])
       window.localStorage[`myEditor${params.ticket.id}`] = code;
       editor.setValue(code);
       $scope.sniptMsg.msg = 'Code recieved!'
+      $scope.sniptMsg.cl = 'alert alert-success';
       socket.emit('codeRecieved')
       $timeout(() =>{
         $scope.sniptMsg.msg = 'Click the code area to edit, when finished click submit.'
+        $scope.sniptMsg.cl = 'alert alert-info';
       }, 3000)
       // Sets cursor to end of doc after edit...develop live edit later.
       // $scope.editor.setCursor($scope.editor.lineCount(), 0);
     }else{
       $scope.sniptMsg.msg = 'Code sent!';
+      $scope.sniptMsg.cl = 'alert alert-success';
       $scope.$digest();
       $timeout(() =>{
         $scope.sniptMsg.msg = 'Click the code area to edit, when finished click submit.'
+        $scope.sniptMsg.cl = 'alert alert-info';
       }, 3000)
     }
   });
