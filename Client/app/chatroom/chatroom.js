@@ -101,14 +101,14 @@ angular.module('app.chatroom', ['app.student'])
     $location.path(checkStatus.check(cookie));
   }
 
-  var initText = "";
+  var initText = "// Drag javascript file into code area or start typing!";
   var defaultMode = "javascript";
 
   if(window.localStorage[`myEditor${params.ticket.id}`] !== undefined) {
     initText = window.localStorage[`myEditor${params.ticket.id}`];
   }
 
-  $scope.editor = new CodeMirror(document.getElementById("codeArea"),
+  var editor = new CodeMirror(document.getElementById("codeArea"),
     {
       value: initText,
       theme: 'monokai',
@@ -120,26 +120,27 @@ angular.module('app.chatroom', ['app.student'])
       autofocus: true,
     });
 
-  window.localStorage[`myEditor${params.ticket.id}`] = $scope.editor.getValue();
-  var flag = true;
+  window.localStorage[`myEditor${params.ticket.id}`] = editor.getValue();
 
-  $scope.editor.on('change', function() {
-    if (flag) {
-      window.localStorage[`myEditor${params.ticket.id}`] = $scope.editor.getValue();
-      // var cursorPos = $scope.editor.coordsChar($scope.editor.cursorCoords());
-      flag = false;
-      socket.emit('codeChange', window.localStorage[`myEditor${params.ticket.id}`], cookie.user.mainId,  cursorPos);
-    }
+  editor.on('change', function() {
+      window.localStorage[`myEditor${params.ticket.id}`] = editor.getValue();
+      console.log(window.localStorage[`myEditor${params.ticket.id}`]);
   });
 
-  // socket.on('codeReceived', (code, id, cursor) => {
-  //   if (id !== cookie.user.mainId) {
-  //     window.localStorage[`myEditor${params.ticket.id}`] = code;
-  //     $scope.editor.setValue(code);
-  //     $scope.editor.setCursor($scope.editor.lineCount(), 0);
-  //     flag = true;
-  //   }
-  // });
+  $scope.submitCode = function() {
+    console.log('submitted');
+    socket.emit('codeChange', window.localStorage[`myEditor${params.ticket.id}`], cookie.user.mainId);
+  }
+
+  socket.on('codeReceived', (code, id) => {
+    if (id !== cookie.user.mainId) {
+      console.log('code: ', code);
+      window.localStorage[`myEditor${params.ticket.id}`] = code;
+      editor.setValue(code);
+      // Sets cursor to end of doc after edit...develop live edit later.
+      // $scope.editor.setCursor($scope.editor.lineCount(), 0);
+    }
+  });
 
   $scope.checkId = (chat) =>{
     if(cookie.user.username === chat.username){
