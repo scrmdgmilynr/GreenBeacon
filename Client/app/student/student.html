@@ -21,15 +21,15 @@
 
 <div ng-model='loading'>
 	<h3>{{loading}}</h3>
-</div>					  
+</div>
 
 <div class="container-fluid" style="margin-top: 50px">
   <!-- start nav row -->
   <div class="row">
 	  <div class="col-md-3"></div>
 	  <div class="col-md-6">
-			<!-- All Student Tickets --> 
-			<h1>Submit Help Desk Request</h1>	
+			<!-- All Student Tickets -->
+			<h1>Submit Help Desk Request</h1>
 			<!-- Form for submitting new tickets -->
 			<form autocomplete="off" name="input-group" ng-submit="addTicket()" style="margin-top:0px">
 			  <label class="locationtext" for="select" placeholder="Select your location"></label>
@@ -43,13 +43,13 @@
 	          <option value="The Dijkstra">The Dijkstra</option><!-- x: 25-160 ; y: 590-655 -->
 	          <option value="The Ada">The Ada</option><!-- x: 290-370 ; y: 655-760 -->
 	          <option value="Entrance Hall">Entrance Hall</option><!-- x: 25-260 ; y: 690-760 -->
-			    </select>			    
+			    </select>
 			    <textarea rows="4" cols="50" name="ticket" type="text" ng-model="ticket.message" class="form-control" placeholder="Enter your question here" style="margin-bottom:6px"required></textarea>
 			    <input class="submit btn btn-secondary" type="submit" value="Add" ng-disabled="!ticket.location" style="float:right">
 			</form>
 			<br />
-			<br />	
-			<h1>My Tickets</h1>	
+			<br />
+			<h1>My Tickets</h1>
 			<div ng-repeat="ticket in data.tickets | filter: {solved: false} | orderBy:'-id'" class="ticket-primary" ng-mouseenter="show = true" ng-mouseleave="show = false">
 		    <!-- Renders each ticket to the queue -->
 		    	<span class="glyphicon glyphicon-remove" style="color:#979797; float:right" ng-click="solveTicket(ticket)" ng-show="show"></span>
@@ -62,23 +62,23 @@
 	      			<td style="vertical-align: top">
 	      				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>
 	      			</td>
-	      		</tr>	        		
+	      		</tr>
 	      	</table>
-					
-					<!-- Ticket Message Table -->       		        
+
+					<!-- Ticket Message Table -->
         	<table style="width: 100%">
         		<tr>
         			<td style="vertical-align: top; width:70%">
-	        			<p class="list-group-item-text" ng-bind="ticket.message"></p>	
-        				
-        				<!-- Location Table -->       		        
+	        			<p class="list-group-item-text" ng-bind="ticket.message"></p>
+
+        				<!-- Location Table -->
         				<table class="claimed-table">
 			        		<tr style="width: 100%">
 			        			<td>
-			        				<p class="list-group-item-text primary-font" style="margin-right:3px">Located in </p> 
+			        				<p class="list-group-item-text primary-font" style="margin-right:3px">Located in &nbsp</p> 
 			        			</td>
 			        			<td>
-			        				<p class="list-group-item-text primary-font" ng-bind="ticket.location"></p>		
+			        				<p class="list-group-item-text primary-font" ng-bind="ticket.location"></p>
 			        			</td>
 			        		</tr>
 			        	</table>
@@ -87,10 +87,10 @@
 	        			<table class="claimed-table" style="width: 100%">
 				        		<tr>
 				        			<td style="float:right">
-				        				<button class=" btn btn-primary-inverted" ng-show="ticket.claimed" type="button" ng-click='getTicket(ticket)'">Chat</button>	
+				        				<button class=" btn btn-primary-inverted" ng-show="ticket.claimed" type="button" ng-click='getTicket(ticket)'">Chat</button>
 
 				        				<button class="btn btn-primary" type="button" ng-show="!ticket.solved" ng-click="solveTicket(ticket)">Solved</button>
-				        			</td>     			
+				        			</td>
 			        			</tr>
 			        			<tr>
 			        				<td style="float:right">
@@ -110,17 +110,13 @@
 							        		</table>
 				        				</div>
 			        				</td>
-			        			</tr>			        			
-	        			</table>			        	
-        			</td>	        			
+			        			</tr>
+	        			</table>
+        			</td>
         		</tr>
-        	</table>	      	
-		  </div>  	  	
+        	</table>
+		  </div>
 	  </div>
 	  <div class="col-md-3"></div>
 	</div>
 </div>
-
-				  	 
-		        	
-			   
