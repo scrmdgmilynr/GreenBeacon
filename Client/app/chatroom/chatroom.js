@@ -28,10 +28,10 @@ angular.module('app.chatroom', ['app.student'])
 
   socket.on('otherTyping', (data) => {
     if (data !== cookie.user.mainId) {
-      document.getElementById('gif').style.display = 'block';
-      setTimeout(() => {
-        document.getElementById('gif').style.display = 'none';
-      }, 1000);
+      $('#gif').css('visibility', 'visible');
+      setTimeout(()=> {
+        $('#gif').css('visibility', 'hidden')
+      }, 1000)
     }
   });
 
@@ -101,7 +101,7 @@ angular.module('app.chatroom', ['app.student'])
     $location.path(checkStatus.check(cookie));
   }
 
-  var initText = "// Drag javascript file into code area or start typing!";
+  var initText = "// Drag javascript file into code area or start typing! \n";
   var defaultMode = "javascript";
 
   if(window.localStorage[`myEditor${params.ticket.id}`] !== undefined) {
@@ -119,16 +119,18 @@ angular.module('app.chatroom', ['app.student'])
       smartIndent: true,
       autofocus: true,
     });
+  if (initText === "// Drag javascript file into code area or start typing! \n") {
+    editor.setCursor({line: 2, ch:0});
+  }
+
 
   window.localStorage[`myEditor${params.ticket.id}`] = editor.getValue();
 
   editor.on('change', function() {
       window.localStorage[`myEditor${params.ticket.id}`] = editor.getValue();
-      console.log(window.localStorage[`myEditor${params.ticket.id}`]);
   });
 
   $scope.submitCode = function() {
-    console.log('submitted');
     socket.emit('codeChange', window.localStorage[`myEditor${params.ticket.id}`], cookie.user.mainId);
   }
 
@@ -150,8 +152,9 @@ angular.module('app.chatroom', ['app.student'])
     }
   }
 
-  $scope.signout = function () {
+  $scope.signout = function ($location) {
     Auth.signout();
+    $location.path('/signin');
   }
 
 }])
