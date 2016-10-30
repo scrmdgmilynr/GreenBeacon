@@ -29,33 +29,36 @@
 				</div>
 		</div>
 	</div>
-	
+
 	<div class="row">
 		<div class='col-md-1'></div>
 		<div class='col-md-6'>
 			<div id="codeArea"></div>
-		</div>
-		<div class='col-md-4'>	
+      <form ng-submit="submitCode()">
+        <input type="submit" class="form-control submit btn btn-primary" value="Submit"/>
+      </form>
+    </div>
+		<div class='col-md-4'>
 			<div class="ticket-secondary" ng-model='ticket'>
 				<table style="width: 100%">
 		  		<tr>
 		  			<td style="width:25%">
 		  				<h3 style="margin:0px">Ticket</h3>
 		  			</td>
-		  			<td style="vertical-align: top; width:10%">		  				
+		  			<td style="vertical-align: top; width:10%">
 		  				<h5  style="margin-right: 5px;  padding-top:0px; margin-top:0px;margin-left: 0px" ng-bind="ticket.user.displayname || ticket.user.username"></h5>
 		  			</td>
 		  			<td style="vertical-align: top; width:65%">
 		  				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="ticket.createdAt"></p>
 		  			</td>
-		  		</tr>	        		
+		  		</tr>
 		  	</table>
 		  	<table style="width: 100%">
 		  		<tr>
 		  			<td style="width:25%"></td>
 		  			<td style="vertical-align: top; width:75%">
-		    			<p class="list-group-item-text" ng-bind="ticket.message" style="margin-left: 0px"></p>	
-		  				<!-- Location Table --> 
+		    			<p class="list-group-item-text" ng-bind="ticket.message" style="margin-left: 0px"></p>
+		  				<!-- Location Table -->
 		  			</td>
 		  		</tr>
 		  	</table>
@@ -76,7 +79,7 @@
 	      		</tr>
 			    </table>
 					</div>
-				</form>				
+				</form>
 				<div id='chatbox' class='chatsbox'>
 				<div id="gif">
 			        <img id="gifMedia" src="https://www.chartrank.com/assets/img/loading_dots.gif"></img>
@@ -90,30 +93,30 @@
 			      			<td style="vertical-align: top">
 			      				<p style="color:#AFB8BA; padding-top:0px; margin-top:0px" class="list-group-item-text" ng-bind="chat.createdAtUpdate"></p>
 			      			</td>
-			      		</tr>	        		
+			      		</tr>
 			      	</table>
 			      	<table style="width: 100%">
 		        		<tr>
 		        			<td style="vertical-align: top; width:70%">
-			        			<p class="list-group-item-text" ng-bind="chat.message"></p>	
-		        				
-		        				<!-- Location Table -->       		        
+			        			<p class="list-group-item-text" ng-bind="chat.message"></p>
+
+		        				<!-- Location Table -->
 		        				<table class="claimed-table">
 					        		<tr style="width: 100%">
 					        			<td>
-					        				<p class="list-group-item-text primary-font"> </p> 
+					        				<p class="list-group-item-text primary-font"> </p>
 					        			</td>
 					        			<td>
-					        				<p class="list-group-item-text primary-font" ng-bind="ticket.location"></p>		
+					        				<p class="list-group-item-text primary-font" ng-bind="ticket.location"></p>
 					        			</td>
 					        		</tr>
 					        	</table>
-		        			</td>		
+		        			</td>
 		        		</tr>
-		        	</table>      
+		        	</table>
 				</div>
 				</div>
-			</div>	
+			</div>
 		</div>
 		<div class='col-md-1'></div>
 	</div>
@@ -124,5 +127,3 @@
 			</center>
 	</footer>
 </div>
-
-
