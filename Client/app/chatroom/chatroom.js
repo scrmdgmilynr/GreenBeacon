@@ -151,6 +151,9 @@ angular.module('app.chatroom', ['app.student'])
       editor.setValue(code);
       $scope.sniptMsg.msg = 'Code recieved!'
       socket.emit('codeRecieved')
+      $timeout(() =>{
+        $scope.sniptMsg.msg = 'Click the code area to edit, when finished click submit.'
+      }, 3000)
       // Sets cursor to end of doc after edit...develop live edit later.
       // $scope.editor.setCursor($scope.editor.lineCount(), 0);
     }else{
