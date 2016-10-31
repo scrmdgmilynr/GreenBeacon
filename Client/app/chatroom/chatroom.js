@@ -69,8 +69,10 @@ angular.module('app.chatroom', ['app.student'])
 
         if (m.match(regex)) {
           console.log("Successful match:", item);
-          if((m.match(regex)[0].slice(0,4) !== "http") && (m.match(regex)[0].slice(0,4) !== "www.") && (m.match(regex)[0].slice(-4) !== "www.")){
+          if((m.match(regex)[0].slice(0,4) !== "http") && (m.match(regex)[0].slice(0,4) !== "www.") && ((m.match(regex)[0].slice(0,4) !== ".com") || (m.match(regex)[0].slice(-4) !== ".co"))){
             item.url= "http://www." + m.match(regex)[0];
+          } else if ((m.match(regex)[0].slice(0,4) === "www.") && ((m.match(regex)[0].slice(0,4) !== ".com") || (m.match(regex)[0].slice(-4) !== ".co"))){
+            item.url= "http://" + m.match(regex)[0];
           } else {
             item.url=  m.match(regex)[0];
           }
