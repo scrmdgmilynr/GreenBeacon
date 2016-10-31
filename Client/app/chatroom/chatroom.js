@@ -59,16 +59,21 @@ angular.module('app.chatroom', ['app.student'])
       resp.data.forEach(function(item) {
         item.createdAtUpdate = moment(item.createdAt).startOf('minute').fromNow();
         item.updatedAtUpdate = moment(item.updatedAt).startOf('hour').fromNow();
-        var url = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+        // var url = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+        // var url =  [-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*);
+        var url = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
         var regex = new RegExp(url);
         var m = item.message;
         
         console.log("regext message: ", m.match(regex));
 
         if (m.match(regex)) {
-          item.url=true;
-          $scope.chatURL = m.match(regex)[0];
           console.log("Successful match:", item);
+          if((m.match(regex)[0].slice(0,4) !== "http") && (m.match(regex)[0].slice(0,4) !== "www.") && (m.match(regex)[0].slice(-4) !== "www.")){
+            item.url= "http://www." + m.match(regex)[0];
+          } else {
+            item.url=  m.match(regex)[0];
+          }
         } else {
           console.log("No match");
         }        
