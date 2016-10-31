@@ -9,7 +9,6 @@ angular.module('app.student', [])
   $scope.loading = loading.loading;
 
   socket.on('ticketChange', () =>{
-    sweetAlert('Ticket claimed!', claim.user.displayname + ' is on the way!', 'success');
     console.log('ticketchanged')
     initializeQueue();
   });
@@ -53,6 +52,7 @@ angular.module('app.student', [])
         for (var claim of $scope.data.claims) {
           //if the helpee (user) id of the claim matches the current session user
           if (claim.helpeeId === results.data.userID) {
+            sweetAlert('Ticket claimed!', claim.user.displayname + ' is on the way!', 'success');
             //alert the helpee and include the name of the user who claimed the ticket
             for (var ticket of $scope.data.tickets) {
               //if the ticket's claimed attribute is true and the user of the claimed ticket matches the current session user
