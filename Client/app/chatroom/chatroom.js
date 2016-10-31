@@ -118,6 +118,7 @@ angular.module('app.chatroom', ['app.student'])
       value: initText,
       theme: 'monokai',
       autoCloseBrackets: true,
+      autoCloseTags: true,
       lineNumbers: true,
       tabSize: 2,
       mode: 'javascript',
