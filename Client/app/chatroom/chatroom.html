@@ -27,7 +27,7 @@
 				<div ng-model='loading'>
 					<h3>{{loading}}</h3>
 				</div>
-				
+
 		</div>
 	</div>
 
@@ -74,9 +74,13 @@
 					<div class="form-group">
 					<table style="width:100%">
 	      		<tr>
-	      			<td style="vertical-align: top; width:80%; padding-right:2%">
-	      				<input type="text" class="form-control" ng-model="message" ng-keyup="typing()" placeholder="Type in message" required/>
-	      			</td>
+	      			<td style="vertical-align: top; width:75%; padding-right:0%">
+	      				<input type="text" id="messageinput" class="form-control" ng-model="message" ng-keyup="typing()" placeholder="Type in message" required/>
+              </td>
+              <!-- emoji select here -->
+              <td style="vertical-align: middle; width:15%; text-align:center">
+                <i id="trigger" class="fa fa-smile-o" aria-hidden="true"></i>
+              </td>
 	      			<td style="vertical-align: top; width:20%">
 		      			<input type="submit" class="form-control submit btn btn-primary" value="Send Message"/>
 	      			</td>
@@ -103,7 +107,7 @@
 		        		<tr>
 		        			<td style="vertical-align: top; width:70%">
 			        			<p class="list-group-item-text" ng-bind="chat.message" ng-show="!chat.url"></p>
-			        			<a href="{{chat.url}}"  class="list-group-item-text" ng-bind="chat.message" 
+			        			<a href="{{chat.url}}"  class="list-group-item-text" ng-bind="chat.message"
 			        			ng-show="chat.url"/></a>
 
 		        				<!-- Location Table -->
