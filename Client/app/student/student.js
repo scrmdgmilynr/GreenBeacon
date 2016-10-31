@@ -19,6 +19,12 @@ angular.module('app.student', [])
     }
   });
 
+  socket.on('clamiedTicket', () =>{
+    console.log('claimed!');
+    initializeQueue();
+    sweetAlert('Ticket claimed!', claim.user.displayname + ' is on the way!', 'success');
+  });
+
   var initializeQueue = function(cb) {
     //retrieve tickets from database
     //grab the cookie data from the session on passport
@@ -53,9 +59,6 @@ angular.module('app.student', [])
           //if the helpee (user) id of the claim matches the current session user
           if (claim.helpeeId === results.data.userID) {
             //alert the helpee and include the name of the user who claimed the ticket
-            console.log('claimed!');
-            sweetAlert('Ticket claimed!', claim.user.displayname + ' is on the way!', 'success');
-
             for (var ticket of $scope.data.tickets) {
               //if the ticket's claimed attribute is true and the user of the claimed ticket matches the current session user
                 //set the ticket's preSolved state to true
