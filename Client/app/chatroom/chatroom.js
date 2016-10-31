@@ -113,7 +113,11 @@ angular.module('app.chatroom', ['app.student'])
     initText = window.localStorage[`myEditor${params.ticket.id}`];
   }
 
-  var editor = new CodeMirror(document.getElementById("codeArea"),
+  var foldFunc = () => {
+    CodeMirror.newFoldFunction(CodeMirror.braceRangeFinder);
+  };
+
+  var editor = new CodeMirror (document.getElementById("codeArea"),
     {
       value: initText,
       theme: 'monokai',
@@ -124,7 +128,15 @@ angular.module('app.chatroom', ['app.student'])
       mode: 'javascript',
       smartIndent: true,
       autofocus: true,
+      foldGutter: true,
+      gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
     });
+
+  // todo: Figure out why gutter click does not fold text.
+  editor.on('gutterClick', foldFunc);
+
+  console.log('editor options: ', editor);
+
   if (initText === "// Drag javascript file into code area or start typing! \n") {
     editor.setCursor({line: 2, ch:0});
   }
