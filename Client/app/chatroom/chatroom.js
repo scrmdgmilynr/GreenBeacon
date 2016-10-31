@@ -54,11 +54,26 @@ angular.module('app.chatroom', ['app.student'])
       $scope.sniptMsg = {
         msg:'Click the code area to edit, when finished click submit.',
         cl: 'alert alert-info'
-      }
+      }      
+
       resp.data.forEach(function(item) {
         item.createdAtUpdate = moment(item.createdAt).startOf('minute').fromNow();
         item.updatedAtUpdate = moment(item.updatedAt).startOf('hour').fromNow();
+        var url = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+        var regex = new RegExp(url);
+        var m = item.message;
+        
+        console.log("regext message: ", m.match(regex));
+
+        if (m.match(regex)) {
+          item.url=true;
+          $scope.chatURL = m.match(regex)[0];
+          console.log("Successful match:", item);
+        } else {
+          console.log("No match");
+        }        
       });
+
     	$scope.chatroom = resp.data;
       // $scope.$digest();
     })
