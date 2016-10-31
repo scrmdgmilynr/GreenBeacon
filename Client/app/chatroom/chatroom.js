@@ -54,7 +54,7 @@ angular.module('app.chatroom', ['app.student'])
       $scope.sniptMsg = {
         msg:'Click the code area to edit, when finished click submit.',
         cl: 'alert alert-info'
-      }      
+      }
 
       resp.data.forEach(function(item) {
         item.createdAtUpdate = moment(item.createdAt).startOf('minute').fromNow();
@@ -64,7 +64,7 @@ angular.module('app.chatroom', ['app.student'])
         var url = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
         var regex = new RegExp(url);
         var m = item.message;
-        
+
         console.log("regext message: ", m.match(regex));
 
         if (m.match(regex)) {
@@ -76,7 +76,7 @@ angular.module('app.chatroom', ['app.student'])
           }
         } else {
           console.log("No match");
-        }        
+        }
       });
 
     	$scope.chatroom = resp.data;
@@ -113,6 +113,18 @@ angular.module('app.chatroom', ['app.student'])
     saveChatMessage($scope.messageObj)
     $scope.message = '';
   }
+
+  // emoji selector
+  $('#messageinput').emojiPicker({
+    width: '300px',
+    height: '200px',
+    button: false
+  });
+
+  $('#trigger').click(function(e) {
+    e.preventDefault();
+    $('#messageinput').emojiPicker('toggle');
+  });
 
   $scope.typing = function() {
     socket.emit('typing', cookie.user.mainId);
