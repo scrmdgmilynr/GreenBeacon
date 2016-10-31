@@ -9,6 +9,7 @@ angular.module('app.student', [])
   $scope.loading = loading.loading;
 
   socket.on('ticketChange', () =>{
+    sweetAlert('Ticket claimed!', claim.user.displayname + ' is on the way!', 'success');
     console.log('ticketchanged')
     initializeQueue();
   });
@@ -17,12 +18,6 @@ angular.module('app.student', [])
     if (document.getElementById(data.toString())) {
       document.getElementById(data.toString()).style.display = 'block';
     }
-  });
-
-  socket.on('clamiedTicket', () =>{
-    console.log('claimed!');
-    initializeQueue();
-    sweetAlert('Ticket claimed!', claim.user.displayname + ' is on the way!', 'success');
   });
 
   var initializeQueue = function(cb) {
