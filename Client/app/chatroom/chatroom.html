@@ -102,7 +102,9 @@
 			      	<table style="width: 100%">
 		        		<tr>
 		        			<td style="vertical-align: top; width:70%">
-			        			<p class="list-group-item-text" ng-bind="chat.message"></p>
+			        			<p class="list-group-item-text" ng-bind="chat.message" ng-show="!chat.url"></p>
+			        			<a ng-href="{{chatURL}}"  class="list-group-item-text" ng-bind="chat.message" 
+			        			ng-show="chat.url"/></a>
 
 		        				<!-- Location Table -->
 		        				<table class="claimed-table">
