@@ -56,7 +56,6 @@ angular.module('app.queue', [])
           //if the helpee (user) id of the claim matches the current session user
           if (claim.helpeeId === results.data.userID) {
             //alert the helpee and include the name of the user who claimed the ticket
-            alert(claim.user.displayname + ' is on their way!');
 
             for (var ticket of $scope.data.tickets) {
               //if the ticket's claimed attribute is true and the user of the claimed ticket matches the current session user
@@ -157,6 +156,7 @@ angular.module('app.queue', [])
     Tickets.claimTicket(ticket)
       .then(function () {
         initializeQueue();
+        socket.emit('ticketClaimed');
       })
       .catch(function (err) {
         console.log(err);

@@ -31,4 +31,8 @@ io.on('connection', (socket) => {
     io.emit('codeReceived', code, id);
   });
 
+  socket.on('ticketClamied', () =>{
+    io.emit('clamiedTicket');
+  })
+
 });
