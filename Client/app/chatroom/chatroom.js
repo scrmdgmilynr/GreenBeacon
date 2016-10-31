@@ -32,9 +32,9 @@ angular.module('app.chatroom', ['app.student'])
   socket.on('otherTyping', (data) => {
     if (data !== cookie.user.mainId) {
       $('#gif').css('visibility', 'visible');
-      setTimeout(()=> {
+      _.debounce(setTimeout(()=> {
         $('#gif').css('visibility', 'hidden')
-      }, 1000)
+      }, 1000), 3000);
     }
   });
 
@@ -52,7 +52,7 @@ angular.module('app.chatroom', ['app.student'])
     .then((resp) => {
       $scope.loading = '';
       $scope.sniptMsg = {
-        msg:'Click the code area to edit, when finished click submit.', 
+        msg:'Click the code area to edit, when finished click submit.',
         cl: 'alert alert-info'
       }
       resp.data.forEach(function(item) {
