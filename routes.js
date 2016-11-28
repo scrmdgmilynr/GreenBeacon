@@ -21,7 +21,7 @@ module.exports.router = function(app) {
   // add route for specific tickets
   app.get('/tickets/:userid', helpers.getUserTickets);
 
-  app.post('/tickets', helpers.isLoggedIn, helpers.addToQueue);
+  app.post('/tickets', helpers.addToQueue);
 
   app.put('/claimed', helpers.tagClaimed);
 

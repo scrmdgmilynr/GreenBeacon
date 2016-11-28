@@ -5,6 +5,15 @@ angular.module('app.student', [])
 })
 .controller('StudentController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', 'guestInfo', function($scope, Tickets, Auth, params, $location, loading, guestInfo){
 
+  let cookie;
+
+  if(guestInfo.guestLogin){
+    cookie = guestInfo;
+  }else {
+    cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+    if(cookie.user.fellow) $location.path('fellow');
+  }
+
   $scope.data = {};
   $scope.loading = loading.loading;
 
@@ -22,23 +31,12 @@ angular.module('app.student', [])
   var initializeQueue = function(cb) {
     //retrieve tickets from database
     //grab the cookie data from the session on passport
-    let cookie;
-
-    if(document.cookie === 'string'){
-      cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
-    }else {
-      cookie = {user:{fellow: false}};
-    }
-
-    if(cookie.user.fellow || !guestInfo.user.student) $location.path('fellow');
-
-    cookie = guestInfo;
 
     Tickets.getUserTickets(cookie.user)
       .then(function(results){
         //add tickets to the scope
         $scope.data.tickets = results.data.tickets;
-        console.log($scope.data.tickets)
+        console.log($scope.data.tickets);
 
         if($scope.data.tickets === undefined) return;
         //iterate through all tickets
@@ -82,7 +80,7 @@ angular.module('app.student', [])
       .catch(function(error){
         console.error(error);
       });
-  }
+  };
 
   initializeQueue(() =>{
     console.log('initalize');
@@ -101,13 +99,13 @@ angular.module('app.student', [])
       .catch(function (err) {
         console.log(err);
       });
-  }
+  };
 
   $scope.signout = function ($location) {
     if(cookie)
     Auth.signout();
     $location.path('/signin');
-  }
+  };
 
   $scope.claimTicket = function (ticket) {
 
@@ -121,7 +119,7 @@ angular.module('app.student', [])
         console.log(err);
       });
 
-  }
+  };
 
   $scope.solveTicket = function (ticket) {
 
@@ -133,7 +131,7 @@ angular.module('app.student', [])
        .catch(function (err) {
          console.log(err);
        });
-  }
+  };
 
 
   $scope.unsolveTicket = function (ticket) {
@@ -146,7 +144,7 @@ angular.module('app.student', [])
       .catch(function (err) {
         console.log(err);
       });
-  }
+  };
 
   $scope.getTicket = function(ticket) {
     if(ticket.claimed){

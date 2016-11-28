@@ -8,12 +8,11 @@ angular.module('app.auth', [])
   };
 
   $scope.guestLoginStudent = () =>{
-    console.log('hello')
     guestLogin.setGuestInfo();
     $location.path('/student');
   };
+
   $scope.guestLoginFellow = () =>{
-    console.log('hello')
     guestLogin.setGuestInfo();
     $location.path('/fellow');
   };

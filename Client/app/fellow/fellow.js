@@ -4,15 +4,12 @@ angular.module('app.queue', [])
 
   let cookie;
 
-  if(document.cookie === 'string'){
-    cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+  if(guestInfo.guestLogin){
+    cookie = guestInfo;
   }else {
-    cookie = {user:{fellow: true}};
+    cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+    if(cookie.user.fellow) $location.path('fellow');
   }
-
-  if(!guestInfo.user.fellow || !cookie.user.fellow) $location.path('student');
-
-  cookie = guestInfo;
 
   $scope.data = {};
   var SVGpulse;
