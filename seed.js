@@ -24,6 +24,11 @@ var fellers = [
     fellerName: 'Jemil Ezzet',
     githubHandle: 'jemilezzet',
     userId: 4
+  },
+  {
+    fellerName: 'Guest',
+    githubHandle: 'guest',
+    userId: 62
   }
 ];
 

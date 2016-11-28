@@ -151,4 +151,24 @@ angular.module('app.services', [])
   }
 
   return {check : check}
-});
+})
+.factory('guestLogin', ['guestInfo', function(guestInfo) {
+  console.log('set guestInfo')
+  const setGuestInfo = () =>{
+    guestInfo.user = {
+      displayName:"Guest",
+      fellow:true,
+      student:true,
+      id:"guest",
+      mainId:62,
+      username:"guest"
+    };
+  };
+
+  return{
+    setGuestInfo : setGuestInfo
+  };
+}])
+.factory('guestInfo', [ function() {
+  return {};
+}]);

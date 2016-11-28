@@ -3,7 +3,7 @@ angular.module('app.student', [])
 .factory('params', () =>{
   return {};
 })
-.controller('StudentController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', function($scope, Tickets, Auth, params, $location, loading){
+.controller('StudentController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', 'guestInfo', function($scope, Tickets, Auth, params, $location, loading, guestInfo){
 
   $scope.data = {};
   $scope.loading = loading.loading;
@@ -22,9 +22,17 @@ angular.module('app.student', [])
   var initializeQueue = function(cb) {
     //retrieve tickets from database
     //grab the cookie data from the session on passport
-    const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+    let cookie;
 
-    if(cookie.user.fellow) $location.path('fellow');
+    if(document.cookie === 'string'){
+      cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+    }else {
+      cookie = {user:{fellow: false}};
+    }
+
+    if(cookie.user.fellow || !guestInfo.user.student) $location.path('fellow');
+
+    cookie = guestInfo;
 
     Tickets.getUserTickets(cookie.user)
       .then(function(results){
@@ -96,6 +104,7 @@ angular.module('app.student', [])
   }
 
   $scope.signout = function ($location) {
+    if(cookie)
     Auth.signout();
     $location.path('/signin');
   }

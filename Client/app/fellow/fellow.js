@@ -1,9 +1,18 @@
 angular.module('app.queue', [])
 
-.controller('FellowController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', function($scope, Tickets, Auth, params, $location, loading){
+.controller('FellowController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', 'guestInfo', function($scope, Tickets, Auth, params, $location, loading, guestInfo){
 
-  const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
-  if(!cookie.user.fellow) $location.path('student');
+  let cookie;
+
+  if(document.cookie === 'string'){
+    cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+  }else {
+    cookie = {user:{fellow: true}};
+  }
+
+  if(!guestInfo.user.fellow || !cookie.user.fellow) $location.path('student');
+
+  cookie = guestInfo;
 
   $scope.data = {};
   var SVGpulse;
