@@ -1,3 +1,6 @@
+if(process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 // basic server
 var express = require('express');
 // Middleware
@@ -7,7 +10,7 @@ var passport = require('passport');
 var GitHubStrategy = require('passport-github2').Strategy;
 var routes = require('./routes');
 var cookieParser = require('cookie-parser');
-var removeChats = require('./worker/chatRemoval'); // add the cron to the server
+var removeChats = require('./worker/chatRemoval');
 
 removeChats();
 

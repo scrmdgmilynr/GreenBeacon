@@ -1,6 +1,13 @@
 angular.module('app.chatroom', ['app.student'])
-.controller('ChatroomController', ['$scope', '$timeout', 'Tickets', 'Auth', 'params', '$http', 'loading', 'checkStatus', '$location', function($scope, $timeout, Tickets, Auth, params, $http, loading, checkStatus, $location){
-  const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+.controller('ChatroomController', ['$scope', '$timeout', 'Tickets', 'Auth', 'params', '$http', 'loading', 'checkStatus', '$location', 'guestInfo', 'guestSignOut', function($scope, $timeout, Tickets, Auth, params, $http, loading, checkStatus, $location, guestInfo, guestSignOut){
+  let cookie;
+
+  if(guestInfo.user.guestLogin){
+    cookie = guestInfo;
+  }else {
+    cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+    if(cookie.user.fellow) $location.path('fellow');
+  }
 
   if(params.ticket === undefined){
     console.log(checkStatus);
@@ -116,17 +123,17 @@ angular.module('app.chatroom', ['app.student'])
     $scope.message = '';
   }
 
-  // emoji selector
-  $('#messageinput').emojiPicker({
-    width: '300px',
-    height: '200px',
-    button: false
-  });
+  // // emoji selector
+  // $('#messageinput').emojiPicker({
+  //   width: '300px',
+  //   height: '200px',
+  //   button: false
+  // });
 
-  $('#trigger').click(function(e) {
-    e.preventDefault();
-    $('#messageinput').emojiPicker('toggle');
-  });
+  // $('#trigger').click(function(e) {
+  //   e.preventDefault();
+  //   $('#messageinput').emojiPicker('toggle');
+  // });
 
   $scope.typing = function() {
     socket.emit('typing', cookie.user.mainId);
@@ -220,7 +227,12 @@ angular.module('app.chatroom', ['app.student'])
   }
 
   $scope.signout = function ($location) {
-    Auth.signout();
+    if(guestInfo.user.guestLogin){
+      guestSignOut.restGuestInfo();
+    }else{
+      Auth.signout();
+    }
+
     $location.path('/signin');
   }
 

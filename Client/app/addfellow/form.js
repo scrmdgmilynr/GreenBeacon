@@ -47,7 +47,13 @@ angular.module('app.addfellow', [])
 	};
 
 	$scope.signout = function () {
-    Auth.signout();
+    if(guestInfo.user.guestLogin){
+      guestSignOut.restGuestInfo();
+    }else{
+      Auth.signout();
+    }
+
+    $location.path('/signin');
   };
 
   $scope.backToFellow = function() {

@@ -16,14 +16,14 @@ module.exports.router = function(app) {
     helpers.setHeader,
     helpers.redirectStudentorFellow);
 
-  app.get('/tickets', helpers.isLoggedIn, helpers.getTickets);
+  app.get('/tickets', helpers.getTickets);
 
   // add route for specific tickets
   app.get('/tickets/:userid', helpers.getUserTickets);
 
-  app.post('/tickets', helpers.isLoggedIn, helpers.addToQueue);
+  app.post('/tickets', helpers.addToQueue);
 
-  app.put('/claimed', helpers.isLoggedIn, helpers.tagClaimed);
+  app.put('/claimed', helpers.tagClaimed);
 
   app.post('/eraseClaim', helpers.isLoggedIn, helpers.eraseClaim);
 
