@@ -1,6 +1,6 @@
 angular.module('app.queue', [])
 
-.controller('FellowController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', 'guestInfo', function($scope, Tickets, Auth, params, $location, loading, guestInfo){
+.controller('FellowController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', 'guestInfo', 'guestSignOut', function($scope, Tickets, Auth, params, $location, loading, guestInfo, guestSignOut){
 
   let cookie;
 
@@ -151,9 +151,14 @@ angular.module('app.queue', [])
   // }
 
   $scope.signout = function ($location) {
-    Auth.signout();
+    if(guestInfo.user.guestLogin){
+      guestSignOut.restGuestInfo();
+    }else{
+      Auth.signout();
+    }
+
     $location.path('/signin');
-  }
+  };
 
   $scope.claimTicket = function (ticket) {
 

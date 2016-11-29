@@ -1,11 +1,12 @@
 angular.module('app.chatroom', ['app.student'])
-.controller('ChatroomController', ['$scope', '$timeout', 'Tickets', 'Auth', 'params', '$http', 'loading', 'checkStatus', '$location', 'guestInfo', function($scope, $timeout, Tickets, Auth, params, $http, loading, checkStatus, $location, guestInfo){
+.controller('ChatroomController', ['$scope', '$timeout', 'Tickets', 'Auth', 'params', '$http', 'loading', 'checkStatus', '$location', 'guestInfo', 'guestSignOut', function($scope, $timeout, Tickets, Auth, params, $http, loading, checkStatus, $location, guestInfo, guestSignOut){
   let cookie;
 
-  if(document.cookie === 'string'){
-    cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
-  }else {
+  if(guestInfo.user.guestLogin){
     cookie = guestInfo;
+  }else {
+    cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+    if(cookie.user.fellow) $location.path('fellow');
   }
 
   if(params.ticket === undefined){
@@ -226,7 +227,12 @@ angular.module('app.chatroom', ['app.student'])
   }
 
   $scope.signout = function ($location) {
-    Auth.signout();
+    if(guestInfo.user.guestLogin){
+      guestSignOut.restGuestInfo();
+    }else{
+      Auth.signout();
+    }
+
     $location.path('/signin');
   }
 

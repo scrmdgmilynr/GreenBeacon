@@ -3,7 +3,7 @@ angular.module('app.student', [])
 .factory('params', () =>{
   return {};
 })
-.controller('StudentController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', 'guestInfo', function($scope, Tickets, Auth, params, $location, loading, guestInfo){
+.controller('StudentController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', 'guestInfo', 'guestSignOut', function($scope, Tickets, Auth, params, $location, loading, guestInfo, guestSignOut){
 
   let cookie;
 
@@ -102,9 +102,13 @@ angular.module('app.student', [])
   };
 
   $scope.signout = function ($location) {
-    if(cookie)
-    Auth.signout();
-    $location.path('/signin');
+    if(guestInfo.user.guestLogin){
+      guestSignOut.restGuestInfo();
+      $location.path('/signin');
+    }else{
+      Auth.signout();
+      $location.path('/signin');
+    }
   };
 
   $scope.claimTicket = function (ticket) {

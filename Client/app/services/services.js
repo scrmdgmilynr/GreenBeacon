@@ -154,7 +154,7 @@ angular.module('app.services', [])
   return {check : check}
 })
 .factory('guestLogin', ['guestInfo', function(guestInfo) {
-  const setGuestInfo = (cb) =>{
+  const setGuestInfo = () =>{
     guestInfo.user = {
       displayName:"Guest",
       fellow:true,
@@ -164,12 +164,21 @@ angular.module('app.services', [])
       username:"guest",
       guestLogin: true
     };
-
-    if(cb) cb();
   };
 
   return{
     setGuestInfo : setGuestInfo
+  };
+}])
+.factory('guestSignOut', ['guestInfo', function(guestInfo) {
+  const restGuestInfo = () =>{
+    guestInfo.user = { 
+      guestLogin: false
+    };
+  };
+
+  return {
+    restGuestInfo: restGuestInfo
   };
 }])
 .factory('guestInfo', [ function() {
