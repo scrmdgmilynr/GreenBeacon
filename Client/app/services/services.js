@@ -154,7 +154,7 @@ angular.module('app.services', [])
   return {check : check}
 })
 .factory('guestLogin', ['guestInfo', function(guestInfo) {
-  const setGuestInfo = () =>{
+  const setGuestInfo = (cb) =>{
     guestInfo.user = {
       displayName:"Guest",
       fellow:true,
@@ -164,6 +164,8 @@ angular.module('app.services', [])
       username:"guest",
       guestLogin: true
     };
+
+    if(cb) cb();
   };
 
   return{

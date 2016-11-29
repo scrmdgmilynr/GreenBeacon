@@ -8,12 +8,31 @@ angular.module('app.auth', [])
   };
 
   $scope.guestLoginStudent = () =>{
-    guestLogin.setGuestInfo();
-    $location.path('/student');
+    new Promise((resolve, reject) =>{
+      guestLogin.setGuestInfo(() =>{
+        resolve();
+      });
+    })
+    .then(() =>{
+      console.log('hello')
+      $location.path('/student');
+    })
+    .catch((err) =>{
+      console.log(err);
+    });
   };
 
   $scope.guestLoginFellow = () =>{
-    guestLogin.setGuestInfo();
-    $location.path('/fellow');
+    new Promise((resolve, reject) =>{
+      guestLogin.setGuestInfo(() =>{
+        resolve();
+      });
+    })
+    .then(() =>{
+      $location.path('/fellow');
+    })
+    .catch((err) =>{
+      console.log(err);
+    });
   };
 }]);

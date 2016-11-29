@@ -7,7 +7,7 @@ angular.module('app.student', [])
 
   let cookie;
 
-  if(guestInfo.guestLogin){
+  if(guestInfo.user.guestLogin){
     cookie = guestInfo;
   }else {
     cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
