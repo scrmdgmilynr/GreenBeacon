@@ -2,32 +2,33 @@ var pg = require('pg');
 var Sequelize = require('sequelize');
 
 // postgres models
+var db = require('./db/schema').db;
 var User = require('./db/schema').User;
 var Ticket = require('./db/schema').Ticket;
 var Claim = require('./db/schema').Claim;
 var Feller = require('./db/schema').Feller;
 var Chat = require('./db/schema').Chat;
 
-if(process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
+// if(process.env.NODE_ENV !== 'production') {
+//   require('dotenv').config();
+// }
 
-// establish database connection for querying
-var db = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: true
-  }
-});
+// // establish database connection for querying
+// var db = new Sequelize(process.env.DATABASE_URL, {
+//   dialect: 'postgres',
+//   dialectOptions: {
+//     ssl: true
+//   }
+// });
 
-db
- .authenticate()
- .then(function(err) {
-   console.log('Connection established');
- })
- .catch(function(err) {
-   console.log('Unable to connect: ', err);
- });
+// db
+//  .authenticate()
+//  .then(function(err) {
+//    console.log('Connection established');
+//  })
+//  .catch(function(err) {
+//    console.log('Unable to connect: ', err);
+//  });
 
 module.exports = {
 
@@ -155,10 +156,17 @@ module.exports = {
 
   // create a new ticket instance and add it to the tickets table
   addToQueue: function(req, res) {
+    let userID;
+    if(req.session.userID === undefined){
+      userID = req.body.guestId;
+    }else{
+      userID = req.session.userID;
+    }
+
     Ticket.create({ message: req.body.message.replace(/<script.*>.*<\/script>/g, "empty message"), 
                     location: req.body.location.replace(/<script.*>.*<\/script>/g, "empty message"), 
                     x: req.body.x, y: req.body.y, 
-                    userId: req.session.userID })
+                    userId: userID })
       .then(function(ticket) {
         Ticket.findAll({})
           .then(function(tickets) {

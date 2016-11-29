@@ -37,7 +37,7 @@ angular.module('app.services', [])
 
   //Get one ticket from the database
   var getTicket = function (ticketId) {
-    console.log(ticketId)
+    console.log(ticketId);
     return $http({
       method: 'POST',
       url: `/ticket/${ticketId}`,
@@ -50,6 +50,7 @@ angular.module('app.services', [])
   //Sends POST request to the server in order to post a new ticket
   var addTicket = function (ticket) {
     console.log(ticket)
+    ticket.guestId = 62;
     return $http({
       method: 'POST',
       url: '/tickets',
@@ -151,4 +152,39 @@ angular.module('app.services', [])
   }
 
   return {check : check}
-});
+})
+.factory('guestLogin', ['guestInfo', function(guestInfo) {
+  const setGuestInfo = () =>{
+    guestInfo.user = {
+      displayName:"Guest",
+      fellow:true,
+      student:true,
+      id:"guest",
+      mainId:62,
+      username:"guest",
+      guestLogin: true
+    };
+  };
+
+  return{
+    setGuestInfo : setGuestInfo
+  };
+}])
+.factory('guestSignOut', ['guestInfo', function(guestInfo) {
+  const restGuestInfo = () =>{
+    guestInfo.user = { 
+      guestLogin: false
+    };
+  };
+
+  return {
+    restGuestInfo: restGuestInfo
+  };
+}])
+.factory('guestInfo', [ function() {
+  return { 
+    user:{
+      guestLogin: false
+    }
+  };
+}]);

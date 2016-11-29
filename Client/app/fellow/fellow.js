@@ -1,9 +1,15 @@
 angular.module('app.queue', [])
 
-.controller('FellowController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', function($scope, Tickets, Auth, params, $location, loading){
+.controller('FellowController', ['$scope', 'Tickets', 'Auth', 'params', '$location', 'loading', 'guestInfo', 'guestSignOut', function($scope, Tickets, Auth, params, $location, loading, guestInfo, guestSignOut){
 
-  const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
-  if(!cookie.user.fellow) $location.path('student');
+  let cookie;
+
+  if(guestInfo.user.guestLogin){
+    cookie = guestInfo;
+  }else {
+    cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
+    if(cookie.user.fellow) $location.path('fellow');
+  }
 
   $scope.data = {};
   var SVGpulse;
@@ -145,9 +151,14 @@ angular.module('app.queue', [])
   // }
 
   $scope.signout = function ($location) {
-    Auth.signout();
+    if(guestInfo.user.guestLogin){
+      guestSignOut.restGuestInfo();
+    }else{
+      Auth.signout();
+    }
+
     $location.path('/signin');
-  }
+  };
 
   $scope.claimTicket = function (ticket) {
 

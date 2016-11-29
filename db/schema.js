@@ -1,10 +1,6 @@
 var pg = require('pg')
 var Sequelize = require('sequelize');
 
-if(process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
-
 var db = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
   dialectOptions: {
@@ -120,6 +116,7 @@ db
 });
 
 module.exports = {
+  db: db,
   User: User,
   Ticket: Ticket,
   Claim: Claim,
