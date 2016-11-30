@@ -11,6 +11,8 @@ angular.module('app.queue', [])
     if(cookie.user.fellow) $location.path('fellow');
   }
 
+  console.log(cookie, ' fellow log')
+
   $scope.data = {};
   var SVGpulse;
   var SVGdot;
