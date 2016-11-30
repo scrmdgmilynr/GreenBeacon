@@ -6,7 +6,6 @@ angular.module('app.chatroom', ['app.student'])
     cookie = guestInfo;
   }else {
     cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
-    if(cookie.user.fellow) $location.path('fellow');
   }
 
   if(params.ticket === undefined){

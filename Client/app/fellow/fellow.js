@@ -8,8 +8,10 @@ angular.module('app.queue', [])
     cookie = guestInfo;
   }else {
     cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
-    if(cookie.user.fellow) $location.path('fellow');
+    if(!cookie.user.fellow) $location.path('student');
   }
+
+  console.log(cookie, ' fellow log')
 
   $scope.data = {};
   var SVGpulse;
