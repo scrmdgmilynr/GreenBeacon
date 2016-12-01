@@ -172,9 +172,10 @@ angular.module('app.services', [])
 }])
 .factory('guestSignOut', ['guestInfo', function(guestInfo) {
   const restGuestInfo = () =>{
-    guestInfo.user = { 
+    guestInfo.user = {
       guestLogin: false
     };
+    console.log('sign out complete');
   };
 
   return {
@@ -182,7 +183,7 @@ angular.module('app.services', [])
   };
 }])
 .factory('guestInfo', [ function() {
-  return { 
+  return {
     user:{
       guestLogin: false
     }

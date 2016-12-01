@@ -1,16 +1,16 @@
 //Signin controller
 angular.module('app.addfellow', [])
-.controller('AddFellowController', ['$scope', 'Tickets', 'Auth', '$interval', 'params', '$location', 'loading', '$http', function($scope, Tickets, Auth, $interval, params, $location, loading, $http){
+.controller('AddFellowController', ['$scope', 'Tickets', 'Auth', '$interval', 'params', '$location', 'loading', '$http', 'guestInfo', 'guestSignOut', function($scope, Tickets, Auth, $interval, params, $location, loading, $http, guestInfo, guestSignOut){
 	const cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
 	if(!cookie.user.fellow) $location.path('student');
-	
-	$scope.message = { 
+
+	$scope.message = {
 		msg: 'Add New Fellow',
 		cl: 'show'
 	};
 
 	$scope.addFellow = function() {
-		$scope.message = { 
+		$scope.message = {
 			msg: 'Adding Fellow',
 			cl: 'show'
 		};
@@ -32,7 +32,7 @@ angular.module('app.addfellow', [])
 			$scope.gitHandle = '';
 
 			if(resp){
-				$scope.message = { 
+				$scope.message = {
 					msg: 'Add New Fellow',
 					cl: 'show'
 				};

@@ -101,7 +101,7 @@ angular.module('app.student', [])
       });
   };
 
-  $scope.signout = function ($location) {
+  $scope.signout = function () {
     if(guestInfo.user.guestLogin){
       guestSignOut.restGuestInfo();
       $location.path('/signin');

@@ -225,7 +225,7 @@ angular.module('app.chatroom', ['app.student'])
     }
   }
 
-  $scope.signout = function ($location) {
+  $scope.signout = function () {
     if(guestInfo.user.guestLogin){
       guestSignOut.restGuestInfo();
     }else{
