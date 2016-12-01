@@ -29,6 +29,18 @@ grunt.initConfig({
       }
     },
 
+    cssmin: {
+        options: {
+          shorthandCompacting: false,
+          roundingPrecision: -1
+        },
+        target: {
+          files: {
+            'output.css': ['*.css', 'Client/styles/**/*.css', 'Client/styles/*.css']
+          }
+        }
+    },
+
     watch: {
       scripts: {
         files: [
@@ -55,17 +67,12 @@ grunt.initConfig({
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-nodemon');
-
-  grunt.registerTask('server-dev', function (target) {
-    grunt.task.run([ 'nodemon', 'watch' ]);
-  });
 
   ////////////////////////////////////////////////////
   // Main grunt tasks
   ////////////////////////////////////////////////////
 
-  grunt.registerTask('build', ['concat']);
+  grunt.registerTask('build', ['concat', 'cssmin']);
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
@@ -75,8 +82,6 @@ grunt.initConfig({
     }
   });
 
-  grunt.registerTask('deploy', ['build', 'start']);
-
-  grunt.registerTask('start', ['nodemon']);
+  grunt.registerTask('deploy', ['build']);
 
 };
