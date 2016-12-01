@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --use_strict server.js",
-    "postinstall": "bower install"
+    "postinstall": "bower install",
+    "build": "grunt build"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,11 @@
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-qunit": "^1.2.0",
+    "grunt-contrib-uglify": "^2.0.0",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
