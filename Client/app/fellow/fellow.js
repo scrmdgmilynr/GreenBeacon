@@ -152,7 +152,7 @@ angular.module('app.queue', [])
   //   });
   // }
 
-  $scope.signout = function ($location) {
+  $scope.signout = function () {
     if(guestInfo.user.guestLogin){
       guestSignOut.restGuestInfo();
     }else{
