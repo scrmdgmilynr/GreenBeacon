@@ -61,7 +61,7 @@ routes.router(app);
 app.set('port', process.env.PORT || 3000);
 
 const server = app.listen(app.get('port'), function() {
-  console.log('listening on port: ', app.get('port'))
+  console.log('listening on port: ', app.get('port'));
 });
 
 module.exports = server;
