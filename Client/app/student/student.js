@@ -8,6 +8,7 @@ angular.module('app.student', [])
   let cookie;
 
   if(guestInfo.user.guestLogin){
+    if(!guestInfo.user.student) $location.path('student');
     cookie = guestInfo;
   }else {
     cookie = JSON.parse(document.cookie.substr(document.cookie.indexOf('; ') + 1));
