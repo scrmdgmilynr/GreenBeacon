@@ -154,14 +154,24 @@ angular.module('app.services', [])
   return {check : check}
 })
 .factory('guestLogin', ['guestInfo', function(guestInfo) {
-  const setGuestInfo = () =>{
+  const setGuestInfo = (mainId, displayName, username, type) =>{
+    let fellow = true;
+    let student = true;
+    
+    if(type === 'fellow'){
+      student = false;
+    }
+    if(type === 'student'){
+      fellow = false;
+    }
+
     guestInfo.user = {
-      displayName:"Guest",
-      fellow:true,
-      student:true,
-      id:"guest",
-      mainId:62,
-      username:"guest",
+      displayName:displayName,
+      fellow:fellow,
+      student:student,
+      id:0,
+      mainId:mainId,
+      username:username,
       guestLogin: true
     };
   };
